@@ -10,6 +10,7 @@
 
 .wrapper {
   max-width: 1000px;
+  height: calc(90vh - 80px);
   margin: 0 auto;
 }
 
