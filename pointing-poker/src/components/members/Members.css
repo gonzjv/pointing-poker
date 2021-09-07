@@ -1,5 +1,5 @@
 .members {
-  
+  width: 100%;
 }
 
 .members__title {
@@ -10,4 +10,35 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 15px;
+}
+
+.wrapper {
+  max-width: 1300px;
+  margin: auto;
+}
+
+@media screen and (max-width: 1330px) {
+  .wrapper {
+    max-width: 1020px;
+  }
+}
+
+@media screen and (max-width: 1030px) {
+  .wrapper {
+    max-width: 800px;
+  }
+
+  .members__list {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 830px) {
+  .wrapper {
+    max-width: 450px;
+  }
+
+  .members__list {
+    grid-template-columns: 1fr;
+  }
 }
