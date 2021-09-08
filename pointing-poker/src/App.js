@@ -1,11 +1,12 @@
-import logo from "./logo.svg";
 import "./App.css";
 import Members from "./components/members/Members";
+import Settings from "./components/settings/settings";
 
 function App() {
   return (
-    <div className="App">
+    <div className="wrapper">
       <Members />
+      <Settings />
     </div>
   );
 }

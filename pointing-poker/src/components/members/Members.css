@@ -4,6 +4,7 @@
 
 .members__title {
   text-transform: capitalize;
+  text-align: center;
 }
 
 .members__list {
