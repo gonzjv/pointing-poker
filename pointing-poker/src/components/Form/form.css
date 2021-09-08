@@ -110,6 +110,7 @@ input:checked+.slider:before {
   font-family: Roboto, sans-serif;
   font-size: 24px;
   font-weight: bold;
+  position: relative;
 }
 
 .group label {
@@ -130,5 +131,15 @@ input:checked+.slider:before {
 
 .group-input {
   display: block;
+}
+
+.form-validation {
+  display: inline-block;
+  font-family: Roboto, sans-serif ;
+  font-size: 24px;
+  color: #FF0000;
+position: absolute;
+top: 50%;
+left: 50%;
 
 }

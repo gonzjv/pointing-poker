@@ -36,7 +36,7 @@ function Form({ setFormValues }) {
         <form onSubmit={handleSubmit}>
           <div className="group">
             <label className="group-input" htmlFor="first-name">Your first name:
-            {errors?.firstName === "" && <span className="valid">Enter your name</span>}
+            {errors?.firstName === "" && <span className="form-validation">Enter your name</span>}
             </label>
             <input type="text" name="first-name" value={firstName} onChange={(event) => setFirstName(event.target.value)} required />
           </div>
