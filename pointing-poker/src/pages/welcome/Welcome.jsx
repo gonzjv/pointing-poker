@@ -1,9 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
+import Form  from '../../components/Form/Form';
 import './welcome.css';
 
-
-
 function Welcome() {
+  const [formValues, setFormValues] = useState([])
+
   return (
     <div className="wrapper welcome-wrapper">
      
@@ -15,10 +16,11 @@ function Welcome() {
         <h4 className="form-input">Create session:</h4>
         <button className="button">Start new game</button>
         <p className="heading form-text">or:</p>
-        <h4 className="form-input up">Connect to lobby by URL:</h4>
+        <h4 className="form-input up">Connect to lobby by <span className="colored">URL</span> :</h4>
         <input></input>
         <button className="button">Connect</button>
       </section>
+      <Form setFormValues={setFormValues} />
     </div>
 
   )
