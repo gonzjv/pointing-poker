@@ -1,14 +1,30 @@
-import React, { useState } from 'react';
-import { useEffect } from 'react-dom';
+import React, { useState, useEffect} from 'react';
 import './form.css'
 
 function Form({ setFormValues }) {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [jobPosition, setJobPosition] = useState('');
+  const [errors, setErrors] = useState({});
+
+  useEffect(() => {
+    validate()  
+  }, [firstName])
+  const validate = () => {
+    setErrors({});
+    if (firstName === '') {
+      setErrors((state) => ({ ...state, firstName }));
+    };
+    console.log(errors)
+  }
+
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    if (Object.keys(errors).length === 0) {
+    setFormValues((state) => [...state, {firstName, lastName, jobPosition},
+    ])
+  }
     console.log(firstName);
     console.log(lastName);
     console.log(jobPosition);
@@ -20,8 +36,9 @@ function Form({ setFormValues }) {
         <form onSubmit={handleSubmit}>
           <div className="group">
             <label className="group-input" htmlFor="first-name">Your first name:
+            {errors?.firstName === "" && <span className="valid">Enter your name</span>}
             </label>
-            <input type="text" name="first-name" value={firstName} onChange={(event) => setFirstName(event.target.value)} />
+            <input type="text" name="first-name" value={firstName} onChange={(event) => setFirstName(event.target.value)} required />
           </div>
           <div className="group">
             <label className="group-input" htmlFor="last-name">Your last name (optional):</label>
