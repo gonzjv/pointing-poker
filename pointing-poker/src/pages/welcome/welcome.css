@@ -16,7 +16,8 @@ padding-top: 8%;
   grid-row-gap: 10%;
   align-content: center;
   margin: 0 auto;
-  margin-bottom: 70px;;
+  padding-top: 8%;
+  padding-bottom: 70px;
 }
 
 .game-title {
@@ -81,3 +82,23 @@ color: #66999B;
 }
 
 /*popup*/
+.modal {
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0,0,0,0.4);
+  position: fixed;
+  top:0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.5s;
+ 
+}
+
+.modal.active {
+  opacity: 1;
+  pointer-events: all;
+}
