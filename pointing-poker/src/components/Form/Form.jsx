@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import './form.css'
 
 function Form({ setFormValues }) {
@@ -8,7 +8,7 @@ function Form({ setFormValues }) {
   const [errors, setErrors] = useState({});
 
   useEffect(() => {
-    validate()  
+    validate()
   }, [firstName])
   const validate = () => {
     setErrors({});
@@ -22,9 +22,9 @@ function Form({ setFormValues }) {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (Object.keys(errors).length === 0) {
-    setFormValues((state) => [...state, {firstName, lastName, jobPosition},
-    ])
-  }
+      setFormValues((state) => [...state, { firstName, lastName, jobPosition },
+      ])
+    }
     console.log(firstName);
     console.log(lastName);
     console.log(jobPosition);
@@ -36,7 +36,7 @@ function Form({ setFormValues }) {
         <form onSubmit={handleSubmit}>
           <div className="group">
             <label className="group-input" htmlFor="first-name">Your first name:
-            {errors?.firstName === "" && <span className="form-validation">Enter your name</span>}
+              {errors?.firstName === "" && <span className="form-validation">Enter your name</span>}
             </label>
             <input type="text" name="first-name" value={firstName} onChange={(event) => setFirstName(event.target.value)} required />
           </div>
@@ -49,9 +49,16 @@ function Form({ setFormValues }) {
             <input type="text" name="job-position" value={jobPosition} onChange={(event) => setJobPosition(event.target.value)} />
           </div>
           <div className="group" >
-            <label className="group-input img" htmlFor="file">Image:</label>
-            <input type="file" id="image" />
-            <button className="button">Button</button>
+            Image:
+            {/* <label className="group-input img" htmlFor="file" >Image:</label> */}
+            {/* <input type="file" id="image" /> */}
+            <div className="group file">
+              <label htmlFor="file" className="group-input"><span className="input-file">Choose a file</span></label>
+              <input type="file" name="file" id="file" className="group-input file" />
+              <button className="button">Button</button>
+            </div>
+
+
           </div>
           <div className="button">
             <input type="submit" value="Confirm" />
