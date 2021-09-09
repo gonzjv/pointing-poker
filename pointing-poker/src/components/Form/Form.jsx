@@ -38,11 +38,18 @@ function Form({ setFormValues, active, setActive }) {
     console.log(jobPosition);
   };
 
+  const reset = () => {
+    setActive(false);
+    setFirstName("");
+    setLastName("");
+    setJobPosition("")  
+  }
+
   return (
     <>
       <section className="popup">
 
-        <div className={active ? "modal active" : "modal" } onClick={() => setActive(false)}>
+      <div className={active ? "modal active" : "modal" } onClick={() => reset()}>
         <div className="popup_content">
         <div className="popup_header">
          <h3>Connect to Lobby</h3>
@@ -51,8 +58,8 @@ function Form({ setFormValues, active, setActive }) {
 
            <label className="switch">
              <input type="checkbox" />
-             <span className="slider"></span>
-           </label>
+          <span className="slider"></span>
+        </label>
          </div>
        </div>
         <form onSubmit={handleSubmit} onClick={(e) => e.stopPropagation()} >
@@ -95,8 +102,6 @@ function Form({ setFormValues, active, setActive }) {
           </div>
           <div className="group">
             Image:
-            {/* <label className="group-input img" htmlFor="file" >Image:</label> */}
-            {/* <input type="file" id="image" /> */}
             <div className="group file">
               <label htmlFor="file" className="group-input">
                 <span className="input-file">Choose a file</span>
@@ -116,7 +121,7 @@ function Form({ setFormValues, active, setActive }) {
           </div>
           <div className="form-buttons">
             <input type="submit" value="Confirm" className="button button-blue" />
-            <input type="submit" value="Cancel" className="button  button-white" />
+            <input type="submit" value="Cancel" className="button  button-white" onClick={() => reset()}/>
           </div>
         </form>
         </div>
