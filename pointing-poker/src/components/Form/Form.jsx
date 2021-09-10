@@ -4,7 +4,8 @@ import PropTypes from "prop-types";
 
 Form.propTypes = {
   active: PropTypes.bool,
-  setActive: PropTypes.func
+  setActive: PropTypes.func,
+  setFormValues: PropTypes.func
 }
 
 
@@ -33,9 +34,6 @@ function Form({ setFormValues, active, setActive }) {
         { firstName, lastName, jobPosition },
       ]);
     }
-    console.log(firstName);
-    console.log(lastName);
-    console.log(jobPosition);
   };
 
   const reset = () => {
@@ -50,19 +48,18 @@ function Form({ setFormValues, active, setActive }) {
       <section className="popup">
 
       <div className={active ? "modal active" : "modal" } onClick={() => reset()}>
-        <div className="popup_content">
+        <div className="popup_content" onClick={(e) => e.stopPropagation()}>
         <div className="popup_header">
          <h3>Connect to Lobby</h3>
          <div className="toggle-wrapper">
            <p>Connect as<br /> Observer</p>
-
            <label className="switch">
              <input type="checkbox" />
           <span className="slider"></span>
         </label>
          </div>
        </div>
-        <form onSubmit={handleSubmit} onClick={(e) => e.stopPropagation()} >
+        <form onSubmit={handleSubmit}  >
           <div className="group">
             <label className="group-input" htmlFor="first-name">
               Your first name:
@@ -75,7 +72,6 @@ function Form({ setFormValues, active, setActive }) {
               name="first-name"
               value={firstName}
               onChange={(event) => setFirstName(event.target.value)}
-              required
             />
           </div>
           <div className="group">

@@ -60,19 +60,21 @@ input:checked+.slider:before {
 }
 
 .popup_content {
-  width: 60%;
+  width: 45%;
   margin: 0 auto;
   background-color: white;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  padding: 5%;
-  padding-top: 6%;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);  
+  padding: 1%;
+  margin-top: 20px;
+  padding-top: 3%;
+  max-height: 100%;
 }
 
 .popup_header {
   display: flex;
   align-items: center;
-  padding-bottom: 8%;
-  justify-content: space-between
+  padding-bottom: 5%;
+  justify-content: space-around
 }
 
 .popup_header h3 {
@@ -205,7 +207,7 @@ text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 .form-buttons {
   display: flex;
   justify-content: space-between;
-  padding: 97px 15px 15px;
+  padding: 85px 15px 15px;
 }
 
 .button.button-blue,
@@ -231,3 +233,44 @@ text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   background-color: #FFFFFF;
   color: #2B3A67;
 }
+
+
+/*popup*/
+.modal {
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0,0,0,0.4);
+  position: fixed;
+  top:0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.5s;
+ 
+}
+
+.modal.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* @media (max-width: 1200px ) {
+  .wrapper {
+    max-width: 900px;
+  }
+}
+
+@media (max-width: 992px ) {
+  .wrapper {
+    max-width: 750px;
+  }
+}
+
+@media (max-width: 500px ) {
+  .wrapper {
+    max-width: 480px;
+  }
+} */
