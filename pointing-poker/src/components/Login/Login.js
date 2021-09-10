@@ -1,13 +1,21 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { MainContext } from '../../mainContext';
 import { SocketContext } from '../../socketContext';
+import { UsersContext } from '../../usersContext';
 import './Login.css';
 
 const Login = () => {
   const socket = useContext(SocketContext);
   const { name, room, setName, setRoom } = useContext(MainContext);
   const history = useHistory();
+  const { setUsers } = useContext(UsersContext);
+
+  useEffect(() => {
+    socket.on('users', (users) => {
+      setUsers(users);
+    });
+  });
 
   const handleClick = () => {
     socket.emit('login', { name, room }, (error) => {
