@@ -26,7 +26,7 @@ function Welcome() {
         <input></input>
         <button className="button">Connect</button>
       </section>
-      <Modal setModalValues={setModalValues} active={modalActive} setActive={setModalActive}/>
+      <Modal setModalValues={setModalValues} active={modalActive} setActive={setModalActive} values={modalValues} />
     </div>
 
   )

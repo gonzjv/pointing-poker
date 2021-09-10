@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
 import "./form.css";
-import PropTypes from "prop-types";
 
 function Form({setModalValues, setActive} ) {
-  const [firstName, setFirstName] = useState("");
+const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [jobPosition, setJobPosition] = useState("");
   const [errors, setErrors] = useState({});
+  const [fileName, setFileName] = useState("Choose a file");
 
   useEffect(() => {
+   
     validate();
   }, [firstName]);
   const validate = () => {
@@ -78,13 +79,14 @@ function Form({setModalValues, setActive} ) {
   Image:
   <div className="group file">
     <label htmlFor="file" className="group-input">
-      <span className="input-file">Choose a file</span>
+      <span className="input-file">{fileName}</span>
     </label>
     <input
       type="file"
       name="file"
       id="file"
       className="group-input file"
+     onChange={(e) => setFileName(e.target.files[0].name)}
     />
     <button className="button">Button</button>
   </div>

@@ -6,16 +6,22 @@ import Form from "../Form/Form";
 Modal.propTypes = {
   active: PropTypes.bool,
   setActive: PropTypes.func,
-  setModalValues: PropTypes.func
+  setModalValues: PropTypes.func,
+  values: PropTypes.array
 }
 
 
-function Modal({ setModalValues, active, setActive }) {
+function Modal({ setModalValues, active, setActive, values }) {
+
+const reset = () => {
+  setActive(false);
+  // values = [];
+}
 
   return (
     <>
       <section className="popup">
-        <div className={active ? "modal active" : "modal"} onClick={() => setActive(false)} >
+        <div className={active ? "modal active" : "modal"} onClick={() => reset() }> {/*setActive(false)} >*/}
           <div className="popup_content" onClick={(e) => e.stopPropagation()}>
             <div className="popup_header">
               <h3>Connect to Lobby</h3>
