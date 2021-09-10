@@ -1,12 +1,13 @@
 import React, {useState} from 'react';
-import Form  from '../../components/Form/Form';
+import Modal from '../../components/Modal/Modal';
+
 import './welcome.css'; 
 
 
 
 function Welcome() {
 
-  const [formValues, setFormValues] = useState([]);
+  const [modalValues, setModalValues] = useState([]);
   const [modalActive, setModalActive] = useState(false);
 
 
@@ -25,7 +26,7 @@ function Welcome() {
         <input></input>
         <button className="button">Connect</button>
       </section>
-      <Form setFormValues={setFormValues} active={modalActive} setActive={setModalActive}/>
+      <Modal setModalValues={setModalValues} active={modalActive} setActive={setModalActive}/>
     </div>
 
   )
