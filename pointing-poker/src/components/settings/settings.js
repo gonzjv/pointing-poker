@@ -1,3 +1,4 @@
+import Timer from "../timer/timer";
 import "./settings.css";
 import Switch from "./switch/switch";
 
@@ -19,6 +20,7 @@ export default function Settings() {
         </div>
         <div className="setting">
           <label className="setting__name">Round time</label>
+          <Timer />
         </div>
       </form>
     </div>

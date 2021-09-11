@@ -5,7 +5,7 @@ export default function Switch(props) {
     <div className="setting">
       <label className="setting__name">{props.value}</label>
       <label class="toggle">
-        <input type="checkbox" checked />
+        <input type="checkbox" />
         <span class="checkbox-ios-switch"></span>
       </label>
     </div>
