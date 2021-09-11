@@ -7,7 +7,7 @@ import './Lobby.css';
 
 const Lobby = () => {
   const socket = useContext(SocketContext);
-  const { name, room, setName, setRoom } = useContext(MainContext);
+  const { name, lobby, setName, setLobby } = useContext(MainContext);
   const history = useHistory();
   const { users } = useContext(UsersContext);
   console.log('users: ', users);

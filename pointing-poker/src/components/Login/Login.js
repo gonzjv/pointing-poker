@@ -7,7 +7,7 @@ import './Login.css';
 
 const Login = () => {
   const socket = useContext(SocketContext);
-  const { name, room, setName, setRoom } = useContext(MainContext);
+  const { name, lobby, setName, setLobby } = useContext(MainContext);
   const history = useHistory();
   const { setUsers } = useContext(UsersContext);
 
@@ -18,7 +18,7 @@ const Login = () => {
   });
 
   const handleClick = () => {
-    socket.emit('login', { name, room }, (error) => {
+    socket.emit('login', { name, lobby }, (error) => {
       if (error) {
         console.log(error);
       }
@@ -28,18 +28,22 @@ const Login = () => {
 
   return (
     <main>
-      <div>Good day!</div>
+      <header>Pointing Poker</header>
       <input
         value={name}
         placeholder="User name"
         onChange={(e) => setName(e.target.value)}
       ></input>
-      <input
-        value={room}
-        placeholder="Room name"
-        onChange={(e) => setRoom(e.target.value)}
-      ></input>
-      <button onClick={handleClick}>Log In</button>
+      <label htmlFor="lobby-id">
+        Lobby ID:
+        <input
+          id="lobby-id"
+          value={lobby}
+          placeholder="Lobby ID"
+          onChange={(e) => setLobby(e.target.value)}
+        ></input>
+      </label>
+      <button onClick={handleClick}>Connect</button>
     </main>
   );
 };
