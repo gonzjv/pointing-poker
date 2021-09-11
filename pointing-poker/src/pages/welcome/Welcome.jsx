@@ -12,12 +12,14 @@ function Welcome() {
 
 
   return (
-    <div className="wrapper welcome-wrapper">
-     
+    <main className="wrapper welcome-wrapper">
       <section className="main-section">
+
       <div className="game-title">
-      <h1 className="title"> <img src="./images/cards.png" alt="cards" /> Poker Planning</h1>
+      <h1 className="title"> <img src="./images/cards.png" alt="cards" /> <span className="title1">Poker</span> <span className="title2">Planning</span></h1>
+      {/* <div className="title-line"></div> */}
       </div>
+
         <h2 className="heading">Start your planning:</h2>
         <h4 className="form-input">Create session:</h4>
         <button className="button" onClick={() => setModalActive(true)}>Start new game</button>
@@ -27,7 +29,7 @@ function Welcome() {
         <button className="button">Connect</button>
       </section>
       <Modal setModalValues={setModalValues} active={modalActive} setActive={setModalActive} values={modalValues} />
-    </div>
+    </main>
 
   )
 }
