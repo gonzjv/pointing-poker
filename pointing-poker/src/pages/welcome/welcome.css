@@ -2,19 +2,13 @@
   padding-top: 8%;
   height: 750px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  margin-left: 15%;
   /* position: relative; */
 }
-
-/* .game-title {
-  width: 100%;
-  position: relative;
-  right: 0px;
-} */
 
 .main-section {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  /* grid-template-rows: repeat(7, 1fr); */
   grid-row-gap: 10%;
   align-content: center;
   margin: 0 auto;
@@ -26,9 +20,9 @@
 .game-title {
   grid-column: 1/3;
   grid-row: 1/3;
-  /* justify-self: end; */
   align-self: end;
   position: relative;
+  left: 30%;
 }
 
 .title {
@@ -89,11 +83,13 @@
 }
 
 .title-line {
-
   width: 350px;
   border: 5px solid #FFFFFF;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   transform: rotate(164.77deg);
+  position: absolute;
+  top: 50%;
+  left: 33%;
 }
 
 .title1, .title2 {
@@ -102,10 +98,60 @@
 }
 
 .title1 {
-  left: 35%
+  left: 26%
 }
 
 .title2 {
   top: 50%;
-  left: 77%;
+  left: 55%;
+}
+
+@media (max-width: 1400px) {
+  .welcome-wrapper { 
+  margin-left: 2%;
+  }
+
+  .title-line {
+    width: 330px;
+  }
+}
+
+
+@media (max-width: 995px) {
+  .welcome-wrapper {
+    padding-top: 10%
+  }
+  .game-title {
+       left: 5%;
+  }
+  .title-line {
+    width: 300px;
+  }
+}
+
+/* sm-размер (<=768px) */
+@media (max-width: 767px) {
+  .welcome-wrapper {
+    padding-top: 10%
+  }
+  .game-title {
+    left: 0%;
+    margin-top: 50px;
+}
+.title {
+  font-size: 50px;
+}
+.title-line {
+  width: 250px;
+  top: 40%;
+  left: 30%;
+}
+.title2 {
+  left: 50%;
+}/* CSS для ширины от 576px до 767px */
+}
+
+/* xs-размер (<=575px) */
+@media (max-width: 575px) {
+  /* CSS для ширины до 575px (включительно) */
 }
