@@ -3,8 +3,8 @@ import './header.css'
 
 function Header() {
   return (
-    <header className = "header" >
-      <div className="header-stripe">
+    <header className="header" >
+      <div className="header-wrapper">
         <div className="logo-wrapper">
           <div className="logo"></div>
           <div className="logo-letter">
