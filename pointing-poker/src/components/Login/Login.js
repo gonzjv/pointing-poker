@@ -4,6 +4,8 @@ import { MainContext } from '../../mainContext';
 import { SocketContext } from '../../socketContext';
 import { UsersContext } from '../../usersContext';
 import './Login.css';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
   const socket = useContext(SocketContext);
@@ -17,10 +19,17 @@ const Login = () => {
     });
   });
 
+  const notify = (message) => {
+    toast(message, {
+      position: 'top-center',
+    });
+  };
+
   const handleClick = () => {
     socket.emit('login', { name, lobby }, (error) => {
       if (error) {
         console.log(error);
+        return notify(error);
       }
       history.push('/lobby');
     });
@@ -44,6 +53,7 @@ const Login = () => {
         ></input>
       </label>
       <button onClick={handleClick}>Connect</button>
+      <ToastContainer />
     </main>
   );
 };
