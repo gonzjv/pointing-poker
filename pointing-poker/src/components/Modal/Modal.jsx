@@ -21,7 +21,7 @@ const reset = () => {
   return (
     <>
       <section className="popup">
-        <div className={active ? "modal active" : "modal"} onClick={() => reset() }> {/*setActive(false)} >*/}
+        <div className={active ? "modal active" : "modal"} >{/*onClick={() => reset() }> *setActive(false)} >*/}
           <div className="popup_content" onClick={(e) => e.stopPropagation()}>
             <div className="popup_header">
               <h3>Connect to Lobby</h3>

@@ -51,6 +51,8 @@ function Form({ setModalValues, setActive }) {
   // }
 
   return (
+    <>
+    <div className="overlay" onClick={() => reset()} ></div>
     <form onSubmit={handleSubmit}>
       <div className="group">
         <label className="group-input" htmlFor="first-name">
@@ -105,8 +107,8 @@ function Form({ setModalValues, setActive }) {
           <button className="button">Button</button>{" "}
           {/*onClick={uploadAvatar}*/}
         </div>
-        <div className="avatar">
-          <img src="images/avatar.png" alt="avatar"></img>
+        <div className="avatar">NN
+          {/* <img src="images/avatar.png" alt="avatar"></img> */}
         </div>
       </div>
       <div className="form-buttons">
@@ -119,6 +121,7 @@ function Form({ setModalValues, setActive }) {
         />
       </div>
     </form>
+   </>
   );
 }
 
