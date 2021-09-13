@@ -3,7 +3,6 @@
   height: 750px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   margin-left: 15%;
-  /* position: relative; */
 }
 
 .main-section {
@@ -68,7 +67,6 @@
   height: 38px;
   color: white;
   background-color: #2B3A67;
-  /* border: none; */
   border-radius: 2px;
 }
 
@@ -92,7 +90,8 @@
   left: 33%;
 }
 
-.title1, .title2 {
+.title1,
+.title2 {
   position: absolute;
   display: inline-block;
 }
@@ -107,8 +106,8 @@
 }
 
 @media (max-width: 1400px) {
-  .welcome-wrapper { 
-  margin-left: 2%;
+  .welcome-wrapper {
+    margin-left: 2%;
   }
 
   .title-line {
@@ -121,37 +120,38 @@
   .welcome-wrapper {
     padding-top: 10%
   }
+
   .game-title {
-       left: 5%;
+    left: 5%;
   }
+
   .title-line {
     width: 300px;
   }
 }
 
-/* sm-размер (<=768px) */
 @media (max-width: 767px) {
   .welcome-wrapper {
     padding-top: 10%
   }
+
   .game-title {
     left: 0%;
     margin-top: 50px;
-}
-.title {
-  font-size: 50px;
-}
-.title-line {
-  width: 250px;
-  top: 40%;
-  left: 30%;
-}
-.title2 {
-  left: 50%;
-}/* CSS для ширины от 576px до 767px */
-}
+  }
 
-/* xs-размер (<=575px) */
-@media (max-width: 575px) {
-  /* CSS для ширины до 575px (включительно) */
+  .title {
+    font-size: 50px;
+  }
+
+  .title-line {
+    width: 250px;
+    top: 40%;
+    left: 30%;
+  }
+
+  .title2 {
+    left: 50%;
+  }
+
 }

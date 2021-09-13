@@ -11,17 +11,12 @@ Modal.propTypes = {
 }
 
 
-function Modal({ setModalValues, active, setActive, values }) {
-
-const reset = () => {
-  setActive(false);
-  // values = [];
-}
+function Modal({ setModalValues, active, setActive, values}) {
 
   return (
     <>
       <section className="popup">
-        <div className={active ? "modal active" : "modal"} >{/*onClick={() => reset() }> *setActive(false)} >*/}
+        <div className={active ? "modal active" : "modal"} >
           <div className="popup_content" onClick={(e) => e.stopPropagation()}>
             <div className="popup_header">
               <h3>Connect to Lobby</h3>

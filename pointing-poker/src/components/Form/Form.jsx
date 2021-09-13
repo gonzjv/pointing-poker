@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "./form.css";
-import axios from "axios";
 
 function Form({ setModalValues, setActive }) {
   const [firstName, setFirstName] = useState("");
@@ -8,7 +7,6 @@ function Form({ setModalValues, setActive }) {
   const [jobPosition, setJobPosition] = useState("");
   const [errors, setErrors] = useState({});
   const [fileName, setFileName] = useState("Choose a file");
-  const [selectedFile, setSelectedFile] = useState(null);
 
   useEffect(() => {
     validate();
@@ -40,15 +38,7 @@ function Form({ setModalValues, setActive }) {
 
   const setAvatar = (e) => {
     setFileName(e.target.files[0].name);
-    // setSelectedFile(e.target.files[0]);
   };
-
-  // const uploadAvatar = () => {
-  //   console.log('hi there');
-  //   axios.post('')
-  //   console.log(selectedFile);
-
-  // }
 
   return (
     <>
@@ -101,14 +91,11 @@ function Form({ setModalValues, setActive }) {
             name="file"
             id="file"
             className="group-input file"
-            //  onChange={(e) => setFileName(e.target.files[0].name)}
             onChange={setAvatar}
           />
           <button className="button">Button</button>{" "}
-          {/*onClick={uploadAvatar}*/}
         </div>
         <div className="avatar">NN
-          {/* <img src="images/avatar.png" alt="avatar"></img> */}
         </div>
       </div>
       <div className="form-buttons">

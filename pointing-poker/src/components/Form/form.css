@@ -1,12 +1,12 @@
-
 .overlay {
-background: rgba(0, 0, 0, 0);
-position: fixed;
-width: 100vw;
-height: 100vh;
-top: 0;
-left: 0;
+  background: rgba(0, 0, 0, 0);
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
 }
+
 .group {
   margin: 10px;
   padding: 5px;
@@ -84,10 +84,10 @@ label .group-input {
   font-family: Roboto, sans-serif;
   font-size: 24px;
   background: #FFFFFF;
-border: 1px solid #EEEEEE;
-box-sizing: border-box;
-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-border-radius: 0px 0px 0px 10px;
+  border: 1px solid #EEEEEE;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 0px 0px 0px 10px;
 
   line-height: 47px;
   text-align: center;
@@ -104,20 +104,19 @@ border-radius: 0px 0px 0px 10px;
   box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-/*если текст а не картинка
-font-family: Roboto;
-font-style: normal;
-font-weight: bold;
-font-size: 48px;
-line-height: 56px;
-display: flex;
-align-items: center;
-text-align: center;
+.avatar {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 48px;
+  line-height: 56px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #FFFFFF;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
 
-color: #FFFFFF;
-
-text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-*/
 .form-buttons {
   display: flex;
   justify-content: space-between;
@@ -134,7 +133,7 @@ text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   line-height: 30px;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   box-sizing: border-box;
-    border: 1px solid #496A81;
+  border: 1px solid #496A81;
   border-radius: 3px;
 }
 
@@ -147,21 +146,3 @@ text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   background-color: #FFFFFF;
   color: #2B3A67;
 }
-
-/* @media (max-width: 1200px ) {
-  .wrapper {
-    max-width: 900px;
-  }
-}
-
-@media (max-width: 992px ) {
-  .wrapper {
-    max-width: 750px;
-  }
-}
-
-@media (max-width: 500px ) {
-  .wrapper {
-    max-width: 480px;
-  }
-} */
