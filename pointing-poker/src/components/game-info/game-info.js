@@ -26,7 +26,7 @@ export default function GameInfo() {
         <button>Copy</button>
       </div>
       <button>Start Game</button>
-      <button className="button__close">Cansel game</button>
+      <button className="button__close">Canсel game</button>
     </div>
   );
 }

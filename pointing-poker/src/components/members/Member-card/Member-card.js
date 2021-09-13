@@ -10,6 +10,9 @@ export default function MemberCard(props) {
       ""
     );
   };
+
+  
+
   return (
     <div className="member__card">
       <MemberAvatar avatar={props.member.avatar} />

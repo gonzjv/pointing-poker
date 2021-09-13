@@ -1,0 +1,36 @@
+.issues__list {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 15px;
+}
+
+.issue__create {
+  display: flex;
+  background-color: transparent;
+  border: none;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 4px;
+  padding: 18px;
+  font-family: Roboto;
+  font-weight: 300;
+  font-size: 38px;
+  line-height: 50px;
+}
+
+.issue__create__text {
+  margin: 0;
+}
+
+@media screen and (max-width: 1030px) {
+  .issues__list {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 830px) {
+  .issues__list {
+    grid-template-columns: 1fr;
+  }
+}
