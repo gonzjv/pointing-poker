@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./modal.css"
 import PropTypes from "prop-types";
 import Form from "../Form/Form";
