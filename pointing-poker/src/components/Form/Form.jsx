@@ -7,6 +7,8 @@ function Form({ setModalValues, setActive }) {
   const [jobPosition, setJobPosition] = useState("");
   const [errors, setErrors] = useState({});
   const [fileName, setFileName] = useState("Choose a file");
+  const [firstChar, setFirstChar] = useState("N");
+  const [secondChar, setSecondChar] = useState("N");
 
   useEffect(() => {
     validate();
@@ -18,6 +20,21 @@ function Form({ setModalValues, setActive }) {
     }
   };
 
+  useEffect(() => {
+    if (firstName.length > 0) {
+       setSecondChar("")
+      setFirstChar(firstName[0]);
+     ;
+    }
+  }, [firstName])
+
+  useEffect(() => {
+    if (lastName.length > 0) {
+      setSecondChar(lastName[0])
+    }    
+  }, [lastName])
+
+
   const handleSubmit = (event) => {
     event.preventDefault();
     if (Object.keys(errors).length === 0) {
@@ -28,16 +45,15 @@ function Form({ setModalValues, setActive }) {
     }
   };
 
+
   const reset = () => {
     setActive(false);
     setFirstName("");
     setLastName("");
     setJobPosition("");
     setFileName("Choose a file");
-  };
-
-  const setAvatar = (e) => {
-    setFileName(e.target.files[0].name);
+    setFirstChar("N");
+    setSecondChar("N");
   };
 
   return (
@@ -91,11 +107,11 @@ function Form({ setModalValues, setActive }) {
             name="file"
             id="file"
             className="group-input file"
-            onChange={setAvatar}
+            onChange={(event) => setFileName(event.target.files[0].name)}
           />
           <button className="button">Button</button>{" "}
         </div>
-        <div className="avatar">NN
+        <div className="avatar">{firstChar}{secondChar}
         </div>
       </div>
       <div className="form-buttons">
