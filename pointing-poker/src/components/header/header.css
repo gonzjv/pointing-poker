@@ -52,7 +52,6 @@ max-width: 1000px;
 
 @media (max-width: 1400px) {
   .logo-wrapper { 
-  margin-left: 2%;
-  left: 3%;
+  left: 5%;
   }
 }

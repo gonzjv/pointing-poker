@@ -3,20 +3,14 @@ import "./modal.css"
 import PropTypes from "prop-types";
 import Form from "../Form/Form";
 
-Modal.propTypes = {
-  active: PropTypes.bool,
-  setActive: PropTypes.func,
-  setModalValues: PropTypes.func,
-  values: PropTypes.array
-}
 
 
-function Modal({ setModalValues, active, setActive, values}) {
+const Modal = ({ setModalValues, active, setActive, values}) => {
 
   return (
     <>
       <section className="popup">
-        <div className={active ? "modal active" : "modal"} >
+        <div className={active ? "modal" : "modal none"} >
           <div className="popup_content" onClick={(e) => e.stopPropagation()}>
             <div className="popup_header">
               <h3>Connect to Lobby</h3>
@@ -34,6 +28,14 @@ function Modal({ setModalValues, active, setActive, values}) {
       </section>
     </>
   );
+}
+
+  
+Modal.propTypes = {
+  active: PropTypes.bool,
+  setActive: PropTypes.func,
+  setModalValues: PropTypes.func,
+  values: PropTypes.array
 }
 
 export default Modal;

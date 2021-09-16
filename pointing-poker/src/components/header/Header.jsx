@@ -6,7 +6,7 @@ function Header() {
     <header className="header" >
       <div className="header-wrapper">
         <div className="logo-wrapper">
-          <div className="logo"></div>
+          <div className="logo" />
           <div className="logo-letter">
             <span className="down">P</span><span className=" up">P</span>
           </div>

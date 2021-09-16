@@ -1,11 +1,11 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import Modal from '../../components/Modal/Modal';
 
-import './welcome.css'; 
+import './welcome.css';
 
 
 
-function Welcome() {
+const Welcome = () => {
 
   const [modalValues, setModalValues] = useState([]);
   const [modalActive, setModalActive] = useState(false);
@@ -14,12 +14,10 @@ function Welcome() {
   return (
     <main className="wrapper welcome-wrapper">
       <section className="main-section">
-
-      <div className="game-title">
-      <h1 className="title"> <img src="./images/cards.png" alt="cards" /> <span className="title1">Poker</span> <span className="title2">Planning</span></h1>
-      <div className="title-line"></div>
-      </div>
-
+        <div className="game-title">
+          <h1 className="title"> <img src="./images/cards.png" alt="cards" /> <span className="title1">Poker</span> <span className="title2">Planning</span></h1>
+          <div className="title-line" />
+        </div>
         <h2 className="heading">Start your planning:</h2>
         <h4 className="form-input">Create session:</h4>
         <button className="button" onClick={() => setModalActive(true)}>Start new game</button>

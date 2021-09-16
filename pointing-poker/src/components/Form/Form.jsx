@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./form.css";
 
-function Form({ setModalValues, setActive }) {
+const Form = ({ setModalValues, setActive }) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [jobPosition, setJobPosition] = useState("");
@@ -13,6 +13,7 @@ function Form({ setModalValues, setActive }) {
   useEffect(() => {
     validate();
   }, [firstName]);
+  
   const validate = () => {
     setErrors({});
     if (firstName === "") {
