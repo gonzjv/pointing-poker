@@ -11,20 +11,19 @@ import Welcome from './pages/Welcome/Welcome';
 function App() {
   return (
     <div className="page-wrapper">
-    <Header />
-    <MainProvider>
-      <UsersProvider>
-        <SocketProvider>
-          <Router>
-            <Switch>
-              <Route exact path="/" component={Login} />
-              <Route path="/lobby" component={Lobby} />
-            </Switch>
-          </Router>
-        </SocketProvider>
-      </UsersProvider>
-    </MainProvider>
-    <Welcome />
+      <Header />
+      <MainProvider>
+        <UsersProvider>
+          <SocketProvider>
+            <Router>
+              <Switch>
+                <Route exact path="/" component={Welcome} />
+                <Route path="/lobby" component={Lobby} />
+              </Switch>
+            </Router>
+          </SocketProvider>
+        </UsersProvider>
+      </MainProvider>
     </div>
   );
 }
