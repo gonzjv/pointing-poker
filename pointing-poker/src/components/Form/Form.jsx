@@ -12,24 +12,11 @@ const Form = ({ setModalValues, setActive }) => {
 
   useEffect(() => {
     !firstName ? setError(true) : setError(false);
-    // validate();
-  }, [firstName]);
-
-
-  // const validate = () => {
-  //   setErrors({});
-  //   if (firstName === "") {
-  //     setErrors((state) => ({ ...state, firstName }));
-  //   }
-  // };
-
-  useEffect(() => {
     if (firstName.length > 0) {
-      setSecondChar("")
       setFirstChar(firstName[0]);
       ;
     }
-  }, [firstName])
+  }, [firstName]);
 
   useEffect(() => {
     if (lastName.length > 0) {
@@ -47,7 +34,6 @@ const Form = ({ setModalValues, setActive }) => {
       ]);
     }
   };
-
 
   const reset = () => {
     setActive(false);
