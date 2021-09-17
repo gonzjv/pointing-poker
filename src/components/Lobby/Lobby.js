@@ -9,10 +9,12 @@ const Lobby = () => {
   const socket = useContext(SocketContext);
   const { firstName, lastName, lobbyID } = useContext(MainContext);
   const history = useHistory();
-  const { users, dealer } = useContext(UsersContext);
+  const { users, dealer, setDealer } = useContext(UsersContext);
   console.log('users: ', users);
 
   const handleClick = () => {
+    setDealer({});
+    console.log('dealer: ', dealer);
     history.push('/');
   };
 

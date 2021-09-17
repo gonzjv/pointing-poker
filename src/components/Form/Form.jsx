@@ -18,7 +18,7 @@ function Form({ setActive }) {
     setJobPosition,
   } = useContext(MainContext);
   const history = useHistory();
-  const { setDealer } = useContext(UsersContext);
+  const { dealer, setDealer } = useContext(UsersContext);
 
   const [fileName, setFileName] = useState('Choose a file');
 
@@ -26,6 +26,7 @@ function Form({ setActive }) {
     socket.on('dealer', (dealer) => {
       setDealer(dealer);
     });
+    console.log('dealer in Form: ', dealer);
   });
 
   const notify = (message) => {
