@@ -96,7 +96,12 @@ const Form = ({ setModalValues, setActive }) => {
               name="file"
               id="file"
               className="group-input file"
-              onChange={(event) => setFileName(event.target.files[0].name)}
+              onChange={(event) => setFileName(event.target.files[0].name) 
+              }
+              onClick={(event) => { 
+                setFileName("Choose your file") 
+                // event.target.value = null
+           }}
             />
             <button className="button">Button</button>{" "}
           </div>
