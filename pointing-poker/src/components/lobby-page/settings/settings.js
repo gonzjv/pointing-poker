@@ -1,10 +1,10 @@
 import { useState } from "react";
-import Timer from "../timer/timer";
+import Timer from "../../timer/timer";
 import "./settings.css";
 import Switch from "./switch/switch";
 
 export default function Settings() {
-  const [scoreType, setScoreType] = useState('');
+  const [scoreType, setScoreType] = useState("");
   return (
     <div>
       <h2 className="title settings__title">Game settings:</h2>
@@ -14,7 +14,14 @@ export default function Settings() {
         <Switch value="Is timer needed:" />
         <div className="setting">
           <label className="setting__name">Score type</label>
-          <input type="text" className="setting__input" value={scoreType} onChange={event => {setScoreType(event.target.value)}}></input>
+          <input
+            type="text"
+            className="setting__input"
+            value={scoreType}
+            onChange={(event) => {
+              setScoreType(event.target.value);
+            }}
+          ></input>
         </div>
         <div className="setting">
           <label className="setting__name">Score type (Short)</label>
