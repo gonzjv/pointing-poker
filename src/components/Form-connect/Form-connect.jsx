@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import './form.css';
+import './form-connect.css';
 import { useHistory } from 'react-router-dom';
 import { MainContext } from '../../mainContext';
 import { UsersContext } from '../../usersContext';
@@ -7,9 +7,10 @@ import { SocketContext } from '../../socketContext';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-function Form({ setActive }) {
+const FormConnect = ({ setActive }) => {
   const socket = useContext(SocketContext);
   const {
+    lobbyID,
     firstName,
     lastName,
     jobPosition,
@@ -18,15 +19,20 @@ function Form({ setActive }) {
     setJobPosition,
   } = useContext(MainContext);
   const history = useHistory();
-  const { dealer, setDealer } = useContext(UsersContext);
+  const { players, setPlayers, dealer, setDealer } = useContext(UsersContext);
 
   const [fileName, setFileName] = useState('Choose a file');
+
+  useEffect(() => {
+    socket.on('players', (players) => {
+      setPlayers(players);
+    });
+  });
 
   useEffect(() => {
     socket.on('dealer', (dealer) => {
       setDealer(dealer);
     });
-    console.log('dealer in Form: ', dealer);
   });
 
   const notify = (message) => {
@@ -37,7 +43,7 @@ function Form({ setActive }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    socket.emit('createGame', { firstName, lastName, jobPosition }, (error) => {
+    socket.emit('login', { lobbyID, firstName, lastName, jobPosition }, (error) => {
       if (error) {
         return notify(error);
       }
@@ -124,6 +130,6 @@ function Form({ setActive }) {
       </form>
     </>
   );
-}
+};
 
-export default Form;
+export default FormConnect;

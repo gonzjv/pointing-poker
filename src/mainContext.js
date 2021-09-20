@@ -6,6 +6,7 @@ const MainProvider = ({ children }) => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [jobPosition, setJobPosition] = useState('');
+  const [lobbyID, setLobbyID] = useState('');
 
   // const [lobby, setLobby] = useState('');
 
@@ -15,9 +16,11 @@ const MainProvider = ({ children }) => {
         firstName,
         lastName,
         jobPosition,
+        lobbyID,
         setFirstName,
         setLastName,
         setJobPosition,
+        setLobbyID,
       }}
     >
       {children}

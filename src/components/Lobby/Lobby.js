@@ -7,10 +7,9 @@ import './Lobby.css';
 
 const Lobby = () => {
   const socket = useContext(SocketContext);
-  const { firstName, lastName, lobbyID } = useContext(MainContext);
+  const { firstName, lastName } = useContext(MainContext);
   const history = useHistory();
-  const { users, dealer, setDealer } = useContext(UsersContext);
-  console.log('users: ', users);
+  const { players, dealer, setDealer } = useContext(UsersContext);
 
   const handleClick = () => {
     setDealer({});
@@ -23,12 +22,15 @@ const Lobby = () => {
       <p>
         Good day, {firstName} {lastName}!
       </p>
-      <p>Game ID is {dealer.lobbyID}</p>
-      <p>Dealer is {dealer.firstName}</p>
-      {users.map((user) => {
+      <p>Game ID : {dealer.lobbyID}</p>
+      <p>Dealer : {dealer.firstName}</p>
+      <p>Players: </p>
+      {players.map((player) => {
         return (
           <>
-            <p>{user.name}</p>
+            <p>
+              {player.firstName} {player.lastName}
+            </p>
           </>
         );
       })}

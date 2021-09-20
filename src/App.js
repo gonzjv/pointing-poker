@@ -1,7 +1,6 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 import { SocketProvider } from './socketContext';
-import Login from './components/Login/Login';
 import { MainProvider } from './mainContext';
 import { UsersProvider } from './usersContext';
 import Lobby from './components/Lobby/Lobby';
@@ -18,7 +17,7 @@ function App() {
             <Router>
               <Switch>
                 <Route exact path="/" component={Welcome} />
-                <Route path="/lobby" component={Lobby} />
+                <Route exact path="/lobby" component={Lobby} />
               </Switch>
             </Router>
           </SocketProvider>

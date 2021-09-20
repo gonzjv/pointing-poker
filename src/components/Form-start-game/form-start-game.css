@@ -1,0 +1,149 @@
+.overlay {
+  background: rgba(0, 0, 0, 0);
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.group {
+  margin: 10px;
+  padding: 5px;
+  font-family: Roboto, sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+  position: relative;
+}
+
+.group label {
+  padding-left: 10px;
+
+}
+
+.group input[type="text"] {
+  margin-top: 10px;
+  height: 47px;
+  width: 467px;
+  background: #FFFFFF;
+  border: 1px solid #2B3A67;
+  box-sizing: border-box;
+  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 0px 0px 0px 10px;
+  font-family: Roboto, sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+  padding-left: 15px;
+}
+
+.group-input {
+  display: block;
+}
+
+.form-validation {
+  display: inline-block;
+  font-family: Roboto, sans-serif;
+  font-size: 24px;
+  color: #FF0000;
+  position: absolute;
+  top: 50%;
+  left: 60%;
+
+}
+
+
+/*image*/
+
+.group.file {
+  display: flex;
+  padding-left: 0;
+  margin-left: 0;
+}
+
+label .group-input {
+  padding-left: 0;
+}
+
+.group.file button {
+  height: 47px;
+}
+
+.group-input.file {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.input-file {
+  display: inline-block;
+  width: 276px;
+  height: 47px;
+  font-family: Roboto, sans-serif;
+  font-size: 24px;
+  background: #FFFFFF;
+  border: 1px solid #EEEEEE;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 0px 0px 0px 10px;
+
+  line-height: 47px;
+  text-align: center;
+}
+
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 83px;
+  height: 83px;
+  border-radius: 50%;
+  background-color: #60DABF;
+  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.avatar {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 48px;
+  line-height: 56px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #FFFFFF;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: space-between;
+  padding: 85px 15px 15px;
+}
+
+.button.button-blue,
+.button.button-white {
+  width: 189px;
+  height: 53px;
+  font-family: Ruda;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 30px;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+  border: 1px solid #496A81;
+  border-radius: 3px;
+}
+
+.button.button-blue {
+  color: #FFFFFF;
+}
+
+.button.button-white {
+  height: 60px;
+  background-color: #FFFFFF;
+  color: #2B3A67;
+}
