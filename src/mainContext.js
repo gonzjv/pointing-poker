@@ -8,8 +8,6 @@ const MainProvider = ({ children }) => {
   const [jobPosition, setJobPosition] = useState('');
   const [lobbyID, setLobbyID] = useState('');
 
-  // const [lobby, setLobby] = useState('');
-
   return (
     <MainContext.Provider
       value={{

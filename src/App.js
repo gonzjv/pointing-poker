@@ -7,7 +7,7 @@ import Lobby from './components/Lobby/Lobby';
 import Header from './components/Header/Header';
 import Welcome from './pages/Welcome/Welcome';
 
-function App() {
+const App = () => {
   return (
     <div className="page-wrapper">
       <Header />
@@ -25,6 +25,6 @@ function App() {
       </MainProvider>
     </div>
   );
-}
+};
 
 export default App;

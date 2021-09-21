@@ -3,11 +3,6 @@ import './modal-connect.css';
 import PropTypes from 'prop-types';
 import FormConnect from '../Form-connect/Form-connect';
 
-ModalConnect.propTypes = {
-  active: PropTypes.bool,
-  setActive: PropTypes.func,
-};
-
 const ModalConnect = ({ active, setActive }) => {
   return (
     <>
@@ -23,6 +18,10 @@ const ModalConnect = ({ active, setActive }) => {
       </section>
     </>
   );
+};
+ModalConnect.propTypes = {
+  active: PropTypes.bool,
+  setActive: PropTypes.func,
 };
 
 export default ModalConnect;

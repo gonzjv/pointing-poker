@@ -3,12 +3,7 @@ import './modal-start-game.css';
 import PropTypes from 'prop-types';
 import FormStartGame from '../Form-start-game/Form-start-game';
 
-ModalStartGame.propTypes = {
-  active: PropTypes.bool,
-  setActive: PropTypes.func,
-};
-
-function ModalStartGame({ active, setActive }) {
+const ModalStartGame = ({ active, setActive }) => {
   return (
     <>
       <section className="popup">
@@ -23,6 +18,10 @@ function ModalStartGame({ active, setActive }) {
       </section>
     </>
   );
-}
+};
+ModalStartGame.propTypes = {
+  active: PropTypes.bool,
+  setActive: PropTypes.func,
+};
 
 export default ModalStartGame;
