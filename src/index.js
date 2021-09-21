@@ -8,8 +8,12 @@ ReactDOM.render(
   // <React.StrictMode>
 
     <App />
+<<<<<<< HEAD:src/index.js
   //  </React.StrictMode>
   ,
+=======
+   </React.StrictMode>,
+>>>>>>> develop:pointing-poker/src/index.js
   document.getElementById('root')
 );
 
