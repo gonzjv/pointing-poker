@@ -8,7 +8,7 @@ ModalConnect.propTypes = {
   setActive: PropTypes.func,
 };
 
-function ModalConnect({ active, setActive }) {
+const ModalConnect = ({ active, setActive }) => {
   return (
     <>
       <section className="popup">
@@ -23,6 +23,6 @@ function ModalConnect({ active, setActive }) {
       </section>
     </>
   );
-}
+};
 
 export default ModalConnect;

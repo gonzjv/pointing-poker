@@ -8,7 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import './welcome.css';
 
-function Welcome() {
+const Welcome = () => {
   const [modalStartActive, setModalStartActive] = useState(false);
   const [modalConnectActive, setModalConnectActive] = useState(false);
   const { lobbyID, setLobbyID } = useContext(MainContext);
@@ -66,6 +66,6 @@ function Welcome() {
       <ModalConnect active={modalConnectActive} setActive={setModalConnectActive} />
     </main>
   );
-}
+};
 
 export default Welcome;
