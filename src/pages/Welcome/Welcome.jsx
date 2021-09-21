@@ -39,7 +39,7 @@ const Welcome = () => {
             <span className="title1">Poker</span>{' '}
             <span className="title2">Planning</span>
           </h1>
-          <div className="title-line"></div>
+          <div className="title-line" />
         </div>
 
         <h2 className="heading">Start your planning:</h2>

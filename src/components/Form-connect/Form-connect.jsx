@@ -22,18 +22,31 @@ const FormConnect = ({ setActive }) => {
   const { players, setPlayers, dealer, setDealer } = useContext(UsersContext);
 
   const [fileName, setFileName] = useState('Choose a file');
+  const [firstChar, setFirstChar] = useState('N');
+  const [secondChar, setSecondChar] = useState('N');
+
+  useEffect(() => {
+    if (firstName.length > 0) {
+      setFirstChar(firstName[0]);
+    }
+  }, [firstName]);
+
+  useEffect(() => {
+    if (lastName.length > 0) {
+      setSecondChar(lastName[0]);
+    }
+  }, [lastName]);
 
   useEffect(() => {
     socket.on('players', (players) => {
       setPlayers(players);
     });
-  });
-
-  useEffect(() => {
     socket.on('dealer', (dealer) => {
       setDealer(dealer);
     });
   });
+
+  useEffect(() => {});
 
   const notify = (message) => {
     toast(message, {
@@ -57,10 +70,6 @@ const FormConnect = ({ setActive }) => {
     setLastName('');
     setJobPosition('');
     setFileName('Choose a file');
-  };
-
-  const setAvatar = (e) => {
-    setFileName(e.target.files[0].name);
   };
 
   return (
@@ -111,11 +120,17 @@ const FormConnect = ({ setActive }) => {
               name="file"
               id="file"
               className="group-input file"
-              onChange={setAvatar}
+              onChange={(event) => setFileName(event.target.files[0].name)}
+              onClick={(event) => {
+                setFileName('Choose your file');
+              }}
             />
-            <button className="button">Button</button>{' '}
+            <button className="button">Button</button>
           </div>
-          <div className="avatar">NN</div>
+        </div>
+        <div className="avatar">
+          {firstChar}
+          {secondChar}
         </div>
         <div className="form-buttons">
           <ToastContainer />

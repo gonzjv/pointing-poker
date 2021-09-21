@@ -37,18 +37,6 @@
   display: block;
 }
 
-.form-validation {
-  display: inline-block;
-  font-family: Roboto, sans-serif;
-  font-size: 24px;
-  color: #ff0000;
-  position: absolute;
-  top: 50%;
-  left: 60%;
-}
-
-/*image*/
-
 .group.file {
   display: flex;
   padding-left: 0;
@@ -114,7 +102,7 @@ label .group-input {
 .form-buttons {
   display: flex;
   justify-content: space-between;
-  padding: 85px 15px 15px;
+  padding: 10px 15px 15px;
 }
 
 .button.button-blue,
