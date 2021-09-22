@@ -4,6 +4,8 @@ import { MainContext } from '../../mainContext';
 import { SocketContext } from '../../socketContext';
 import { UsersContext } from '../../usersContext';
 import './Lobby.css';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Lobby = () => {
   const socket = useContext(SocketContext);
@@ -11,11 +13,23 @@ const Lobby = () => {
   const history = useHistory();
   const { players, dealer, setPlayers, setDealer } = useContext(UsersContext);
 
+  const notify = (message) => {
+    toast(message, {
+      position: 'top-center',
+    });
+  };
+
   useEffect(() => {
     socket.on('players', (players) => {
       setPlayers(players);
     });
   });
+
+  useEffect(() => {
+    socket.on('notification', (message) => {
+      notify(message);
+    });
+  }, [socket]);
 
   const handleClick = () => {
     setDealer({});
@@ -26,6 +40,7 @@ const Lobby = () => {
 
   return (
     <main>
+      <ToastContainer />
       <p>
         Good day, {firstName} {lastName}! Now you are in the lobby with gameID:{' '}
         {dealer.lobbyID}.
