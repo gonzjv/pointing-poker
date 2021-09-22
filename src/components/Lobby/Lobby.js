@@ -7,30 +7,35 @@ import './Lobby.css';
 
 const Lobby = () => {
   const socket = useContext(SocketContext);
-  const { name, lobby, setName, setLobby } = useContext(MainContext);
+  const { firstName, lastName } = useContext(MainContext);
   const history = useHistory();
-  const { users } = useContext(UsersContext);
-  console.log('users: ', users);
+  const { players, dealer, setDealer } = useContext(UsersContext);
 
   const handleClick = () => {
+    setDealer({});
+    console.log('dealer: ', dealer);
     history.push('/');
   };
 
   return (
     <main>
-      <div>Good day, {name}!</div>
-      {users.map((user) => {
+      <p>
+        Good day, {firstName} {lastName}!
+      </p>
+      <p>Game ID : {dealer.lobbyID}</p>
+      <p>Dealer : {dealer.firstName}</p>
+      <p>Players: </p>
+      {players.map((player) => {
         return (
           <>
-            {/* <p>{user.id}</p> */}
-            <p>{user.name}</p>
+            <p>
+              {player.firstName} {player.lastName}
+            </p>
           </>
         );
       })}
       <button onClick={handleClick}>Go Home</button>
-      <span style={{ fontStyle: 'italic' }}>
-        then add user to the same room for check BE
-      </span>
+      <span style={{ fontStyle: 'italic' }}></span>
     </main>
   );
 };

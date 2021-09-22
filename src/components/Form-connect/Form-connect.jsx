@@ -1,60 +1,84 @@
-import React, { useState, useEffect } from "react";
-import "./form.css";
+import React, { useState, useEffect, useContext } from 'react';
+import './form-connect.css';
+import { useHistory } from 'react-router-dom';
+import { MainContext } from '../../mainContext';
+import { UsersContext } from '../../usersContext';
+import { SocketContext } from '../../socketContext';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-const Form = ({ setModalValues, setActive }) => {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [jobPosition, setJobPosition] = useState("");
-  const [error, setError] = useState(true);
-  const [fileName, setFileName] = useState("Choose a file");
-  const [firstChar, setFirstChar] = useState("N");
-  const [secondChar, setSecondChar] = useState("N");
+const FormConnect = ({ setActive }) => {
+  const socket = useContext(SocketContext);
+  const {
+    lobbyID,
+    firstName,
+    lastName,
+    jobPosition,
+    setFirstName,
+    setLastName,
+    setJobPosition,
+  } = useContext(MainContext);
+  const history = useHistory();
+  const { players, setPlayers, dealer, setDealer } = useContext(UsersContext);
+
+  const [fileName, setFileName] = useState('Choose a file');
+  const [firstChar, setFirstChar] = useState('N');
+  const [secondChar, setSecondChar] = useState('N');
 
   useEffect(() => {
-    !firstName ? setError(true) : setError(false);
     if (firstName.length > 0) {
       setFirstChar(firstName[0]);
-      ;
     }
   }, [firstName]);
 
   useEffect(() => {
     if (lastName.length > 0) {
-      setSecondChar(lastName[0])
+      setSecondChar(lastName[0]);
     }
-  }, [lastName])
+  }, [lastName]);
 
+  useEffect(() => {
+    socket.on('players', (players) => {
+      setPlayers(players);
+    });
+    socket.on('dealer', (dealer) => {
+      setDealer(dealer);
+    });
+  });
+
+  useEffect(() => {});
+
+  const notify = (message) => {
+    toast(message, {
+      position: 'top-center',
+    });
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (!error) {
-      setModalValues((state) => [
-        ...state,
-        { firstName, lastName, jobPosition },
-      ]);
-    }
+    socket.emit('login', { lobbyID, firstName, lastName, jobPosition }, (error) => {
+      if (error) {
+        return notify(error);
+      }
+      history.push('/lobby');
+    });
   };
 
   const reset = () => {
     setActive(false);
-    setFirstName("");
-    setLastName("");
-    setJobPosition("");
-    setFileName("Choose a file");
-    setFirstChar("N");
-    setSecondChar("N");
+    setFirstName('');
+    setLastName('');
+    setJobPosition('');
+    setFileName('Choose a file');
   };
 
   return (
     <>
-      <div className="overlay" onClick={() => reset()} ></div>
+      <div className="overlay" onClick={() => reset()}></div>
       <form onSubmit={handleSubmit}>
         <div className="group">
           <label className="group-input" htmlFor="first-name">
             Your first name:
-            {error && (
-              <span className="form-validation">Enter your name</span>
-            )}
           </label>
           <input
             type="text"
@@ -96,19 +120,20 @@ const Form = ({ setModalValues, setActive }) => {
               name="file"
               id="file"
               className="group-input file"
-              onChange={(event) => setFileName(event.target.files[0].name) 
-              }
-              onClick={(event) => { 
-                setFileName("Choose your file") 
-                // event.target.value = null
-           }}
+              onChange={(event) => setFileName(event.target.files[0].name)}
+              onClick={(event) => {
+                setFileName('Choose your file');
+              }}
             />
-            <button className="button">Button</button>{" "}
-          </div>
-          <div className="avatar">{firstChar}{secondChar}
+            <button className="button">Button</button>
           </div>
         </div>
+        <div className="avatar">
+          {firstChar}
+          {secondChar}
+        </div>
         <div className="form-buttons">
+          <ToastContainer />
           <input type="submit" value="Confirm" className="button button-blue" />
           <input
             type="submit"
@@ -120,6 +145,6 @@ const Form = ({ setModalValues, setActive }) => {
       </form>
     </>
   );
-}
+};
 
-export default Form;
+export default FormConnect;
