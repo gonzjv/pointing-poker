@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { MainContext } from '../../mainContext';
 import { SocketContext } from '../../socketContext';
@@ -9,19 +9,28 @@ const Lobby = () => {
   const socket = useContext(SocketContext);
   const { firstName, lastName } = useContext(MainContext);
   const history = useHistory();
-  const { players, dealer, setDealer } = useContext(UsersContext);
+  const { players, dealer, setPlayers, setDealer } = useContext(UsersContext);
+
+  useEffect(() => {
+    socket.on('players', (players) => {
+      setPlayers(players);
+    });
+  });
 
   const handleClick = () => {
     setDealer({});
-    console.log('dealer: ', dealer);
-    history.push('/');
+    socket.emit('exit', () => {
+      history.push('/');
+    });
   };
 
   return (
     <main>
       <p>
-        Good day, {firstName} {lastName}!
+        Good day, {firstName} {lastName}! Now you are in the lobby with gameID:{' '}
+        {dealer.lobbyID}.
       </p>
+      <p>Waiting for {dealer.firstName} to start the game</p>
       <p>Game ID : {dealer.lobbyID}</p>
       <p>Dealer : {dealer.firstName}</p>
       <p>Players: </p>
@@ -34,7 +43,7 @@ const Lobby = () => {
           </>
         );
       })}
-      <button onClick={handleClick}>Go Home</button>
+      <button onClick={handleClick}>Exit</button>
       <span style={{ fontStyle: 'italic' }}></span>
     </main>
   );
