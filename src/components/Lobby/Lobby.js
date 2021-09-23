@@ -37,11 +37,9 @@ const Lobby = () => {
       <p>Players: </p>
       {players.map((player) => {
         return (
-          <>
-            <p>
-              {player.firstName} {player.lastName}
-            </p>
-          </>
+          <p>
+            {player.firstName} {player.lastName}
+          </p>
         );
       })}
       <button onClick={handleClick}>Go Home</button>
