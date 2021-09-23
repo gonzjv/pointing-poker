@@ -1,10 +1,10 @@
-import { useState } from "react";
-import Timer from "../../timer/timer";
-import "./settings.css";
-import Switch from "./switch/switch";
+import { useState } from 'react';
+import Timer from '../../timer/timer';
+import './settings.css';
+import Switch from './switch/switch';
 
 export default function Settings() {
-  const [scoreType, setScoreType] = useState("");
+  const [scoreType, setScoreType] = useState('');
   return (
     <div>
       <h2 className="title settings__title">Game settings:</h2>

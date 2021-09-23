@@ -3,7 +3,12 @@ import { useHistory } from 'react-router-dom';
 import { MainContext } from '../../mainContext';
 import { SocketContext } from '../../socketContext';
 import { UsersContext } from '../../usersContext';
+import Card from '../card/card';
+import GameInfo from './game-info/game-info';
+import IssuesList from './issues/issues';
 import './Lobby.css';
+import Members from './members/Members';
+import Settings from './settings/settings';
 
 const Lobby = () => {
   const socket = useContext(SocketContext);
@@ -15,6 +20,11 @@ const Lobby = () => {
     setDealer({});
     console.log('dealer: ', dealer);
     history.push('/');
+  };
+
+  const cardInfo = {
+    value: '5',
+    type: 'SP',
   };
 
   return (
@@ -36,6 +46,11 @@ const Lobby = () => {
       })}
       <button onClick={handleClick}>Go Home</button>
       <span style={{ fontStyle: 'italic' }}></span>
+      <GameInfo />
+      <Members />
+      <IssuesList />
+      <Settings />
+      <Card card={cardInfo} />
     </main>
   );
 };

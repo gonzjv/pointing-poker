@@ -1,10 +1,10 @@
-import MemberCard from "./Member-card/Member-card";
-import "./Members.css";
+import MemberCard from './Member-card/Member-card';
+import './Members.css';
 
 const memberInfo = {
-  avatar: "",
-  name: "Rick Gilian",
-  position: "Junior front-end dev",
+  avatar: '',
+  name: 'Rick Gilian',
+  position: 'Junior front-end dev',
 };
 
 export default function Members() {
