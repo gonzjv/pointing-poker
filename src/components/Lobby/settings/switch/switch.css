@@ -1,0 +1,74 @@
+.toggle {
+  display: inline-block;
+  height: 30px;
+  line-height: 30px;
+  margin-right: 10px;
+  position: relative;
+  vertical-align: middle;
+  font-size: 14px;
+  user-select: none;
+}
+.toggle .checkbox-ios-switch {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  width: 55px;
+  height: 30px;
+  border-radius: 25%/50%;
+  vertical-align: top;
+  background: #eee;
+  transition: 0.2s;
+  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.toggle .checkbox-ios-switch:before {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 3px;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  transition: 0.15s;
+}
+.toggle input[type="checkbox"] {
+  display: block;
+  width: 0;
+  height: 0;
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+.toggle
+  input[type="checkbox"]:not(:disabled):active
+  + .checkbox-ios-switch:before {
+  box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.3);
+}
+.toggle input[type="checkbox"]:checked + .checkbox-ios-switch {
+  background: #60dabf;
+}
+.toggle input[type="checkbox"]:checked + .checkbox-ios-switch:before {
+  transform: translateX(28px);
+}
+
+/* Hover */
+.toggle input[type="checkbox"]:not(:disabled) + .checkbox-ios-switch {
+  cursor: pointer;
+  border-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Disabled */
+.toggle input[type="checkbox"]:disabled + .checkbox-ios-switch {
+  filter: grayscale(70%);
+  border-color: rgba(0, 0, 0, 0.1);
+}
+.toggle input[type="checkbox"]:disabled + .checkbox-ios-switch:before {
+  background: #eee;
+}
+
+/* Focus */
+.toggle.focused .checkbox-ios-switch:before {
+  box-shadow: inset 0px 0px 4px #ff5623;
+}

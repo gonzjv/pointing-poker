@@ -1,0 +1,40 @@
+.member__card {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  padding: 10px 0px;
+  max-width: 470px;
+}
+
+.member__name {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-family: Roboto;
+  font-weight: 300;
+  font-size: 30px;
+  line-height: 40px;
+  color: #000000;
+  text-transform: capitalize;
+  margin: 0;
+}
+
+.member__position {
+  font-size: 10px;
+  line-height: 12px;
+}
+
+.member__avatar {
+  width: 83px;
+  height: 83px;
+  border-radius: 50%;
+}
+
+.yourself__marker {
+  font-family: Roboto;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 16px;
+  text-transform: uppercase;
+}
