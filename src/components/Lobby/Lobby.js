@@ -18,7 +18,6 @@ const Lobby = () => {
 
   const handleClick = () => {
     setDealer({});
-    console.log('dealer: ', dealer);
     history.push('/');
   };
 
@@ -29,12 +28,14 @@ const Lobby = () => {
 
   return (
     <main>
-      <button onClick={handleClick}>Go Home</button>
-      <GameInfo dealer={dealer}/>
-      <Members players={players}/>
-      <IssuesList />
-      <Settings />
-      <Card card={cardInfo} />
+      <div className="wrapper">
+        <button onClick={handleClick}>Go Home</button>
+        <GameInfo dealer={dealer} />
+        <Members players={players} />
+        <IssuesList />
+        <Settings />
+        <Card card={cardInfo} />
+      </div>
     </main>
   );
 };

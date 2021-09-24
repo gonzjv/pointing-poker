@@ -10,8 +10,8 @@ export default function GameInfo({ dealer }) {
         <MemberCard member={dealer} />
       </div>
       <div className="link">
-        <p>Link to lobby:</p>
-        <div className="link__text">http://pockerplanning.com/game176587/lobby</div>
+        <p>Lobby ID:</p>
+        <div className="link__text">{dealer.lobbyID}</div>
         <button>Copy</button>
       </div>
       <button>Start Game</button>

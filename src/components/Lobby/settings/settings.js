@@ -7,7 +7,7 @@ export default function Settings() {
   const [scoreType, setScoreType] = useState('');
   return (
     <div>
-      <h2 className="title settings__title">Game settings:</h2>
+      <h2 className="lobby__subtitle settings__title">Game settings:</h2>
       <form className="settings__form">
         <Switch value="Scram master as player:" />
         <Switch value="Changing card in round end:" />

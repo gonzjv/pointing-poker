@@ -13,7 +13,7 @@ export default function MemberCard({ member }) {
 
   return (
     <div className="member__card">
-      <MemberAvatar avatar={member.avatar} />
+      <MemberAvatar player={member} />
       <div className>
         <p className="member__name">
           {member.firstName} {member.lastName}
