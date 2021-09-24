@@ -1,26 +1,23 @@
-import ButtonKick from "./button-Kick/Button-kick";
-import MemberAvatar from "./member-avatar/Member-avatar";
-import "./Member-card.css";
+import ButtonKick from './button-Kick/Button-kick';
+import MemberAvatar from './member-avatar/Member-avatar';
+import './Member-card.css';
 
-export default function MemberCard(props) {
+export default function MemberCard({ member }) {
   const checkYourself = () => {
-    return props.member.isYou ? (
+    return member.isYou ? (
       <span className="yourself__marker">it's you</span>
     ) : (
-      ""
+      ''
     );
   };
 
-  
-
   return (
     <div className="member__card">
-      <MemberAvatar avatar={props.member.avatar} />
+      <MemberAvatar avatar={member.avatar} />
       <div className>
         <p className="member__name">
-          {checkYourself()}
-          {props.member.name}
-          <span className="member__position">{props.member.position}</span>
+          {member.firstName} {member.lastName}
+          <span className="member__position">{member.jobPosition}</span>
         </p>
       </div>
       <ButtonKick />

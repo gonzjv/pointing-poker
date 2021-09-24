@@ -29,23 +29,9 @@ const Lobby = () => {
 
   return (
     <main>
-      <p>
-        Good day, {firstName} {lastName}!
-      </p>
-      <p>Game ID : {dealer.lobbyID}</p>
-      <p>Dealer : {dealer.firstName}</p>
-      <p>Players: </p>
-      {players.map((player) => {
-        return (
-          <p>
-            {player.firstName} {player.lastName}
-          </p>
-        );
-      })}
       <button onClick={handleClick}>Go Home</button>
-      <span style={{ fontStyle: 'italic' }}></span>
-      <GameInfo />
-      <Members />
+      <GameInfo dealer={dealer}/>
+      <Members players={players}/>
       <IssuesList />
       <Settings />
       <Card card={cardInfo} />

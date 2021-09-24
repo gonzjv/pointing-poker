@@ -1,23 +1,14 @@
 import MemberCard from './Member-card/Member-card';
 import './Members.css';
 
-const memberInfo = {
-  avatar: '',
-  name: 'Rick Gilian',
-  position: 'Junior front-end dev',
-};
-
-export default function Members() {
+export default function Members({ players }) {
   return (
     <div className="members">
       <h2 className="title members__title">members:</h2>
       <div className="members__list">
-        <MemberCard member={memberInfo} />
-        <MemberCard member={memberInfo} />
-        <MemberCard member={memberInfo} />
-        <MemberCard member={memberInfo} />
-        <MemberCard member={memberInfo} />
-        <MemberCard member={memberInfo} />
+        {players.map((player) => {
+          return <MemberCard member={player} />;
+        })}
       </div>
     </div>
   );
