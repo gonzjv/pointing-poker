@@ -18,7 +18,7 @@ const FormStartGame = ({ setActive }) => {
     setJobPosition,
   } = useContext(MainContext);
   const history = useHistory();
-  const { dealer, setDealer } = useContext(UsersContext);
+  const { setDealer } = useContext(UsersContext);
 
   const [fileName, setFileName] = useState('Choose a file');
   const [firstChar, setFirstChar] = useState('N');

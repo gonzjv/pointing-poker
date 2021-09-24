@@ -19,7 +19,7 @@ const FormConnect = ({ setActive }) => {
     setJobPosition,
   } = useContext(MainContext);
   const history = useHistory();
-  const { players, setPlayers, dealer, setDealer } = useContext(UsersContext);
+  const { setPlayers, setDealer } = useContext(UsersContext);
 
   const [fileName, setFileName] = useState('Choose a file');
   const [firstChar, setFirstChar] = useState('N');
