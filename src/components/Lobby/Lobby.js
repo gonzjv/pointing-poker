@@ -3,9 +3,14 @@ import { useHistory } from 'react-router-dom';
 import { MainContext } from '../../mainContext';
 import { SocketContext } from '../../socketContext';
 import { UsersContext } from '../../usersContext';
+import Card from '../card/card';
+import GameInfo from './game-info/game-info';
+import IssuesList from './issues/issues';
 import './Lobby.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Members from './members/Members';
+import Settings from './settings/settings';
 
 const Lobby = () => {
   const socket = useContext(SocketContext);
@@ -47,6 +52,11 @@ const Lobby = () => {
     e.preventDefault();
     socket.emit('sendMessage', message);
     setMessage('');
+  };
+
+  const cardInfo = {
+    value: '5',
+    type: 'SP',
   };
 
   return (
@@ -100,6 +110,11 @@ const Lobby = () => {
           </button>
         </form>
       </section>
+      <GameInfo />
+      <Members />
+      <IssuesList />
+      <Settings />
+      <Card card={cardInfo} />
     </main>
   );
 };
