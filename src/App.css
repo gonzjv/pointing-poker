@@ -11,3 +11,8 @@
 body {
   font-family: Roboto, sans-serif;
 }
+
+.page-wrapper {
+  min-height: 100vh;
+  position: relative;
+}

@@ -6,6 +6,8 @@ import { UsersProvider } from './usersContext';
 import Lobby from './components/Lobby/Lobby';
 import Header from './components/Header/Header';
 import Welcome from './pages/Welcome/Welcome';
+import React from 'react';
+import { Footer } from './components/Footer/Footer';
 
 const App = () => {
   return (
@@ -23,6 +25,7 @@ const App = () => {
           </SocketProvider>
         </UsersProvider>
       </MainProvider>
+      <Footer/>
     </div>
   );
 };
