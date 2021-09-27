@@ -1,9 +1,11 @@
-import { useContext } from 'react';
+import { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { MainContext } from '../../mainContext';
 import { SocketContext } from '../../socketContext';
 import { UsersContext } from '../../usersContext';
+
 import Card from '../card/card';
+import ModalKickPlayer from '../ModalKickPlayer/Modal-kick-player';
 import GameInfo from './game-info/game-info';
 import IssuesList from './issues/issues';
 import './Lobby.css';
@@ -15,6 +17,8 @@ const Lobby = () => {
   const { firstName, lastName } = useContext(MainContext);
   const history = useHistory();
   const { players, dealer, setDealer } = useContext(UsersContext);
+  const [modalKick, setModalKick] = useState(false);
+  const [playerNameKick, setPlayerNameKick] = useState('');
 
   const cardInfo = {
     value: '5',
@@ -25,10 +29,19 @@ const Lobby = () => {
     <main>
       <div className="wrapper">
         <GameInfo dealer={dealer} />
-        <Members players={players} />
+        <Members
+          players={players}
+          setActive={setModalKick}
+          setPlayerNameKick={setPlayerNameKick}
+        />
         <IssuesList />
         <Settings />
         <Card card={cardInfo} />
+        <ModalKickPlayer
+          active={modalKick}
+          setActive={setModalKick}
+          name={playerNameKick}
+        />
       </div>
     </main>
   );

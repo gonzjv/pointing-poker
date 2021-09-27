@@ -13,8 +13,8 @@
 
 .button__white {
   position: absolute;
-  bottom: 0px;
-  right: 0px;
+  bottom: 20px;
+  right: 20px;
   color: #2b3a67;
   background-color: #ffffff;
 }
