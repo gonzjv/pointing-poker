@@ -1,8 +1,19 @@
 import Button from '../../Button/Button';
 import MemberCard from '../members/Member-card/Member-card';
 import './game-info.css';
+import { useContext } from 'react';
+import { useHistory } from 'react-router-dom';
+import { UsersContext } from '../../../usersContext';
 
 export default function GameInfo({ dealer }) {
+  const history = useHistory();
+  const { setDealer } = useContext(UsersContext);
+
+  const closeGame = () => {
+    setDealer({});
+    history.push('/');
+  };
+
   const copyID = (event) => {
     const idArea = document.getElementById('id__text');
     const id = idArea.value;
@@ -56,7 +67,7 @@ export default function GameInfo({ dealer }) {
         </div>
       </div>
       <Button value="Start Game" />
-      <Button value="Cancel game" isWhite={true} />
+      <Button value="Cancel game" onCustomClick={closeGame} isWhite={true} />
     </div>
   );
 }

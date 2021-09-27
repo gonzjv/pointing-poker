@@ -16,11 +16,6 @@ const Lobby = () => {
   const history = useHistory();
   const { players, dealer, setDealer } = useContext(UsersContext);
 
-  const handleClick = () => {
-    setDealer({});
-    history.push('/');
-  };
-
   const cardInfo = {
     value: '5',
     type: 'SP',
@@ -29,7 +24,6 @@ const Lobby = () => {
   return (
     <main>
       <div className="wrapper">
-        <button onClick={handleClick}>Go Home</button>
         <GameInfo dealer={dealer} />
         <Members players={players} />
         <IssuesList />
