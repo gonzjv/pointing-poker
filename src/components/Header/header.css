@@ -48,6 +48,15 @@
   color: #ffffff;
 }
 
+.open-chat {
+  border: none;
+  background-color: transparent;
+  position: absolute;
+  right: 27px;
+  top: 15px;
+  cursor: pointer;
+}
+
 @media (max-width: 1400px) {
   .logo-wrapper {
     margin-left: 2%;
