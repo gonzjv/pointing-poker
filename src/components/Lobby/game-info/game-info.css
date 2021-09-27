@@ -24,3 +24,15 @@
 .game__id {
   display: flex;
 }
+
+.subtitle__edit {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  margin-left: 15px;
+}
+
+.subtitle__edit__icon {
+  width: 22px;
+  height: 22px;
+}

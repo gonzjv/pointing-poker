@@ -16,19 +16,41 @@ export default function GameInfo({ dealer }) {
     );
   };
 
-  const emptyFunction = () => {};
+  const saveNameGame = (e) => {
+    if (e.keyCode == 13) {
+      document.getElementById('game__name').contentEditable = false;
+      document.removeEventListener('keypress', saveNameGame);
+    }
+  };
+
+  const editNameGame = () => {
+    const title = document.getElementById('game__name');
+    title.contentEditable = true;
+    title.focus();
+    document.addEventListener('keypress', saveNameGame);
+  };
 
   return (
     <div className="game-info">
-      <h2 className="lobby__subtitle game-info__title">{dealer.lobbyID}</h2>
+      <p className="lobby__subtitle game-info__title" id="game__name">
+        New game
+        <button className="subtitle__edit" onClick={editNameGame}>
+          <img className="subtitle__edit__icon" src="./icon/edit.svg" />
+        </button>
+      </p>
       <div className="scram-master">
         <p>Scram master: </p>
-        <MemberCard member={dealer} />
+        <MemberCard member={dealer} isPossibilityKick={false} />
       </div>
       <div className="link">
         <p>Lobby ID:</p>
         <div className="game__id">
-          <input className="link__text" id="id__text" value={dealer.lobbyID} />
+          <input
+            className="link__text"
+            id="id__text"
+            value={dealer.lobbyID}
+            readonly
+          />
 
           <Button value="Copy" onCustomClick={copyID} />
         </div>

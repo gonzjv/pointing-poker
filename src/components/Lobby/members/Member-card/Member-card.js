@@ -2,14 +2,11 @@ import ButtonKick from './button-Kick/Button-kick';
 import MemberAvatar from './member-avatar/Member-avatar';
 import './Member-card.css';
 
-export default function MemberCard({ member }) {
+export default function MemberCard({ member, isPossibilityKick = true }) {
   const checkYourself = () => {
-    return member.isYou ? (
-      <span className="yourself__marker">it's you</span>
-    ) : (
-      ''
-    );
+    return member.isYou ? <span className="yourself__marker">it's you</span> : '';
   };
+  const checkPossibilityKick = () => (isPossibilityKick ? <ButtonKick /> : '');
 
   return (
     <div className="member__card">
@@ -20,7 +17,7 @@ export default function MemberCard({ member }) {
           <span className="member__position">{member.jobPosition}</span>
         </p>
       </div>
-      <ButtonKick />
+      {checkPossibilityKick()}
     </div>
   );
 }
