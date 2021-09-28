@@ -30,6 +30,9 @@ const Lobby = () => {
     socket.on('players', (players) => {
       setPlayers(players);
     });
+    socket.on('kickFromLobby', () => {
+      history.push('/');
+    });
   });
 
   useEffect(() => {
@@ -54,6 +57,11 @@ const Lobby = () => {
     setMessage('');
   };
 
+  const handleDelete = (id) => {
+    console.log('delete id: ', id);
+    socket.emit('deletePlayer', id, dealer.lobbyID);
+  };
+
   const cardInfo = {
     value: '5',
     type: 'SP',
@@ -75,11 +83,10 @@ const Lobby = () => {
         <p>Players: </p>
         {players.map((player) => {
           return (
-            <>
-              <p>
-                {player.firstName} {player.lastName}
-              </p>
-            </>
+            <p>
+              {player.firstName} {player.lastName}
+              <button onClick={() => handleDelete(player.id)}>❌</button>
+            </p>
           );
         })}
         <button onClick={handleExit}>Exit</button>
