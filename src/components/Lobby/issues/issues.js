@@ -6,7 +6,7 @@ const issueExample = {
   priority: 'Low priority',
 };
 
-export default function IssuesList() {
+export default function IssuesList({ setActive }) {
   return (
     <div className="issues">
       <h2 className="lobby__subtitle issues__title">Issues:</h2>
@@ -15,7 +15,7 @@ export default function IssuesList() {
         <IssueItem issue={issueExample} />
         <IssueItem issue={issueExample} />
         <IssueItem issue={issueExample} />
-        <button className="issue__create">
+        <button className="issue__create" onClick={() => setActive(true)}>
           <p className="issue__create__text">Create new Issue</p>
           <img className="issue__icon" src="./icon/add.svg" />
         </button>

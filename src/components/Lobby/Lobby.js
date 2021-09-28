@@ -5,6 +5,7 @@ import { SocketContext } from '../../socketContext';
 import { UsersContext } from '../../usersContext';
 
 import Card from '../card/card';
+import ModalCreateIssue from '../ModalCreateIssue/Modal-create-issue';
 import ModalKickPlayer from '../ModalKickPlayer/Modal-kick-player';
 import GameInfo from './game-info/game-info';
 import IssuesList from './issues/issues';
@@ -19,6 +20,7 @@ const Lobby = () => {
   const { players, dealer, setDealer } = useContext(UsersContext);
   const [modalKick, setModalKick] = useState(false);
   const [playerNameKick, setPlayerNameKick] = useState('');
+  const [modalCreateIssue, setModalCreateIssue] = useState(false);
 
   const cardInfo = {
     value: '5',
@@ -34,7 +36,7 @@ const Lobby = () => {
           setActive={setModalKick}
           setPlayerNameKick={setPlayerNameKick}
         />
-        <IssuesList />
+        <IssuesList setActive={setModalCreateIssue} />
         <Settings />
         <Card card={cardInfo} />
         <ModalKickPlayer
@@ -42,6 +44,7 @@ const Lobby = () => {
           setActive={setModalKick}
           name={playerNameKick}
         />
+        <ModalCreateIssue active={modalCreateIssue} />
       </div>
     </main>
   );
