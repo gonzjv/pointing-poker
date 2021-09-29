@@ -1,5 +1,13 @@
 .button__kick {
+  display: flex;
   border: none;
   background-color: transparent;
   cursor: pointer;
+}
+
+
+
+.column__list .button__kick img {
+  width: 30px;
+  height: 30px;
 }

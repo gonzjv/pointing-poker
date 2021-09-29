@@ -7,10 +7,10 @@ export default function IssueItem(props) {
         <p className="issue__name">{props.issue.name} </p>
         <p className="issue__priority">{props.issue.priority}</p>
       </div>
-      <button className="issue__button">
+      <button className="issue__button issue__button__edit">
         <img src="./icon/edit.svg" />
       </button>
-      <button className="issue__button">
+      <button className="issue__button issue__button__delete">
         <img src="./icon/delete.svg" />
       </button>
     </div>

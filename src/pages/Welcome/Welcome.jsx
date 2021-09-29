@@ -7,7 +7,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import './welcome.css';
-import { GameImg } from '../../components/GameImg/GameImg';
+import { GameImg } from './GameImg/GameImg';
+
 
 const Welcome = () => {
   const [modalStartActive, setModalStartActive] = useState(false);

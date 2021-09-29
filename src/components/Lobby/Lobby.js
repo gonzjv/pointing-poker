@@ -111,7 +111,7 @@ const Lobby = () => {
         </form>
       </section>
       <GameInfo />
-      <Members />
+      <Members mode={false}/>
       <IssuesList />
       <Settings />
       <Card card={cardInfo} />

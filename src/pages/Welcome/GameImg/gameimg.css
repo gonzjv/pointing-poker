@@ -1,22 +1,22 @@
 
-.game-title {
+.game-img {
   position: relative;
   left: 30%;
   max-width: 550px;
 }
 
-.title {
+.game-img-title {
   font-size: 70px;
   font-weight: bold;
 }
 
-.title-line {
+.game-img-title-line {
   width: 350px;
   border: 5px solid #ffffff;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   transform: rotate(164.77deg);
   position: absolute;
-  top: 40%;
+  top: 66%;
   left: 33%;
 }
 
@@ -37,15 +37,15 @@
 }
 
 @media (max-width: 825px) {
-  .game-title {
+  .game-img {
     left: 5%;
   }
 
-  .title {
+  .game-img-title {
     font-size: 50px;
   }
 
-  .title-line {
+  .game-img-title-line {
     width: 250px;
     top: 40%;
     left: 30%;

@@ -16,14 +16,14 @@ export default function MemberCard(props) {
   return (
     <div className="member__card">
       <MemberAvatar avatar={props.member.avatar} />
-      <div className>
+      <div>
         <p className="member__name">
           {checkYourself()}
           {props.member.name}
           <span className="member__position">{props.member.position}</span>
         </p>
       </div>
-      <ButtonKick />
+      {props.btnKick === true ? <ButtonKick /> : '' } 
     </div>
   );
 }

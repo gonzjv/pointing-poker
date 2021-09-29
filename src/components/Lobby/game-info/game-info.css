@@ -1,5 +1,11 @@
 .game-info {
   position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);;
+}
+.game-info__title {
+  grid-column: 1/4;
 }
 
 .link__text {
@@ -33,4 +39,10 @@
   box-sizing: border-box;
   border-radius: 3px;
   cursor: pointer;
+}
+
+.scram-master {
+  background-color: lightblue;
+  padding-top: 10px;
+  grid-column: 1/2;
 }

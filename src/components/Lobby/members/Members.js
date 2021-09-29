@@ -7,11 +7,11 @@ const memberInfo = {
   position: 'Junior front-end dev',
 };
 
-export default function Members() {
+export default function Members({mode}) {
   return (
     <div className="members">
       <h2 className="title members__title">members:</h2>
-      <div className="members__list">
+      <div className= {mode === true ? "column__list" : "members__list" }>
         <MemberCard member={memberInfo} />
         <MemberCard member={memberInfo} />
         <MemberCard member={memberInfo} />
