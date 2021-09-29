@@ -7,7 +7,7 @@ import { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { UsersContext } from '../../../usersContext';
 
-export const GameInfo = () => {
+const GameInfo = () => {
   const history = useHistory();
   const { dealer, setDealer } = useContext(UsersContext);
 
@@ -80,3 +80,4 @@ export const GameInfo = () => {
     </div>
   );
 };
+export default GameInfo;

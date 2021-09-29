@@ -3,7 +3,7 @@ import './Members.css';
 import React, { useContext } from 'react';
 import { UsersContext } from '../../../usersContext';
 
-export const Members = ({ setActive }) => {
+const Members = ({ setActive }) => {
   const { players } = useContext(UsersContext);
 
   return (
@@ -17,3 +17,4 @@ export const Members = ({ setActive }) => {
     </div>
   );
 };
+export default Members;
