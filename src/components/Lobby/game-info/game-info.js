@@ -5,9 +5,9 @@ import { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { UsersContext } from '../../../usersContext';
 
-export default function GameInfo({ dealer }) {
+export const GameInfo = () => {
   const history = useHistory();
-  const { setDealer } = useContext(UsersContext);
+  const { dealer, setDealer } = useContext(UsersContext);
 
   const closeGame = () => {
     setDealer({});
@@ -70,4 +70,4 @@ export default function GameInfo({ dealer }) {
       <Button value="Cancel game" onCustomClick={closeGame} isWhite={true} />
     </div>
   );
-}
+};

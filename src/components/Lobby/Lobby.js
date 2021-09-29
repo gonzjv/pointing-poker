@@ -7,12 +7,12 @@ import { UsersContext } from '../../usersContext';
 import Card from '../card/card';
 import ModalCreateIssue from '../ModalCreateIssue/Modal-create-issue';
 import ModalKickPlayer from '../ModalKickPlayer/Modal-kick-player';
-import GameInfo from './game-info/game-info';
+import { GameInfo } from './game-info/game-info';
 import IssuesList from './issues/issues';
 import './Lobby.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Members from './members/Members';
+import { Members } from './members/Members';
 import Settings from './settings/settings';
 
 const Lobby = () => {
@@ -20,7 +20,6 @@ const Lobby = () => {
   const { firstName, lastName } = useContext(MainContext);
   const history = useHistory();
   const [modalKick, setModalKick] = useState(false);
-  const [playerNameKick, setPlayerNameKick] = useState('');
   const [modalCreateIssue, setModalCreateIssue] = useState(false);
   const { players, dealer, setPlayers, setDealer } = useContext(UsersContext);
   const [message, setMessage] = useState('');
@@ -77,19 +76,11 @@ const Lobby = () => {
     <main>
       <div className="wrapper">
         <GameInfo dealer={dealer} />
-        <Members
-          players={players}
-          setActive={setModalKick}
-          setPlayerNameKick={setPlayerNameKick}
-        />
+        <Members setActive={setModalKick} />
         <IssuesList setActive={setModalCreateIssue} />
         <Settings />
         <Card card={cardInfo} />
-        <ModalKickPlayer
-          active={modalKick}
-          setActive={setModalKick}
-          name={playerNameKick}
-        />
+        <ModalKickPlayer active={modalKick} setActive={setModalKick} />
         <ModalCreateIssue active={modalCreateIssue} />
       </div>
       <ToastContainer />
