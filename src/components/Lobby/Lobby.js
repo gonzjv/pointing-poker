@@ -75,7 +75,7 @@ const Lobby = () => {
   return (
     <main>
       <div className="wrapper">
-        <GameInfo dealer={dealer} />
+        <GameInfo />
         <Members setActive={setModalKick} />
         <IssuesList setActive={setModalCreateIssue} />
         <Settings />
