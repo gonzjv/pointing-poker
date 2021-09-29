@@ -1,24 +1,20 @@
 import MemberCard from './Member-card/Member-card';
 import './Members.css';
+import React, { useContext } from 'react';
+import { UsersContext } from '../../../usersContext';
 
-const memberInfo = {
-  avatar: '',
-  name: 'Rick Gilian',
-  position: 'Junior front-end dev',
-};
+const Members = ({ setActive }) => {
+  const { players } = useContext(UsersContext);
 
-export default function Members() {
   return (
     <div className="members">
-      <h2 className="title members__title">members:</h2>
+      <h2 className="lobby__subtitle members__title">members:</h2>
       <div className="members__list">
-        <MemberCard member={memberInfo} />
-        <MemberCard member={memberInfo} />
-        <MemberCard member={memberInfo} />
-        <MemberCard member={memberInfo} />
-        <MemberCard member={memberInfo} />
-        <MemberCard member={memberInfo} />
+        {players.map((player) => {
+          return <MemberCard member={player} setActive={setActive} />;
+        })}
       </div>
     </div>
   );
-}
+};
+export default Members;

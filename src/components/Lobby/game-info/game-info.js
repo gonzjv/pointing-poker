@@ -1,32 +1,83 @@
-import MemberCard from "../members/Member-card/Member-card";
-import "./game-info.css";
+import Button from '../../Button/Button';
+import MemberCard from '../members/Member-card/Member-card';
+import './game-info.css';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useContext } from 'react';
+import { useHistory } from 'react-router-dom';
+import { UsersContext } from '../../../usersContext';
 
-const scramInfo = {
-  avatar: "",
-  name: "Rick Gilian",
-  position: "Junior front-end dev",
-  isYou: true,
-};
+const GameInfo = () => {
+  const history = useHistory();
+  const { dealer, setDealer } = useContext(UsersContext);
 
-export default function GameInfo() {
+  const notify = (message) => {
+    toast(message, {
+      position: 'top-right',
+    });
+  };
+
+  const closeGame = () => {
+    setDealer({});
+    history.push('/');
+  };
+
+  const copyID = (event) => {
+    const idArea = document.getElementById('id__text');
+    const id = idArea.value;
+    navigator.clipboard.writeText(id).then(
+      () => {
+        notify('Copying to clipboard was successful!');
+      },
+      (err) => {
+        notify('Could not copy text: ', err);
+      },
+    );
+  };
+
+  const saveNameGame = (e) => {
+    if (e.keyCode == 13) {
+      document.getElementById('game__name').contentEditable = false;
+      document.removeEventListener('keypress', saveNameGame);
+    }
+  };
+
+  const editNameGame = () => {
+    const title = document.getElementById('game__name');
+    title.contentEditable = true;
+    title.focus();
+    document.addEventListener('keypress', saveNameGame);
+  };
+
   return (
     <div className="game-info">
-      <h2 className="title game-info__title">
-        Spring 23 planning (issues 13, 533, 5623, 3252, 6623, ...)
-      </h2>
+      <p className="lobby__subtitle game-info__title" id="game__name">
+        New game
+        <button className="subtitle__edit" onClick={editNameGame}>
+          <img className="subtitle__edit__icon" src="./icon/edit.svg" />
+        </button>
+      </p>
       <div className="scram-master">
         <p>Scram master: </p>
-        <MemberCard member={scramInfo} />
+        <MemberCard member={dealer} isPossibilityKick={false} />
       </div>
       <div className="link">
-        <p>Link to lobby:</p>
-        <div className="link__text">
-          http://pockerplanning.com/game176587/lobby
+        <p>Lobby ID:</p>
+        <div className="game__id">
+          <input
+            className="link__text"
+            id="id__text"
+            value={dealer.lobbyID}
+            readonly
+          />
+
+          <Button value="Copy" onCustomClick={copyID} />
         </div>
-        <button>Copy</button>
       </div>
-      <button>Start Game</button>
-      <button className="button__close">Canсel game</button>
+      <Button value="Start Game" />
+      <Button value="Cancel game" onCustomClick={closeGame} isWhite={true} />
+      <ToastContainer />
     </div>
   );
-}
+};
+export default GameInfo;

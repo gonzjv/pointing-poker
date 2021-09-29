@@ -1,4 +1,4 @@
-import "./issue-item.css";
+import './issue-item.css';
 
 export default function IssueItem(props) {
   return (
@@ -8,10 +8,10 @@ export default function IssueItem(props) {
         <p className="issue__priority">{props.issue.priority}</p>
       </div>
       <button className="issue__button">
-        <img src="./icon/edit.svg" />
+        <img className="issue__icon" src="./icon/edit.svg" />
       </button>
       <button className="issue__button">
-        <img src="./icon/delete.svg" />
+        <img className="issue__icon" src="./icon/delete.svg" />
       </button>
     </div>
   );

@@ -3,7 +3,10 @@ import { useHistory } from 'react-router-dom';
 import { MainContext } from '../../mainContext';
 import { SocketContext } from '../../socketContext';
 import { UsersContext } from '../../usersContext';
+
 import Card from '../card/card';
+import ModalCreateIssue from '../ModalCreateIssue/Modal-create-issue';
+import ModalKickPlayer from '../ModalKickPlayer/Modal-kick-player';
 import GameInfo from './game-info/game-info';
 import IssuesList from './issues/issues';
 import './Lobby.css';
@@ -16,6 +19,8 @@ const Lobby = () => {
   const socket = useContext(SocketContext);
   const { firstName, lastName } = useContext(MainContext);
   const history = useHistory();
+  const [modalKick, setModalKick] = useState(false);
+  const [modalCreateIssue, setModalCreateIssue] = useState(false);
   const { players, dealer, setPlayers, setDealer } = useContext(UsersContext);
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
@@ -69,6 +74,15 @@ const Lobby = () => {
 
   return (
     <main>
+      <div className="wrapper">
+        <GameInfo />
+        <Members setActive={setModalKick} />
+        <IssuesList setActive={setModalCreateIssue} />
+        <Settings />
+        <Card card={cardInfo} />
+        <ModalKickPlayer active={modalKick} setActive={setModalKick} />
+        <ModalCreateIssue active={modalCreateIssue} />
+      </div>
       <ToastContainer />
       <section className="status">
         <p>
@@ -117,11 +131,6 @@ const Lobby = () => {
           </button>
         </form>
       </section>
-      <GameInfo />
-      <Members />
-      <IssuesList />
-      <Settings />
-      <Card card={cardInfo} />
     </main>
   );
 };

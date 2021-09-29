@@ -11,7 +11,11 @@ function Header() {
             <span className="down">P</span>
             <span className=" up">P</span>
           </div>
+
         </div>
+        <button className='open-chat'>
+          <img className='open-chat__icon' src='./icon/chat.svg'/>  
+         </button>
       </div>
     </header>
   );
