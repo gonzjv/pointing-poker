@@ -12,6 +12,15 @@ const Chat = ({ messages }) => {
     setIsChatDisplay(false);
   };
 
+  const disabledSendButton = (text) => {
+    const buttonSend = document.querySelector('.chat__send');
+    if (text.length > 0) {
+      buttonSend.disabled = false;
+    } else {
+      buttonSend.disabled = true;
+    }
+  };
+
   const handleSendMessage = (e) => {
     e.preventDefault();
     socket.emit('sendMessage', message);
@@ -19,20 +28,16 @@ const Chat = ({ messages }) => {
   };
 
   const clickCtrlAndEnter = (e) => {
-    if (e.ctrlKey && e.keyCode == 13) {
+    if (e.ctrlKey && e.keyCode == 13 && message.length > 0) {
       socket.emit('sendMessage', message);
       setMessage('');
+      disabledSendButton('');
     }
   };
 
   const changeMessage = (e) => {
     setMessage(e.target.value);
-    const buttonSend = document.querySelector('.chat__send');
-    if (e.target.value.length > 0) {
-      buttonSend.disabled = false;
-    } else {
-      buttonSend.disabled = true;
-    }
+    disabledSendButton(e.target.value);
   };
 
   return (
