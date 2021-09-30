@@ -7,6 +7,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import './welcome.css';
+import { GameImg } from './GameImg/GameImg';
+
 
 const Welcome = () => {
   const [modalStartActive, setModalStartActive] = useState(false);
@@ -32,34 +34,26 @@ const Welcome = () => {
   return (
     <main className="wrapper welcome-wrapper">
       <section className="main-section">
-        <div className="game-title">
-          <h1 className="title">
-            {' '}
-            <img src="./images/cards.png" alt="cards" />{' '}
-            <span className="title1">Poker</span>{' '}
-            <span className="title2">Planning</span>
-          </h1>
-          <div className="title-line" />
+        <GameImg />
+        <div className="main-form">
+          <h2 className="heading">Start your planning:</h2>
+          <h4 className="form-input">Create session:</h4>
+          <button className="button" onClick={() => setModalStartActive(true)}>Start new game
+          </button>
+          <p className="heading form-text">or:</p>
+          <h4 className="form-input up">
+            Connect to lobby by <span className="colored">ID</span> :
+          </h4>
+          <input
+            type="text"
+            name="lobby-id"
+            value={lobbyID}
+            onChange={(event) => setLobbyID(event.target.value)}
+          />
+          <button className="button" onClick={handleClick}>
+            Connect
+          </button>
         </div>
-
-        <h2 className="heading">Start your planning:</h2>
-        <h4 className="form-input">Create session:</h4>
-        <button className="button" onClick={() => setModalStartActive(true)}>
-          Start new game
-        </button>
-        <p className="heading form-text">or:</p>
-        <h4 className="form-input up">
-          Connect to lobby by <span className="colored">ID</span> :
-        </h4>
-        <input
-          type="text"
-          name="lobby-id"
-          value={lobbyID}
-          onChange={(event) => setLobbyID(event.target.value)}
-        />
-        <button className="button" onClick={handleClick}>
-          Connect
-        </button>
       </section>
       <ToastContainer />
       <ModalStartGame active={modalStartActive} setActive={setModalStartActive} />

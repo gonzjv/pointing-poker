@@ -6,11 +6,11 @@ const issueExample = {
   priority: 'Low priority',
 };
 
-export default function IssuesList({ setActive }) {
+export default function IssuesList({ setActive, mode }) {
   return (
     <div className="issues">
       <h2 className="lobby__subtitle issues__title">Issues:</h2>
-      <div className="issues__list">
+      <div className= {mode === true ? "column__list" : "issues__list" }>
         <IssueItem issue={issueExample} />
         <IssueItem issue={issueExample} />
         <IssueItem issue={issueExample} />

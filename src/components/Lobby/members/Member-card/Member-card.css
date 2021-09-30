@@ -40,3 +40,9 @@
   line-height: 16px;
   text-transform: uppercase;
 }
+
+
+.column__list .member__name {
+  font-size: 18px;
+  line-height: 20px;
+}

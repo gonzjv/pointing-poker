@@ -51,6 +51,7 @@ const GameInfo = () => {
 
   return (
     <div className="game-info">
+
       <p className="lobby__subtitle game-info__title" id="game__name">
         New game
         <button className="subtitle__edit" onClick={editNameGame}>
@@ -61,23 +62,28 @@ const GameInfo = () => {
         <p>Scram master: </p>
         <MemberCard member={dealer} isPossibilityKick={false} />
       </div>
-      <div className="link">
-        <p>Lobby ID:</p>
-        <div className="game__id">
-          <input
-            className="link__text"
-            id="id__text"
-            value={dealer.lobbyID}
-            readonly
-          />
+      {mode === false ?
+        (<div>
+          <div className="link">
+            <p>Lobby ID:</p>
 
-          <Button value="Copy" onCustomClick={copyID} />
-        </div>
-      </div>
-      <Button value="Start Game" />
-      <Button value="Cancel game" onCustomClick={closeGame} isWhite={true} />
-      <ToastContainer />
-    </div>
-  );
-};
-export default GameInfo;
+            <div className="game__id">
+              <input
+                className="link__text"
+                id="id__text"
+                value={dealer.lobbyID}
+                readonly
+              />
+
+              <Button value="Copy" onCustomClick={copyID} />
+            </div>
+
+          </div>
+          <Button value="Start Game" />
+          <Button value="Cancel game" onCustomClick={closeGame} isWhite={true} />
+          <ToastContainer />
+        </div>) : ""}
+    </div>)
+    ;
+}
+export default GameInfo

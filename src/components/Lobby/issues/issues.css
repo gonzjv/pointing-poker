@@ -23,6 +23,8 @@
   margin: 0;
 }
 
+
+
 @media screen and (max-width: 1030px) {
   .issues__list {
     grid-template-columns: 1fr 1fr;

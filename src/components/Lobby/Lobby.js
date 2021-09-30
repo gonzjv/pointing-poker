@@ -76,8 +76,8 @@ const Lobby = () => {
     <main>
       <div className="wrapper">
         <GameInfo />
-        <Members setActive={setModalKick} />
-        <IssuesList setActive={setModalCreateIssue} />
+        <Members setActive={setModalKick} mode={false} />
+        <IssuesList setActive={setModalCreateIssue} mode={false} />
         <Settings />
         <Card card={cardInfo} />
         <ModalKickPlayer active={modalKick} setActive={setModalKick} />
