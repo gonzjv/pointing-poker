@@ -14,6 +14,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Members } from './members/Members';
 import Settings from './settings/settings';
+import Chat from '../chat/chat';
 
 const Lobby = () => {
   const socket = useContext(SocketContext);
@@ -22,7 +23,6 @@ const Lobby = () => {
   const [modalKick, setModalKick] = useState(false);
   const [modalCreateIssue, setModalCreateIssue] = useState(false);
   const { players, dealer, setPlayers, setDealer } = useContext(UsersContext);
-  const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
 
   const notify = (message) => {
@@ -56,12 +56,6 @@ const Lobby = () => {
     });
   };
 
-  const handleSendMessage = (e) => {
-    e.preventDefault();
-    socket.emit('sendMessage', message);
-    setMessage('');
-  };
-
   const handleDelete = (id) => {
     console.log('delete id: ', id);
     socket.emit('deletePlayer', id, dealer.lobbyID);
@@ -82,6 +76,7 @@ const Lobby = () => {
         <Card card={cardInfo} />
         <ModalKickPlayer active={modalKick} setActive={setModalKick} />
         <ModalCreateIssue active={modalCreateIssue} />
+        <Chat messages={messages} />
       </div>
       <ToastContainer />
       <section className="status">
@@ -104,32 +99,6 @@ const Lobby = () => {
           );
         })}
         <button onClick={handleExit}>Exit</button>
-      </section>
-      <section className="chat">
-        <div className="chat-window">
-          {messages.length > 0 ? (
-            messages.map((msg, i) => (
-              <div key={i}>
-                <p>
-                  {msg.user}:<span>{msg.text}</span>
-                </p>
-              </div>
-            ))
-          ) : (
-            <div>----------</div>
-          )}
-        </div>
-        <form className="chat-form" onSubmit={handleSendMessage}>
-          <input
-            type="text"
-            placeholder="Enter message"
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-          />
-          <button type="submit" onClick={handleSendMessage}>
-            Send
-          </button>
-        </form>
       </section>
     </main>
   );

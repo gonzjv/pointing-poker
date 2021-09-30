@@ -1,7 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './header.css';
+import { LobbyContext }  from './../Lobby/LobbyContext';
 
 function Header() {
+  const { setIsChatDisplay } = useContext(LobbyContext);
+
+  const openChat = () => {
+    setIsChatDisplay(true);
+  }
+
   return (
     <header className="header">
       <div className="header-wrapper">
@@ -13,7 +20,7 @@ function Header() {
           </div>
 
         </div>
-        <button className='open-chat'>
+        <button className='open-chat' onClick={openChat}>
           <img className='open-chat__icon' src='./icon/chat.svg'/>  
          </button>
       </div>
