@@ -2,7 +2,7 @@ import './Button-kick.css';
 import React, { useContext } from 'react';
 import { UsersContext } from '../../../../../usersContext';
 
-export default function ButtonKick({ setActive, member }) {
+const ButtonKick = ({ setActive, member }) => {
   const { setPlayerToKick } = useContext(UsersContext);
 
   return (
@@ -16,4 +16,5 @@ export default function ButtonKick({ setActive, member }) {
       <img src="./icon/kick-icon.svg" />
     </button>
   );
-}
+};
+export default ButtonKick;

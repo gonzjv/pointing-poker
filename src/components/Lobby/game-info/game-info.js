@@ -1,13 +1,21 @@
 import Button from '../../Button/Button';
 import MemberCard from '../members/Member-card/Member-card';
 import './game-info.css';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { UsersContext } from '../../../usersContext';
 
-export const GameInfo = () => {
+const GameInfo = () => {
   const history = useHistory();
   const { dealer, setDealer } = useContext(UsersContext);
+
+  const notify = (message) => {
+    toast(message, {
+      position: 'top-right',
+    });
+  };
 
   const closeGame = () => {
     setDealer({});
@@ -18,11 +26,11 @@ export const GameInfo = () => {
     const idArea = document.getElementById('id__text');
     const id = idArea.value;
     navigator.clipboard.writeText(id).then(
-      function () {
-        console.log('Async: Copying to clipboard was successful!');
+      () => {
+        notify('Copying to clipboard was successful!');
       },
-      function (err) {
-        console.error('Async: Could not copy text: ', err);
+      (err) => {
+        notify('Could not copy text: ', err);
       },
     );
   };
@@ -68,6 +76,8 @@ export const GameInfo = () => {
       </div>
       <Button value="Start Game" />
       <Button value="Cancel game" onCustomClick={closeGame} isWhite={true} />
+      <ToastContainer />
     </div>
   );
 };
+export default GameInfo;
