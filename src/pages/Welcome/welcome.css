@@ -33,6 +33,7 @@
 .form-input {
   font-size: 30px;
   line-height: 30px;
+  align-self: center;
 }
 
 .form-input.up {
@@ -43,6 +44,7 @@
 
 .main-form input {
   height: 38px;
+  align-self: center;
 }
 
 .colored {

@@ -14,6 +14,9 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Members from './members/Members';
 import Settings from './settings/settings';
+import { Score } from '../Score/Score';
+import Timer from '../timer/timer';
+import Button from '../Button/Button';
 
 const Lobby = () => {
   const socket = useContext(SocketContext);
@@ -72,10 +75,36 @@ const Lobby = () => {
     type: 'SP',
   };
 
+  const [gameMode, setGameMode] = useState(true);
+
   return (
-    <main>
+    <main  className="wrapper">
+      <div className="game-page-test">
+      <ToastContainer />
+      <div className="game-page-wrapper">
+        <div className="game-page" >
+          <GameInfo mode={gameMode} />
+      <div className="game-page-context">
+         <IssuesList setActive={setModalCreateIssue} mode={gameMode} />
+         <div className="game-page-timer">
+         <Timer />      
+         <Button value="Run Round" onCustomClick={() => {}} isWhite={false} />
+         </div>
+          {/*  <Settings /> */}
+          </div>
+        </div>
+        <aside className="game-page-aside">
+
+          <Score />
+          <Members  setActive={setModalKick}  mode={gameMode} />
+
+        </aside>
+      </div>
+      </div>
+
+
       <div className="wrapper">
-        <GameInfo />
+        <GameInfo mode={false}/>
         <Members setActive={setModalKick} mode={false} />
         <IssuesList setActive={setModalCreateIssue} mode={false} />
         <Settings />

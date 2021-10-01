@@ -1,11 +1,12 @@
 .member__card {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  position: relative;
+  justify-content: start;
   gap: 15px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  padding: 10px 5px;
-  max-width: 470px;
+  padding: 7px 10px;
+  max-width: 300px;
   min-width: 275px;
 }
 
@@ -28,8 +29,8 @@
 }
 
 .member__avatar {
-  width: 83px;
-  height: 83px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
 }
 
@@ -41,8 +42,22 @@
   text-transform: uppercase;
 }
 
+.column__list .member__card {
+  width: 200px;
+  height: 50px;
+  justify-content: start;
+}
 
 .column__list .member__name {
   font-size: 18px;
   line-height: 20px;
+}
+
+.column__list .member__avatar {
+  width: 40px;
+  height: 40px;
+}
+
+.column__list .without-avatar {
+  font-size: 24px;
 }

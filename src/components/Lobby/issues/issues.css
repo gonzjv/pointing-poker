@@ -15,13 +15,15 @@
   padding: 18px;
   font-family: Roboto;
   font-weight: 300;
-  font-size: 30px;
+  font-size: 26px;
   line-height: 40px;
+  width: 297px;
 }
 
 .issue__create__text {
   margin: 0;
 }
+
 
 
 

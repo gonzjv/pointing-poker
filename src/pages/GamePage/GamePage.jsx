@@ -20,9 +20,9 @@ import Button from '../../components/Button/Button';
 
 export const GamePage = () => {
   const socket = useContext(SocketContext);
-  const { firstName, lastName } = useContext(MainContext);
+  // const { firstName, lastName } = useContext(MainContext);
   const history = useHistory();
-  const { players, dealer, setPlayers, setDealer } = useContext(UsersContext);
+  // const { players, dealer, setPlayers, setDealer } = useContext(UsersContext);
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
   const [modalKick, setModalKick] = useState(false);
@@ -35,11 +35,11 @@ export const GamePage = () => {
     });
   };
 
-  useEffect(() => {
-    socket.on('players', (players) => {
-      setPlayers(players);
-    });
-  });
+  // useEffect(() => {
+  //   socket.on('players', (players) => {
+  //     setPlayers(players);
+  //   });
+  // });
 
   useEffect(() => {
     socket.on('message', (msg) => {
@@ -50,12 +50,12 @@ export const GamePage = () => {
     });
   }, [socket]);
 
-  const handleExit = () => {
-    setDealer({});
-    socket.emit('exit', () => {
-      history.push('/');
-    });
-  };
+  // const handleExit = () => {
+  //   setDealer({});
+  //   socket.emit('exit', () => {
+  //     history.push('/');
+  //   });
+  // };
 
   const handleSendMessage = (e) => {
     e.preventDefault();
@@ -76,7 +76,7 @@ export const GamePage = () => {
       <ToastContainer />
       <div className="game-page-wrapper">
         <div className="game-page" >
-          <GameInfo />
+          <GameInfo mode={gameMode} />
           <Button value="Stop Game" onCustomClick={handleClick} isWhite={true} />
          <IssuesList setActive={setModalCreateIssue} mode={gameMode} />
          <Timer />

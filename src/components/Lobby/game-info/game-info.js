@@ -7,7 +7,7 @@ import { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { UsersContext } from '../../../usersContext';
 
-const GameInfo = () => {
+const GameInfo = ({mode}) => {
   const history = useHistory();
   const { dealer, setDealer } = useContext(UsersContext);
 
@@ -60,7 +60,7 @@ const GameInfo = () => {
       </p>
       <div className="scram-master">
         <p>Scram master: </p>
-        <MemberCard member={dealer} isPossibilityKick={false} />
+        <MemberCard member={dealer} isPossibilityKick={false} setActive={undefined} />
       </div>
       {mode === false ?
         (<div>
@@ -79,10 +79,11 @@ const GameInfo = () => {
             </div>
 
           </div>
-          <Button value="Start Game" />
+          <Button value="Start Game" onCustomClick={undefined} />
           <Button value="Cancel game" onCustomClick={closeGame} isWhite={true} />
           <ToastContainer />
-        </div>) : ""}
+        </div>) : 
+        <Button value="Stop Game" isWhite={true}  onCustomClick={undefined} /> }
     </div>)
     ;
 }
