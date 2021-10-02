@@ -3,7 +3,7 @@ import './Members.css';
 import React, { useContext } from 'react';
 import { UsersContext } from '../../../usersContext';
 
-const Members = ({ setActive }) => {
+const Members = () => {
   const { players } = useContext(UsersContext);
 
   return (
@@ -11,7 +11,7 @@ const Members = ({ setActive }) => {
       <h2 className="lobby__subtitle members__title">members:</h2>
       <div className="members__list">
         {players.map((player) => {
-          return <MemberCard member={player} setActive={setActive} />;
+          return <MemberCard member={player} />;
         })}
       </div>
     </div>

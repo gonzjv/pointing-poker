@@ -76,7 +76,6 @@ const GameInfo = () => {
       </div>
       <Button value="Start Game" />
       <Button value="Cancel game" onCustomClick={closeGame} isWhite={true} />
-      <ToastContainer />
     </div>
   );
 };

@@ -14,14 +14,15 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Members from './members/Members';
 import Settings from './settings/settings';
+import ModalVoting from './modal-voting/modal-voting';
 
 const Lobby = () => {
   const socket = useContext(SocketContext);
   const { firstName, lastName } = useContext(MainContext);
   const history = useHistory();
-  const [modalKick, setModalKick] = useState(false);
   const [modalCreateIssue, setModalCreateIssue] = useState(false);
-  const { players, dealer, setPlayers, setDealer } = useContext(UsersContext);
+  const { players, dealer, isDealer, setPlayers, setDealer, setIsDealer } =
+    useContext(UsersContext);
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
 
@@ -44,10 +45,22 @@ const Lobby = () => {
     socket.on('message', (msg) => {
       setMessages((messages) => [...messages, msg]);
     });
+    socket.on('votingPopup', (player, initiator) => {
+      toast(<ModalVoting player={player} initiator={initiator} />, {
+        position: 'top-center',
+        autoClose: false,
+        closeOnClick: false,
+      });
+    });
     socket.on('notification', (message) => {
       notify(message);
     });
   }, [socket]);
+
+  const checkUser = () => {
+    socket.id === dealer.lobbyID ? setIsDealer(true) : setIsDealer(false);
+  };
+  checkUser();
 
   const handleExit = () => {
     setDealer({});
@@ -76,11 +89,11 @@ const Lobby = () => {
     <main>
       <div className="wrapper">
         <GameInfo />
-        <Members setActive={setModalKick} />
+        <Members />
         <IssuesList setActive={setModalCreateIssue} />
         <Settings />
         <Card card={cardInfo} />
-        <ModalKickPlayer active={modalKick} setActive={setModalKick} />
+        <ModalKickPlayer />
         <ModalCreateIssue active={modalCreateIssue} />
       </div>
       <ToastContainer />
