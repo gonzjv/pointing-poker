@@ -25,6 +25,7 @@ const Chat = ({ messages }) => {
     e.preventDefault();
     socket.emit('sendMessage', message);
     setMessage('');
+    disabledSendButton('');
   };
 
   const clickCtrlAndEnter = (e) => {
@@ -66,7 +67,7 @@ const Chat = ({ messages }) => {
           onChange={changeMessage}
           onKeyDown={clickCtrlAndEnter}
         />
-        <button className="chat__send" disabled onClick={handleSendMessage}>
+        <button className="chat__send" disabled>
           <img src="./icon/send_message.svg" />
         </button>
       </form>
