@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { IssueItem } from './issue-item/issue-item';
 import './issues.css';
 
@@ -7,14 +8,16 @@ const issueExample = {
 };
 
 export default function IssuesList({ setActive, mode }) {
+  const [currentIssue, setCurrentIssue] = useState(true);
+
   return (
     <div className="issues">
       <h2 className="lobby__subtitle issues__title">Issues:</h2>
       <div className= {mode === true ? "column__list" : "issues__list" }>
-        <IssueItem issue={issueExample} gameMode={mode}/>
-        <IssueItem issue={issueExample} gameMode={mode}/>
-        <IssueItem issue={issueExample} gameMode={mode}/>
-        <IssueItem issue={issueExample} gameMode={mode}/>
+        <IssueItem issue={issueExample} gameMode={mode} current={currentIssue}/>
+        <IssueItem issue={issueExample} gameMode={mode} current={false}/>
+        <IssueItem issue={issueExample} gameMode={mode} current={false}/>
+        <IssueItem issue={issueExample} gameMode={mode} current={false}/>
         <button className="issue__create" onClick={() => setActive(true)}>
           <p className="issue__create__text">Create new Issue</p>
           <img className="issue__icon" src="./icon/add.svg" />

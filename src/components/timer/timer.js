@@ -1,37 +1,60 @@
+import React from "react";
 import "./timer.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Button from "../Button/Button";
 
-export default function Timer() {
-  const [minutes, setMinutes] = useState(2);
-  const [seconds, setSeconds] = useState(20);
+const padTime = time => {
+  return String(time).length === 1 ? `0${time}` : `${time}`;
+};
+
+const format = time => {
+  const minutes = Math.floor(time / 60);
+  const seconds = time % 60;
 
   return (
-    <div class="timer">
-      <div>
-        <label for="minutes" className="timer__text">
-          minutes
-        </label>
-        <input
-          type="text"
-          name="minutes"
-          value={minutes}
-          onChange={(event) => setMinutes(event.target.value)}
-          className="timer__input"
-        />
+    <React.Fragment>
+      <div class="timer">
+        <div className="timer__text timer__input">
+          {minutes}
+        </div>
+        <p className="timer__doubledots">:</p>
+        <div className="timer__text timer__input">
+          {padTime(seconds)}
+        </div>
       </div>
-      <p className="timer__doubledots">:</p>
-      <div>
-        <label for="seconds" className="timer__text">
-          seconds
-        </label>
-        <input
-          type="text"
-          name="seconds"
-          value={seconds}
-          onChange={(event) => setSeconds(event.target.value)}
-          className="timer__input"
-        />
-      </div>
+    </React.Fragment>
+  )
+};
+
+export const Timer = () => {
+  const [counter, setCounter] = useState(120);
+  const [timerActive, setTimerActive] = useState(false);
+
+  const startRound = () => {
+    setTimerActive(!timerActive)
+  }
+
+  React.useEffect(() => {
+    let timer;
+    if (counter > 0 && timerActive) {
+      timer = setTimeout(() => setCounter(c => c - 1), 1000);
+    } else {
+      setTimerActive(false);
+    }
+    return () => {
+      if (timer) {
+        clearTimeout(timer);
+      }
+    };
+  }, [counter, timerActive]);
+
+  return (
+    <div >
+      {counter === 0 ?
+        <Button value="Reset Round" onCustomClick={setCounter(120)} onCustomClick={startRound} isWhite={false} /> :
+        <div> {format(counter)}
+          <Button value={timerActive ? "Stop" : "Run Round"} onCustomClick={startRound} isWhite={false} />
+        </div>}
     </div>
   );
 }

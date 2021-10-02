@@ -1,6 +1,9 @@
 import "./card.css";
 
-export default function Card(props) {
+export const Card = (props) => {
+  const cardValue = [
+    0, 1, 13, 21, 34, 55, 89, 144
+  ]
   return (
     <div className="card">
       <p className="card__type">{props.card.type}</p>

@@ -14,7 +14,7 @@ import Members from '../../components/Lobby/members/Members';
 import IssuesList from '../../components/Lobby/issues/issues';
 import Settings from '../../components/Lobby/settings/settings';
 import { Score } from '../../components/Score/Score';
-import Timer from '../../components/timer/timer';
+import {Timer} from '../../components/timer/timer';
 import Button from '../../components/Button/Button';
 
 
