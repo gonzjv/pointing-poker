@@ -4,7 +4,7 @@ import { MainContext } from '../../mainContext';
 import { SocketContext } from '../../socketContext';
 import { UsersContext } from '../../usersContext';
 
-import { Card } from '../card/Сard';
+// import { Card } from '../Сard/Сard';
 import ModalCreateIssue from '../ModalCreateIssue/Modal-create-issue';
 import ModalKickPlayer from '../ModalKickPlayer/Modal-kick-player';
 import GameInfo from './game-info/game-info';
@@ -15,9 +15,10 @@ import 'react-toastify/dist/ReactToastify.css';
 import Members from './members/Members';
 import Settings from './settings/settings';
 import { Score } from '../Score/Score';
-import {Timer} from '../timer/timer';
+import { Timer } from '../timer/timer';
 import Button from '../Button/Button';
 import { Statistics } from '../Statistics/Statistics';
+import { Cards } from '../Card/Сards';
 
 const Lobby = () => {
   const socket = useContext(SocketContext);
@@ -72,45 +73,43 @@ const Lobby = () => {
   };
 
   const cardInfo = {
-    value: '5',
     type: 'SP',
   };
 
   const [gameMode, setGameMode] = useState(true);
 
   return (
-    <main  className="wrapper">
+    <main className="wrapper">
       <div className="game-page-test">
-      <ToastContainer />
-      <div className="game-page-wrapper">
-        <div className="game-page" >
-          <GameInfo mode={gameMode} />
-      <div className="game-page-context">
-         <IssuesList setActive={setModalCreateIssue} mode={gameMode} />
-         <div className="game-page-timer">
-         <Timer />      
-         {/* <Button value="Run Round" onCustomClick={() => {}} isWhite={false} /> */}
-         </div>
-           <Statistics cardInfo={cardInfo}/>
-           
+        <ToastContainer />
+        <div className="game-page-wrapper">
+          <div className="game-page" >
+            <GameInfo mode={gameMode} />
+            <div className="game-page-context">
+              <IssuesList setActive={setModalCreateIssue} mode={gameMode} />
+              <div className="game-page-timer">
+                <Timer />
+                {/* <Button value="Run Round" onCustomClick={() => {}} isWhite={false} /> */}
+              </div>
+            </div>
+            <Statistics cardInfo={cardInfo} />
           </div>
+          <aside className="game-page-aside">
+
+            <Score />
+            <Members setActive={setModalKick} mode={gameMode} />
+
+          </aside>
         </div>
-        <aside className="game-page-aside">
-
-          <Score />
-          <Members  setActive={setModalKick}  mode={gameMode} />
-
-        </aside>
-      </div>
       </div>
 
 
       <div className="wrapper">
-        <GameInfo mode={false}/>
+        <GameInfo mode={false} />
         <Members setActive={setModalKick} mode={false} />
         <IssuesList setActive={setModalCreateIssue} mode={false} />
         <Settings />
-        <Card card={cardInfo} />
+        <Cards card={cardInfo} />
         <ModalKickPlayer active={modalKick} setActive={setModalKick} />
         <ModalCreateIssue active={modalCreateIssue} />
       </div>

@@ -1,13 +1,12 @@
 import React from 'react';
-import { Card } from '../card/Сard';
+import { Cards } from '../Card/Сards';
 import './statistics.css';
 
-export const Statistics = ({cardInfo}) => {
+export const Statistics = ({ cardInfo }) => {
   return (
     <div className="statistics">
-    <Card card={cardInfo} />
-    <Card card={cardInfo} />
-    <Card card={cardInfo} />
+      <h2>Statistics:</h2>
+      <Cards card={cardInfo} />
     </div>
   );
 }

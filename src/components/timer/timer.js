@@ -13,7 +13,7 @@ const format = time => {
 
   return (
     <React.Fragment>
-      <div class="timer">
+      <div className="timer">
         <div className="timer__text timer__input">
           {minutes}
         </div>
@@ -31,7 +31,8 @@ export const Timer = () => {
   const [timerActive, setTimerActive] = useState(false);
 
   const startRound = () => {
-    setTimerActive(!timerActive)
+    setCounter(120)
+    setTimerActive(true)
   }
 
   React.useEffect(() => {
@@ -51,10 +52,15 @@ export const Timer = () => {
   return (
     <div >
       {counter === 0 ?
-        <Button value="Reset Round" onCustomClick={setCounter(120)} onCustomClick={startRound} isWhite={false} /> :
-        <div> {format(counter)}
-          <Button value={timerActive ? "Stop" : "Run Round"} onCustomClick={startRound} isWhite={false} />
-        </div>}
+        <div >
+          {format(counter)}
+          <Button value="Reset Round" onCustomClick={startRound} isWhite={false} />
+        </div> :
+        <div>  
+          {format(counter)}
+          <Button value={timerActive ? "Reset Round" : "Run Round"} onCustomClick={startRound} isWhite={false} />
+        </div>
+      }
     </div>
   );
 }
