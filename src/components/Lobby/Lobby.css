@@ -14,11 +14,3 @@ main {
 
 }
 
-.game-page-test {
-  background-color: rgb(255, 198, 181);
-  width: 100%;
-}
-
-.game-page-context {
-  display: flex;
-}
