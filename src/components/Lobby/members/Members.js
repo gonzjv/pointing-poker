@@ -14,9 +14,7 @@ const Members = ({ setActive, mode}) => {
     <div className="members">
       <h2 className="lobby__subtitle members__title">members:</h2>
       <div className= {mode === true ? "column__list" : "members__list" }>
-        {mode === true ?
-        <MemberCard member={test} setActive={setActive} />
-      :
+       {
        players.map((player) => {
           return <MemberCard member={player} setActive={setActive} />;
         })
