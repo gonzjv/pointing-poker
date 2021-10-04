@@ -1,10 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { MainContext } from '../../mainContext';
 import { SocketContext } from '../../socketContext';
 import { UsersContext } from '../../usersContext';
-
-import Card from '../card/card';
 import ModalCreateIssue from '../ModalCreateIssue/Modal-create-issue';
 import ModalKickPlayer from '../ModalKickPlayer/Modal-kick-player';
 import GameInfo from './game-info/game-info';
@@ -14,6 +12,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Members from './members/Members';
 import Settings from './settings/settings';
+import { Cards } from '../Card/Сards';
+import Button from '../Button/Button';
 
 const Lobby = () => {
   const socket = useContext(SocketContext);
@@ -68,18 +68,22 @@ const Lobby = () => {
   };
 
   const cardInfo = {
-    value: '5',
     type: 'SP',
   };
 
+  const [gameMode, setGameMode] = useState(true);
+
   return (
-    <main>
+    <main >
       <div className="wrapper">
-        <GameInfo />
-        <Members setActive={setModalKick} />
-        <IssuesList setActive={setModalCreateIssue} />
+        <Link to="/game">
+          <Button value="Go to game" onCustomClick={() => {} } /> 
+        </Link>
+        <GameInfo mode={false} />
+        <Members setActive={setModalKick} mode={false} />
+        <IssuesList setActive={setModalCreateIssue} mode={false} />
         <Settings />
-        <Card card={cardInfo} />
+        <Cards card={cardInfo} />
         <ModalKickPlayer active={modalKick} setActive={setModalKick} />
         <ModalCreateIssue active={modalCreateIssue} />
       </div>

@@ -1,0 +1,57 @@
+
+.game-img {
+  position: relative;
+  left: 30%;
+  max-width: 550px;
+}
+
+.game-img-title {
+  font-size: 70px;
+  font-weight: bold;
+}
+
+.game-img-title-line {
+  width: 350px;
+  border: 5px solid #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  transform: rotate(164.77deg);
+  position: absolute;
+  top: 66%;
+  left: 33%;
+}
+
+.title-word-left,
+.title-word-right {
+  position: absolute;
+  display: inline-block;
+}
+
+.title-word-left {
+  left: 26%;
+  top: 17%;
+}
+
+.title-word-right {
+  top: 72%;
+  left: 52%;
+}
+
+@media (max-width: 825px) {
+  .game-img {
+    left: 5%;
+  }
+
+  .game-img-title {
+    font-size: 50px;
+  }
+
+  .game-img-title-line {
+    width: 250px;
+    top: 40%;
+    left: 30%;
+  }
+
+  .title-word-right  {
+    left: 50%;
+  }
+} 

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Timer from '../../timer/timer';
+import {Timer} from '../../timer/timer';
 import './settings.css';
 import Switch from './switch/switch';
 

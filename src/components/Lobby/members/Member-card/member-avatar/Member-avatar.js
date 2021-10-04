@@ -3,6 +3,7 @@ import './Member-avatar.css';
 export default function MemberAvatar({ player }) {
   const createPlaerIcon = () => {
     let abbreviation = '';
+    
     if (player.firstName.length > 0) {
       abbreviation += player.firstName[0].toUpperCase();
     } else {

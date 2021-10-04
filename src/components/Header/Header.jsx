@@ -1,10 +1,10 @@
 import React from 'react';
 import './header.css';
 
-function Header() {
+export const Header = () => {
   return (
     <header className="header">
-      <div className="header-wrapper">
+      <div className="wrapper">
         <div className="logo-wrapper">
           <div className="logo" />
           <div className="logo-letter">
