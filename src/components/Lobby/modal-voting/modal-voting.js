@@ -6,6 +6,7 @@ import './modal-voting.css';
 const ModalVoting = ({ player, initiator }) => {
   const socket = useContext(SocketContext);
   const [voteCount, setVoteCount] = useState(0);
+  const [buttonEnable, setButtonEnable] = useState(true);
 
   useEffect(() => {
     socket.on('voteCount', (voting) => {
@@ -14,6 +15,7 @@ const ModalVoting = ({ player, initiator }) => {
   }, [socket]);
 
   const handleClick = () => {
+    setButtonEnable(false);
     socket.emit('vote', initiator.id, player);
   };
   return (
@@ -25,8 +27,9 @@ const ModalVoting = ({ player, initiator }) => {
         onClick={() => {
           handleClick();
         }}
+        disabled={!buttonEnable}
       >
-        Yes, this is necessary for all of us
+        Yes !!!
       </button>
       <button onClick={() => {}}>
         No, no, no David Blane! Put my feet in my mouth!

@@ -31,6 +31,7 @@ const Lobby = () => {
       position: 'top-center',
     });
   };
+  const toastVoting = React.useRef(null);
 
   useEffect(() => {
     socket.on('players', (players) => {
@@ -46,14 +47,20 @@ const Lobby = () => {
       setMessages((messages) => [...messages, msg]);
     });
     socket.on('votingPopup', (player, initiator) => {
-      toast(<ModalVoting player={player} initiator={initiator} />, {
-        position: 'top-center',
-        autoClose: false,
-        closeOnClick: false,
-      });
+      toastVoting.current = toast(
+        <ModalVoting player={player} initiator={initiator} />,
+        {
+          position: 'top-center',
+          autoClose: false,
+          closeOnClick: false,
+        },
+      );
     });
     socket.on('notification', (message) => {
       notify(message);
+    });
+    socket.on('closeVoting', () => {
+      toast.dismiss(toastVoting.current);
     });
   }, [socket]);
 
