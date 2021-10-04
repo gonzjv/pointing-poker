@@ -15,6 +15,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Members from './members/Members';
 import Settings from './settings/settings';
 import Chat from '../chat/chat';
+import CardsBlock from './cards-block/cards-block';
 
 const Lobby = () => {
   const socket = useContext(SocketContext);
@@ -61,11 +62,6 @@ const Lobby = () => {
     socket.emit('deletePlayer', id, dealer.lobbyID);
   };
 
-  const cardInfo = {
-    value: '5',
-    type: 'SP',
-  };
-
   return (
     <main>
       <div className="wrapper">
@@ -73,7 +69,7 @@ const Lobby = () => {
         <Members setActive={setModalKick} />
         <IssuesList setActive={setModalCreateIssue} />
         <Settings />
-        <Card card={cardInfo} />
+        <CardsBlock />
         <ModalKickPlayer active={modalKick} setActive={setModalKick} />
         <ModalCreateIssue active={modalCreateIssue} />
         <Chat messages={messages} />
