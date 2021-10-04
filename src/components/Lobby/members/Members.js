@@ -5,10 +5,6 @@ import { UsersContext } from '../../../usersContext';
 
 const Members = ({ setActive, mode}) => {
   const { players } = useContext(UsersContext);
-  const test = {
-    firstName: 'one',
-    lastName: 'two',
-  }
 
   return (
     <div className="members">

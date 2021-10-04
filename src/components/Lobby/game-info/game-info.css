@@ -7,17 +7,6 @@
   padding: 20px 0;
 }
 
-
-/* .game-info {
-  position: relative;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, 1fr);;
-}
-.game-info__title {
-  grid-column: 1/4;
-} */
-
 .link__text {
   border: 1px solid #eeeeee;
   box-sizing: border-box;

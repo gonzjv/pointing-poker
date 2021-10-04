@@ -81,7 +81,7 @@ const GameInfo = ({mode}) => {
           </div>
           <Button value="Start Game" onCustomClick={undefined} />
           <Button value="Cancel game" onCustomClick={closeGame} isWhite={true} />
-          <ToastContainer />
+
         </div>) : 
         <Button value="Stop Game" isWhite={true}  onCustomClick={undefined} /> }
     </div>)
