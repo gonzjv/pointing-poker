@@ -8,6 +8,7 @@ const MainProvider = ({ children }) => {
   const [jobPosition, setJobPosition] = useState('');
   const [lobbyID, setLobbyID] = useState('');
   const [modalKick, setModalKick] = useState(false);
+  const [isGameRun, setIsGameRun] = useState(false);
 
   return (
     <MainContext.Provider
@@ -17,11 +18,13 @@ const MainProvider = ({ children }) => {
         jobPosition,
         lobbyID,
         modalKick,
+        isGameRun,
         setFirstName,
         setLastName,
         setJobPosition,
         setLobbyID,
         setModalKick,
+        setIsGameRun,
       }}
     >
       {children}

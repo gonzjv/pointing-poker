@@ -39,6 +39,9 @@ const Lobby = () => {
     socket.on('kickFromLobby', () => {
       history.push('/');
     });
+    socket.on('dealerStartGame', () => {
+      history.push('/game');
+    });
   });
 
   useEffect(() => {
