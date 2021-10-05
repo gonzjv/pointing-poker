@@ -12,16 +12,16 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Members from './members/Members';
 import Settings from './settings/settings';
+import ModalVoting from './modal-voting/modal-voting';
 import { Cards } from '../Card/Сards';
-import Button from '../Button/Button';
 
 const Lobby = () => {
   const socket = useContext(SocketContext);
   const { firstName, lastName } = useContext(MainContext);
   const history = useHistory();
-  const [modalKick, setModalKick] = useState(false);
   const [modalCreateIssue, setModalCreateIssue] = useState(false);
-  const { players, dealer, setPlayers, setDealer } = useContext(UsersContext);
+  const { players, dealer, isDealer, setPlayers, setDealer, setIsDealer } =
+    useContext(UsersContext);
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
 
@@ -30,6 +30,7 @@ const Lobby = () => {
       position: 'top-center',
     });
   };
+  const toastVoting = React.useRef(null);
 
   useEffect(() => {
     socket.on('players', (players) => {
@@ -38,16 +39,37 @@ const Lobby = () => {
     socket.on('kickFromLobby', () => {
       history.push('/');
     });
+    socket.on('dealerStartGame', () => {
+      history.push('/game');
+    });
   });
 
   useEffect(() => {
     socket.on('message', (msg) => {
       setMessages((messages) => [...messages, msg]);
     });
+    socket.on('votingPopup', (player, initiator) => {
+      toastVoting.current = toast(
+        <ModalVoting player={player} initiator={initiator} />,
+        {
+          position: 'top-center',
+          autoClose: false,
+          closeOnClick: false,
+        },
+      );
+    });
     socket.on('notification', (message) => {
       notify(message);
     });
+    socket.on('closeVoting', () => {
+      toast.dismiss(toastVoting.current);
+    });
   }, [socket]);
+
+  const checkUser = () => {
+    socket.id === dealer.lobbyID ? setIsDealer(true) : setIsDealer(false);
+  };
+  checkUser();
 
   const handleExit = () => {
     setDealer({});
@@ -74,17 +96,14 @@ const Lobby = () => {
   const [gameMode, setGameMode] = useState(true);
 
   return (
-    <main >
+    <main>
       <div className="wrapper">
-        <Link to="/game">
-          <Button value="Go to game" onCustomClick={() => {} } /> 
-        </Link>
-        <GameInfo mode={false} />
-        <Members setActive={setModalKick} mode={false} />
-        <IssuesList setActive={setModalCreateIssue} mode={false} />
+        <GameInfo />
+        <Members />
+        <IssuesList setActive={setModalCreateIssue} />
         <Settings />
         <Cards card={cardInfo} />
-        <ModalKickPlayer active={modalKick} setActive={setModalKick} />
+        <ModalKickPlayer />
         <ModalCreateIssue active={modalCreateIssue} />
       </div>
       <ToastContainer />

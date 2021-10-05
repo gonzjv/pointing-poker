@@ -1,13 +1,13 @@
 import ButtonKick from './button-Kick/Button-kick';
 import MemberAvatar from './member-avatar/Member-avatar';
 import './Member-card.css';
+import React, { useContext } from 'react';
+import { UsersContext } from '../../../../usersContext';
+import { SocketContext } from '../../../../socketContext';
 
-const MemberCard = ({ member, setActive, isPossibilityKick = true }) => {
-  const checkYourself = () => {
-    return member.isYou ? <span className="yourself__marker">it's you</span> : '';
-  };
-  const checkPossibilityKick = () =>
-    isPossibilityKick ? <ButtonKick setActive={setActive} member={member} /> : '';
+const MemberCard = ({ member }) => {
+  const { dealer } = useContext(UsersContext);
+  const socket = useContext(SocketContext);
 
   return (
     <div className="member__card">
@@ -18,7 +18,13 @@ const MemberCard = ({ member, setActive, isPossibilityKick = true }) => {
           <span className="member__position">{member.jobPosition}</span>
         </p>
       </div>
-      {checkPossibilityKick()}
+      {member.id == dealer.id ? (
+        <p>"Tsss 🤫...he is a powder dealer"</p>
+      ) : member.id == socket.id ? (
+        <p>🐒</p>
+      ) : (
+        <ButtonKick playerToKick={member} />
+      )}
     </div>
   );
 };
