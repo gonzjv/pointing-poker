@@ -1,10 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { MainContext } from '../../mainContext';
 import { SocketContext } from '../../socketContext';
 import { UsersContext } from '../../usersContext';
-
-import Card from '../card/card';
 import ModalCreateIssue from '../ModalCreateIssue/Modal-create-issue';
 import ModalKickPlayer from '../ModalKickPlayer/Modal-kick-player';
 import GameInfo from './game-info/game-info';
@@ -15,6 +13,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Members from './members/Members';
 import Settings from './settings/settings';
 import ModalVoting from './modal-voting/modal-voting';
+import { Cards } from '../Card/Сards';
 
 const Lobby = () => {
   const socket = useContext(SocketContext);
@@ -88,9 +87,10 @@ const Lobby = () => {
   };
 
   const cardInfo = {
-    value: '5',
     type: 'SP',
   };
+
+  const [gameMode, setGameMode] = useState(true);
 
   return (
     <main>
@@ -99,7 +99,7 @@ const Lobby = () => {
         <Members />
         <IssuesList setActive={setModalCreateIssue} />
         <Settings />
-        <Card card={cardInfo} />
+        <Cards card={cardInfo} />
         <ModalKickPlayer />
         <ModalCreateIssue active={modalCreateIssue} />
       </div>

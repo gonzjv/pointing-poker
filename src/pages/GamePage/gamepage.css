@@ -1,0 +1,33 @@
+.game-page-wrapper {
+  display: flex;
+  width: 100%;
+  padding-top: 17px;
+}
+
+.game-page {
+  width: 60%;
+  position: relative;
+}
+
+.game-page-aside {
+  width: 40%;
+  display: flex;
+}
+
+.game-page::after {
+  content: "";
+  position: absolute;
+  width: 2px;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  top: 0;
+  right: 0;
+}
+
+.game-page-test {
+  width: 100%;
+}
+
+.game-page-context {
+  display: flex;
+}

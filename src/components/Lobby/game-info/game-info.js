@@ -1,13 +1,13 @@
 import Button from '../../Button/Button';
 import MemberCard from '../members/Member-card/Member-card';
 import './game-info.css';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { UsersContext } from '../../../usersContext';
 
-const GameInfo = () => {
+const GameInfo = ({ mode }) => {
   const history = useHistory();
   const { dealer, setDealer } = useContext(UsersContext);
 
@@ -59,7 +59,7 @@ const GameInfo = () => {
       </p>
       <div className="scram-master">
         <p>Scram master: </p>
-        <MemberCard member={dealer} isPossibilityKick={false} />
+        <MemberCard member={dealer} />
       </div>
       <div className="link">
         <p>Lobby ID:</p>
@@ -70,12 +70,14 @@ const GameInfo = () => {
             value={dealer.lobbyID}
             readonly
           />
-
           <Button value="Copy" onCustomClick={copyID} />
         </div>
       </div>
-      <Button value="Start Game" />
+      <Link to="/game">
+        <Button value="Start game" onCustomClick={() => {}} />
+      </Link>
       <Button value="Cancel game" onCustomClick={closeGame} isWhite={true} />
+      <Button value="Stop Game" isWhite={true} onCustomClick={undefined} />
     </div>
   );
 };
