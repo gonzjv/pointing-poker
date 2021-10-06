@@ -2,13 +2,13 @@
   display: flex;
   flex-direction: column;
   gap: 15px;
-  flex-wrap: wrap;
-  justify-content: start;
 }
 
 .cards__block {
   display: flex;
   gap: 15px;
+  flex-wrap: wrap;
+  justify-content: start;
 }
 
 .add__card {
