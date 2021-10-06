@@ -14,6 +14,7 @@ export const Cards = (props) => {
 
 
   return (
+    
     <div className="cards__items">
       {cardValues.map( (value) => {
         return <CardItem value={value} type={cardType} />
