@@ -12,6 +12,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: transform 1s;
+  transform-style: preserve-3d;
 }
 
 .card__value {
@@ -76,4 +78,33 @@
 
 .card__input-hidden {
   display: none;
+}
+
+
+.scene {
+  width: 150px;
+  height: 220px;
+  perspective: 600px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.card__face {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  backface-visibility: hidden;
+}
+
+.card__face--back {
+  background: #b6eee2;
+}
+
+.card__face--front {
+  background: #cccccc;
+  transform: rotateY( 180deg );
+}
+
+.card.is-flipped {
+  transform: rotateY(180deg);
 }

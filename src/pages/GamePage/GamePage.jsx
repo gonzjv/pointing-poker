@@ -10,13 +10,12 @@ import IssuesList from '../../components/Lobby/issues/issues';
 import { Score } from '../../components/Score/Score';
 import { Timer } from '../../components/timer/timer';
 import { Statistics } from '../../components/Statistics/Statistics';
+import CardsBlock from '../../components/Lobby/cards-block/cards-block';
 
-export const GamePage = () => {
+export const GamePage = ({isDealer}) => {
   const [modalKick, setModalKick] = useState(false);
   const [modalCreateIssue, setModalCreateIssue] = useState(false);
-  const cardInfo = {
-    type: 'SP',
-  };
+
 
   return (
     <div className="game-page-test">
@@ -30,7 +29,9 @@ export const GamePage = () => {
               <Timer />
             </div>
           </div>
-          <Statistics cardInfo={cardInfo} />
+          { isDealer ? <CardsBlock statistics={false}/> 
+           : <Statistics />}
+           <CardsBlock statistics={false}/> 
         </div>
         <aside className="game-page-aside">
           <Score />

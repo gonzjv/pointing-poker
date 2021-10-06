@@ -13,7 +13,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Members from './members/Members';
 import Settings from './settings/settings';
 import ModalVoting from './modal-voting/modal-voting';
-import { Cards } from '../Card/Сards';
+import CardsBlock from './cards-block/cards-block';
 
 const Lobby = () => {
   const socket = useContext(SocketContext);
@@ -89,9 +89,6 @@ const Lobby = () => {
     socket.emit('deletePlayer', id, dealer.lobbyID);
   };
 
-  const cardInfo = {
-    type: 'SP',
-  };
 
   const [gameMode, setGameMode] = useState(true);
 
@@ -102,7 +99,7 @@ const Lobby = () => {
         <Members />
         <IssuesList setActive={setModalCreateIssue} />
         <Settings />
-        <Cards card={cardInfo} />
+        <CardsBlock />
         <ModalKickPlayer />
         <ModalCreateIssue active={modalCreateIssue} />
       </div>
