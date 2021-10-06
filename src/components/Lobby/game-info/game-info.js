@@ -13,9 +13,9 @@ import fileDownload from 'js-file-download';
 
 const GameInfo = ({ mode }) => {
   const history = useHistory();
-  const { dealer, setDealer } = useContext(UsersContext);
+  const { dealer, setDealer, players } = useContext(UsersContext);
   const socket = useContext(SocketContext);
-  const { isGameRun } = useContext(MainContext);
+  const { isGameRun, issues } = useContext(MainContext);
 
   const notify = (message) => {
     toast(message, {
@@ -27,7 +27,6 @@ const GameInfo = ({ mode }) => {
     setDealer({});
     history.push('/');
   };
-
 
   const startGame = () => {
     socket.emit('startGame', dealer.lobbyID);
@@ -60,7 +59,11 @@ const GameInfo = ({ mode }) => {
     document.addEventListener('keypress', saveNameGame);
   };
 
-  const output = JSON.stringify({ dealer: dealer }, null, 4);
+  const output = JSON.stringify(
+    { dealer: dealer, players: players, issues: issues, results: [] },
+    null,
+    4,
+  );
   const download = () => {
     fileDownload(output, 'dealer.json');
   };
