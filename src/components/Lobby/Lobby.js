@@ -17,13 +17,10 @@ import Chat from '../chat/chat';
 import CardsBlock from './cards-block/cards-block';
 import ModalVoting from './modal-voting/modal-voting';
 
-
 const Lobby = () => {
   const socket = useContext(SocketContext);
-  const { firstName, lastName } = useContext(MainContext);
+  const { firstName, lastName, setIsGameRun } = useContext(MainContext);
   const history = useHistory();
-  const [modalKick, setModalKick] = useState(false);
-  const [modalCreateIssue, setModalCreateIssue] = useState(false);
   const { players, dealer, isDealer, setPlayers, setDealer, setIsDealer } =
     useContext(UsersContext);
   const [message, setMessage] = useState('');
@@ -44,6 +41,7 @@ const Lobby = () => {
       history.push('/');
     });
     socket.on('dealerStartGame', () => {
+      setIsGameRun(true);
       history.push('/game');
     });
   });
@@ -71,6 +69,7 @@ const Lobby = () => {
   }, [socket]);
 
   const checkUser = () => {
+    console.log('dealer', dealer);
     socket.id === dealer.lobbyID ? setIsDealer(true) : setIsDealer(false);
   };
   checkUser();
@@ -87,21 +86,17 @@ const Lobby = () => {
     socket.emit('deletePlayer', id, dealer.lobbyID);
   };
 
-
-
-  const [gameMode, setGameMode] = useState(true);
-
   return (
     <main>
       <div className="wrapper">
         <GameInfo />
 
         <Members />
-        <IssuesList setActive={setModalCreateIssue} />
+        <IssuesList />
         <Settings />
         <CardsBlock />
         <ModalKickPlayer />
-        <ModalCreateIssue active={modalCreateIssue} />
+        <ModalCreateIssue />
         <Chat messages={messages} />
       </div>
       <ToastContainer />
