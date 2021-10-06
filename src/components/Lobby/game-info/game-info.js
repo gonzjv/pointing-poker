@@ -8,6 +8,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { UsersContext } from '../../../usersContext';
 import { SocketContext } from '../../../socketContext';
 import { MainContext } from '../../../mainContext';
+import fileDownload from 'js-file-download';
 
 const GameInfo = ({ mode }) => {
   const history = useHistory();
@@ -57,6 +58,10 @@ const GameInfo = ({ mode }) => {
     document.addEventListener('keypress', saveNameGame);
   };
 
+  const output = JSON.stringify({ dealer: dealer }, null, 4);
+  const download = () => {
+    fileDownload(output, 'dealer.json');
+  };
   return (
     <div className="game-info">
       <p className="lobby__subtitle game-info__title" id="game__name">
@@ -98,7 +103,17 @@ const GameInfo = ({ mode }) => {
           />
         </>
       ) : (
-        <Button value="Stop Game" isWhite={true} onCustomClick={undefined} />
+        <div>
+          <Button value="Stop Game" isWhite={true} onCustomClick={undefined} />
+          <div>
+            <Button
+              value="Download result"
+              onCustomClick={() => {
+                download();
+              }}
+            />
+          </div>
+        </div>
       )}
     </div>
   );
