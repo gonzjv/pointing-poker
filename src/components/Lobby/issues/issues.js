@@ -1,3 +1,4 @@
+
 import React, { useContext, useState } from 'react';
 import { IssueItem } from './issue-item/issue-item';
 import './issues.css';
@@ -9,6 +10,7 @@ const issueExample = {
 };
 
 export default function IssuesList({ setActive }) {
+
   const [currentIssue, setCurrentIssue] = useState(true);
   const { isGameRun } = useContext(MainContext);
 

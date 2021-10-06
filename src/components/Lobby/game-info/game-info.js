@@ -1,6 +1,7 @@
 import Button from '../../Button/Button';
 import MemberCard from '../members/Member-card/Member-card';
 import './game-info.css';
+
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useContext } from 'react';
@@ -25,6 +26,7 @@ const GameInfo = ({ mode }) => {
     setDealer({});
     history.push('/');
   };
+
 
   const startGame = () => {
     setIsGameRun(true);
@@ -68,6 +70,7 @@ const GameInfo = ({ mode }) => {
       </p>
       <div className="scram-master">
         <p>Scram master: </p>
+
         <MemberCard member={dealer} />
       </div>
       {!isGameRun ? (
@@ -101,7 +104,6 @@ const GameInfo = ({ mode }) => {
       ) : (
         <Button value="Stop Game" isWhite={true} onCustomClick={undefined} />
       )}
-      )
     </div>
   );
 };
