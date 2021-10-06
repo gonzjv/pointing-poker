@@ -17,9 +17,8 @@ import { Cards } from '../Card/Сards';
 
 const Lobby = () => {
   const socket = useContext(SocketContext);
-  const { firstName, lastName } = useContext(MainContext);
+  const { firstName, lastName, setIsGameRun } = useContext(MainContext);
   const history = useHistory();
-  const [modalCreateIssue, setModalCreateIssue] = useState(false);
   const { players, dealer, isDealer, setPlayers, setDealer, setIsDealer } =
     useContext(UsersContext);
   const [message, setMessage] = useState('');
@@ -40,6 +39,7 @@ const Lobby = () => {
       history.push('/');
     });
     socket.on('dealerStartGame', () => {
+      setIsGameRun(true);
       history.push('/game');
     });
   });
@@ -67,6 +67,7 @@ const Lobby = () => {
   }, [socket]);
 
   const checkUser = () => {
+    console.log('dealer', dealer);
     socket.id === dealer.lobbyID ? setIsDealer(true) : setIsDealer(false);
   };
   checkUser();
@@ -93,18 +94,16 @@ const Lobby = () => {
     type: 'SP',
   };
 
-  const [gameMode, setGameMode] = useState(true);
-
   return (
     <main>
       <div className="wrapper">
         <GameInfo />
         <Members />
-        <IssuesList setActive={setModalCreateIssue} />
+        <IssuesList />
         <Settings />
         <Cards card={cardInfo} />
         <ModalKickPlayer />
-        <ModalCreateIssue active={modalCreateIssue} />
+        <ModalCreateIssue />
       </div>
       <ToastContainer />
       <section className="status">

@@ -13,7 +13,7 @@ const GameInfo = ({ mode }) => {
   const history = useHistory();
   const { dealer, setDealer } = useContext(UsersContext);
   const socket = useContext(SocketContext);
-  const { isGameRun, setIsGameRun } = useContext(MainContext);
+  const { isGameRun } = useContext(MainContext);
 
   const notify = (message) => {
     toast(message, {
@@ -27,7 +27,6 @@ const GameInfo = ({ mode }) => {
   };
 
   const startGame = () => {
-    setIsGameRun(true);
     socket.emit('startGame', dealer.lobbyID);
   };
 
@@ -101,7 +100,6 @@ const GameInfo = ({ mode }) => {
       ) : (
         <Button value="Stop Game" isWhite={true} onCustomClick={undefined} />
       )}
-      )
     </div>
   );
 };

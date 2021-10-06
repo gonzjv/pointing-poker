@@ -16,6 +16,7 @@ const FormStartGame = ({ setActive }) => {
     setFirstName,
     setLastName,
     setJobPosition,
+    setLobbyID,
   } = useContext(MainContext);
   const history = useHistory();
   const { setDealer } = useContext(UsersContext);
@@ -39,6 +40,7 @@ const FormStartGame = ({ setActive }) => {
   useEffect(() => {
     socket.on('dealer', (dealer) => {
       setDealer(dealer);
+      setLobbyID(dealer.lobbyID);
     });
   });
 
