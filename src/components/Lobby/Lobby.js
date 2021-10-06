@@ -1,10 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { MainContext } from '../../mainContext';
 import { SocketContext } from '../../socketContext';
 import { UsersContext } from '../../usersContext';
 
-import Card from '../card/card';
 import ModalCreateIssue from '../ModalCreateIssue/Modal-create-issue';
 import ModalKickPlayer from '../ModalKickPlayer/Modal-kick-player';
 import GameInfo from './game-info/game-info';
@@ -16,6 +15,8 @@ import Members from './members/Members';
 import Settings from './settings/settings';
 import Chat from '../chat/chat';
 import CardsBlock from './cards-block/cards-block';
+import ModalVoting from './modal-voting/modal-voting';
+
 
 const Lobby = () => {
   const socket = useContext(SocketContext);
@@ -23,7 +24,9 @@ const Lobby = () => {
   const history = useHistory();
   const [modalKick, setModalKick] = useState(false);
   const [modalCreateIssue, setModalCreateIssue] = useState(false);
-  const { players, dealer, setPlayers, setDealer } = useContext(UsersContext);
+  const { players, dealer, isDealer, setPlayers, setDealer, setIsDealer } =
+    useContext(UsersContext);
+  const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
 
   const notify = (message) => {
@@ -31,6 +34,7 @@ const Lobby = () => {
       position: 'top-center',
     });
   };
+  const toastVoting = React.useRef(null);
 
   useEffect(() => {
     socket.on('players', (players) => {
@@ -39,16 +43,37 @@ const Lobby = () => {
     socket.on('kickFromLobby', () => {
       history.push('/');
     });
+    socket.on('dealerStartGame', () => {
+      history.push('/game');
+    });
   });
 
   useEffect(() => {
     socket.on('message', (msg) => {
       setMessages((messages) => [...messages, msg]);
     });
+    socket.on('votingPopup', (player, initiator) => {
+      toastVoting.current = toast(
+        <ModalVoting player={player} initiator={initiator} />,
+        {
+          position: 'top-center',
+          autoClose: false,
+          closeOnClick: false,
+        },
+      );
+    });
     socket.on('notification', (message) => {
       notify(message);
     });
+    socket.on('closeVoting', () => {
+      toast.dismiss(toastVoting.current);
+    });
   }, [socket]);
+
+  const checkUser = () => {
+    socket.id === dealer.lobbyID ? setIsDealer(true) : setIsDealer(false);
+  };
+  checkUser();
 
   const handleExit = () => {
     setDealer({});
@@ -62,40 +87,24 @@ const Lobby = () => {
     socket.emit('deletePlayer', id, dealer.lobbyID);
   };
 
+
+
+  const [gameMode, setGameMode] = useState(true);
+
   return (
     <main>
       <div className="wrapper">
         <GameInfo />
-        <Members setActive={setModalKick} />
+
+        <Members />
         <IssuesList setActive={setModalCreateIssue} />
         <Settings />
         <CardsBlock />
-        <ModalKickPlayer active={modalKick} setActive={setModalKick} />
+        <ModalKickPlayer />
         <ModalCreateIssue active={modalCreateIssue} />
         <Chat messages={messages} />
       </div>
       <ToastContainer />
-      <section className="status">
-        <p>
-          Good day, {firstName} {lastName}! Now you are in the lobby with gameID:{' '}
-          {dealer.lobbyID}.
-        </p>
-        <p>Waiting for {dealer.firstName} to start the game</p>
-        <p>Game ID : {dealer.lobbyID}</p>
-        <p>Dealer : {dealer.firstName}</p>
-      </section>
-      <section className="players">
-        <p>Players: </p>
-        {players.map((player) => {
-          return (
-            <p>
-              {player.firstName} {player.lastName}
-              <button onClick={() => handleDelete(player.id)}>❌</button>
-            </p>
-          );
-        })}
-        <button onClick={handleExit}>Exit</button>
-      </section>
     </main>
   );
 };

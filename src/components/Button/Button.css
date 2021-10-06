@@ -3,12 +3,14 @@
   font-weight: bold;
   font-size: 24px;
   min-width: 186px;
-  padding: 8px auto;
+  padding: 7px 5px;
   color: #ffffff;
   background-color: #2b3a67;
   border: 1px solid #496a81;
   border-radius: 3px;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  max-height: 50px;
+  margin: 20px
 }
 
 .button__white {
@@ -17,6 +19,8 @@
   right: 20px;
   color: #2b3a67;
   background-color: #ffffff;
+
+  padding: 7px 5px;
 }
 
 .button:hover,

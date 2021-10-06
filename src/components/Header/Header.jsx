@@ -11,7 +11,7 @@ function Header() {
 
   return (
     <header className="header">
-      <div className="header-wrapper">
+      <div className="header__wrapper">
         <div className="logo-wrapper">
           <div className="logo" />
           <div className="logo-letter">
@@ -21,6 +21,7 @@ function Header() {
 
         </div>
         <button className='open-chat' onClick={openChat}>
+
           <img className='open-chat__icon' src='./icon/chat.svg'/>  
          </button>
       </div>

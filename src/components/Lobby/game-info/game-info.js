@@ -1,15 +1,20 @@
 import Button from '../../Button/Button';
 import MemberCard from '../members/Member-card/Member-card';
 import './game-info.css';
-import { ToastContainer, toast } from 'react-toastify';
+
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useContext } from 'react';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { UsersContext } from '../../../usersContext';
+import { SocketContext } from '../../../socketContext';
+import { MainContext } from '../../../mainContext';
 
-const GameInfo = () => {
+const GameInfo = ({ mode }) => {
   const history = useHistory();
   const { dealer, setDealer } = useContext(UsersContext);
+  const socket = useContext(SocketContext);
+  const { isGameRun, setIsGameRun } = useContext(MainContext);
 
   const notify = (message) => {
     toast(message, {
@@ -20,6 +25,12 @@ const GameInfo = () => {
   const closeGame = () => {
     setDealer({});
     history.push('/');
+  };
+
+
+  const startGame = () => {
+    setIsGameRun(true);
+    socket.emit('startGame', dealer.lobbyID);
   };
 
   const copyID = (event) => {
@@ -59,24 +70,40 @@ const GameInfo = () => {
       </p>
       <div className="scram-master">
         <p>Scram master: </p>
-        <MemberCard member={dealer} isPossibilityKick={false} />
-      </div>
-      <div className="link">
-        <p>Lobby ID:</p>
-        <div className="game__id">
-          <input
-            className="link__text"
-            id="id__text"
-            value={dealer.lobbyID}
-            readonly
-          />
 
-          <Button value="Copy" onCustomClick={copyID} />
-        </div>
+        <MemberCard member={dealer} />
       </div>
-      <Button value="Start Game" />
-      <Button value="Cancel game" onCustomClick={closeGame} isWhite={true} />
-      <ToastContainer />
+      {!isGameRun ? (
+        <>
+          <div className="link">
+            <p>Lobby ID:</p>
+            <div className="game__id">
+              <input
+                className="link__text"
+                id="id__text"
+                value={dealer.lobbyID}
+                readonly
+              />
+              <Button value="Copy" onCustomClick={copyID} />
+            </div>
+          </div>
+          <Button
+            value="Start game"
+            onCustomClick={() => {
+              startGame();
+            }}
+          />
+          <Button
+            value="Cancel game"
+            onCustomClick={() => {
+              closeGame();
+            }}
+            isWhite={true}
+          />
+        </>
+      ) : (
+        <Button value="Stop Game" isWhite={true} onCustomClick={undefined} />
+      )}
     </div>
   );
 };
