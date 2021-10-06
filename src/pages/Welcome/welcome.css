@@ -42,6 +42,7 @@
   align-self: end;
 }
 
+
 .main-form input {
   height: 38px;
   align-self: center;
@@ -50,6 +51,3 @@
 .colored {
   color: #66999b;
 }
-
-/* @media (max-width: 825px) {
-} */

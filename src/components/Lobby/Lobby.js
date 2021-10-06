@@ -3,6 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { MainContext } from '../../mainContext';
 import { SocketContext } from '../../socketContext';
 import { UsersContext } from '../../usersContext';
+
 import ModalCreateIssue from '../ModalCreateIssue/Modal-create-issue';
 import ModalKickPlayer from '../ModalKickPlayer/Modal-kick-player';
 import GameInfo from './game-info/game-info';
@@ -12,8 +13,9 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Members from './members/Members';
 import Settings from './settings/settings';
+import Chat from '../chat/chat';
+import CardsBlock from './cards-block/cards-block';
 import ModalVoting from './modal-voting/modal-voting';
-import { Cards } from '../Card/Сards';
 
 const Lobby = () => {
   const socket = useContext(SocketContext);
@@ -79,80 +81,25 @@ const Lobby = () => {
     });
   };
 
-  const handleSendMessage = (e) => {
-    e.preventDefault();
-    socket.emit('sendMessage', message);
-    setMessage('');
-  };
-
   const handleDelete = (id) => {
     console.log('delete id: ', id);
     socket.emit('deletePlayer', id, dealer.lobbyID);
-  };
-
-  const cardInfo = {
-    type: 'SP',
   };
 
   return (
     <main>
       <div className="wrapper">
         <GameInfo />
+
         <Members />
         <IssuesList />
         <Settings />
-        <Cards card={cardInfo} />
+        <CardsBlock />
         <ModalKickPlayer />
         <ModalCreateIssue />
+        <Chat messages={messages} />
       </div>
       <ToastContainer />
-      <section className="status">
-        <p>
-          Good day, {firstName} {lastName}! Now you are in the lobby with gameID:{' '}
-          {dealer.lobbyID}.
-        </p>
-        <p>Waiting for {dealer.firstName} to start the game</p>
-        <p>Game ID : {dealer.lobbyID}</p>
-        <p>Dealer : {dealer.firstName}</p>
-      </section>
-      <section className="players">
-        <p>Players: </p>
-        {players.map((player) => {
-          return (
-            <p>
-              {player.firstName} {player.lastName}
-              <button onClick={() => handleDelete(player.id)}>❌</button>
-            </p>
-          );
-        })}
-        <button onClick={handleExit}>Exit</button>
-      </section>
-      <section className="chat">
-        <div className="chat-window">
-          {messages.length > 0 ? (
-            messages.map((msg, i) => (
-              <div key={i}>
-                <p>
-                  {msg.user}:<span>{msg.text}</span>
-                </p>
-              </div>
-            ))
-          ) : (
-            <div>----------</div>
-          )}
-        </div>
-        <form className="chat-form" onSubmit={handleSendMessage}>
-          <input
-            type="text"
-            placeholder="Enter message"
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-          />
-          <button type="submit" onClick={handleSendMessage}>
-            Send
-          </button>
-        </form>
-      </section>
     </main>
   );
 };
