@@ -5,14 +5,6 @@ import { useEffect, useState } from 'react';
 export default function Card({ card, flipped }) {
   const [value, setValue] = useState(card.value);
   const [isEditCard, setIsEditCard] = useState(false);
-  // const [cardFlipped, setCardFlipped] = useState(true);
-
-
-  // const handleClick = (e) => {
-  //   e.preventDefault();
-  //   setCardFlipped(!cardFlipped);
-  // }
-
 
   useEffect(() => {
     document.querySelectorAll('.card__input').forEach((input) => {
