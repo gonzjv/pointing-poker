@@ -35,7 +35,7 @@ export const Timer = () => {
     setTimerActive(true)
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     let timer;
     if (counter > 0 && timerActive) {
       timer = setTimeout(() => setCounter(c => c - 1), 1000);

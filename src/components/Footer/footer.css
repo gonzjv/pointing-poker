@@ -21,3 +21,9 @@ height: 30px;
 .school-logo {
   height: 40px;
 }
+
+.github-profiles a {
+  text-decoration: none;
+  color: inherit;
+  padding-left: 20px;
+}

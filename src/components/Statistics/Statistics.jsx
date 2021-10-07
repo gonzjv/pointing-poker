@@ -1,12 +1,13 @@
-import React from 'react';
-import { Cards } from '../Card/Сards';
+import React, { useState } from 'react';
+import CardsBlock from '../Lobby/cards-block/cards-block';
 import './statistics.css';
 
-export const Statistics = ({ cardInfo }) => {
+export const Statistics = () => {
+  const [isStatistic, setStatistic] = useState(true)
   return (
     <div className="statistics">
       <h2>Statistics:</h2>
-      <Cards card={cardInfo} />
+      <CardsBlock statistics={isStatistic}/>
     </div>
   );
 }

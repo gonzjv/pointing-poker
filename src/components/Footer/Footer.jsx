@@ -8,9 +8,10 @@ export const Footer = () => {
         <ul className="footer-list">
           <li className="time"><time>2021</time></li>
           <li className="github-profiles">
-            <img src="../images/github.svg" alt="github profile" />Github
-            <img src="../images/github.svg" alt="github profile" />Github
-            <img src="../images/github.svg" alt="github profile" />Github
+            <a href="https://github.com/gonzjv">
+            <img src="../images/github.svg" alt="github profile" />Github</a>
+            <a href="https://github.com/Eansable"><img src="../images/github.svg" alt="github profile" />Github</a>
+            <a href="https://github.com/makhitr">  <img src="../images/github.svg" alt="github profile" />Github</a>
           </li>
           <li className="school">
             <a href="https://rs.school/react/" target="_blank">
