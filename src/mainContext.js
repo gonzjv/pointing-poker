@@ -9,6 +9,8 @@ const MainProvider = ({ children }) => {
   const [lobbyID, setLobbyID] = useState('');
   const [modalKick, setModalKick] = useState(false);
   const [isGameRun, setIsGameRun] = useState(false);
+  const [modalIssue, setModalIssue] = useState(false);
+  const [issues, setIssues] = useState([]);
 
   return (
     <MainContext.Provider
@@ -19,12 +21,16 @@ const MainProvider = ({ children }) => {
         lobbyID,
         modalKick,
         isGameRun,
+        modalIssue,
+        issues,
         setFirstName,
         setLastName,
         setJobPosition,
         setLobbyID,
         setModalKick,
         setIsGameRun,
+        setModalIssue,
+        setIssues,
       }}
     >
       {children}

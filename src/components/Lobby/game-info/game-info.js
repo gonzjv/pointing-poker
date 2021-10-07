@@ -1,6 +1,7 @@
 import Button from '../../Button/Button';
 import MemberCard from '../members/Member-card/Member-card';
 import './game-info.css';
+
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useContext } from 'react';
@@ -8,12 +9,13 @@ import { Link, useHistory } from 'react-router-dom';
 import { UsersContext } from '../../../usersContext';
 import { SocketContext } from '../../../socketContext';
 import { MainContext } from '../../../mainContext';
+import fileDownload from 'js-file-download';
 
 const GameInfo = ({ mode }) => {
   const history = useHistory();
-  const { dealer, setDealer } = useContext(UsersContext);
+  const { dealer, setDealer, players } = useContext(UsersContext);
   const socket = useContext(SocketContext);
-  const { isGameRun, setIsGameRun } = useContext(MainContext);
+  const { isGameRun, issues } = useContext(MainContext);
 
   const notify = (message) => {
     toast(message, {
@@ -27,7 +29,6 @@ const GameInfo = ({ mode }) => {
   };
 
   const startGame = () => {
-    setIsGameRun(true);
     socket.emit('startGame', dealer.lobbyID);
   };
 
@@ -58,6 +59,14 @@ const GameInfo = ({ mode }) => {
     document.addEventListener('keypress', saveNameGame);
   };
 
+  const output = JSON.stringify(
+    { dealer: dealer, players: players, issues: issues, results: [] },
+    null,
+    4,
+  );
+  const download = () => {
+    fileDownload(output, 'dealer.json');
+  };
   return (
     <div className="game-info">
       <p className="lobby__subtitle game-info__title" id="game__name">
@@ -68,6 +77,7 @@ const GameInfo = ({ mode }) => {
       </p>
       <div className="scram-master">
         <p>Scram master: </p>
+
         <MemberCard member={dealer} />
       </div>
       {!isGameRun ? (
@@ -99,9 +109,18 @@ const GameInfo = ({ mode }) => {
           />
         </>
       ) : (
-        <Button value="Stop Game" isWhite={true} onCustomClick={undefined} />
+        <div>
+          <Button value="Stop Game" isWhite={true} onCustomClick={undefined} />
+          <div>
+            <Button
+              value="Download result"
+              onCustomClick={() => {
+                download();
+              }}
+            />
+          </div>
+        </div>
       )}
-      )
     </div>
   );
 };

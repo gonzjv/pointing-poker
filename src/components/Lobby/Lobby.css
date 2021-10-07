@@ -7,10 +7,28 @@
   margin: 0 auto;
 }
 
-main {
+.wrapper {
   display: flex;
   flex-direction: column;
   gap: 25px;
-
+  margin: 0, auto;
+  max-width: 1300px;
 }
 
+@media screen and (max-width: 1320px) {
+  .wrapper {
+    max-width: 1000px;
+  }
+}
+
+@media screen and (max-width: 1020px) {
+  .wrapper {
+    width: 730px;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .wrapper {
+    width: 500px;
+  }
+}

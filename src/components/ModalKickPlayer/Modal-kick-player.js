@@ -3,6 +3,7 @@ import './modal-kick-player.css';
 import React, { useContext } from 'react';
 import { SocketContext } from '../../socketContext';
 import { UsersContext } from '../../usersContext';
+
 import { MainContext } from '../../mainContext';
 
 const ModalKickPlayer = () => {
@@ -27,6 +28,7 @@ const ModalKickPlayer = () => {
           value="Yes"
           onCustomClick={() => {
             handleDelete(playerToKick.id);
+
             setModalKick(false);
           }}
         />

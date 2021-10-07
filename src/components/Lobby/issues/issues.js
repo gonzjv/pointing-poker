@@ -1,34 +1,37 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { IssueItem } from './issue-item/issue-item';
 import './issues.css';
 import { MainContext } from '../../../mainContext';
+import { SocketContext } from '../../../socketContext';
 
-const issueExample = {
-  name: 'Issue 542',
-  priority: 'Low priority',
-};
-
-export default function IssuesList({ setActive }) {
-  const [currentIssue, setCurrentIssue] = useState(true);
-  const { isGameRun } = useContext(MainContext);
+const IssuesList = () => {
+  const { isGameRun, issues, setModalIssue, setIssues } = useContext(MainContext);
+  const socket = useContext(SocketContext);
+  useEffect(() => {
+    socket.on('refreshIssues', (issues) => {
+      setIssues(issues);
+      console.log('issues: ', issues);
+    });
+  });
 
   return (
     <div className="issues">
       <h2 className="lobby__subtitle issues__title">Issues:</h2>
       <div className={isGameRun === true ? 'column__list' : 'issues__list'}>
-        <IssueItem
-          issue={issueExample}
-          gameMode={isGameRun}
-          current={currentIssue}
-        />
-        <IssueItem issue={issueExample} gameMode={isGameRun} current={false} />
-        <IssueItem issue={issueExample} gameMode={isGameRun} current={false} />
-        <IssueItem issue={issueExample} gameMode={isGameRun} current={false} />
-        <button className="issue__create" onClick={() => setActive(true)}>
+        {issues.map((issue, i) => {
+          return (
+            <div key={i}>
+              <IssueItem issue={issue} />
+            </div>
+          );
+        })}
+        <button className="issue__create" onClick={() => setModalIssue(true)}>
           <p className="issue__create__text">Create new Issue</p>
           <img className="issue__icon" src="./icon/add.svg" />
         </button>
       </div>
     </div>
   );
-}
+};
+
+export default IssuesList;

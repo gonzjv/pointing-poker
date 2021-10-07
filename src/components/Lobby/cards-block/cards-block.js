@@ -5,7 +5,7 @@ import Card from '../../Card/cards';
 
 import './cards-block.css';
 
-const CardsBlock = ({statistics}) => {
+const CardsBlock = ({ statistics }) => {
   const cardInfo = [
     {
       value: '1',
@@ -39,23 +39,26 @@ const CardsBlock = ({statistics}) => {
   const handleClick = (e) => {
     e.preventDefault();
     setCardFlipped(!cardFlipped);
-  }
+  };
 
   return (
     <>
-     {statistics ? "" : 
-    <Button value={"Flipp cards!"} onCustomClick={handleClick} isWhite={false} />}
-    <div className="cards">
-      {statistics ? "" :  <h2 className="lobby__subtitle">Game cards: </h2>}
-           <div className="cards__block">
-        {cards.map((card) => {
-          return <Card card={card} flipped={cardFlipped} />;
-        })}
-        <button className="add__card" onClick={addNewCard}>
-          <img className="add__card__icon" src="./icon/add-card.svg" />
-        </button>
+      {statistics ? (
+        ''
+      ) : (
+        <Button value={'Flipp cards!'} onCustomClick={handleClick} isWhite={false} />
+      )}
+      <div className="cards">
+        {statistics ? '' : <h2 className="lobby__subtitle">Game cards: </h2>}
+        <div className="cards__block">
+          {cards.map((card) => {
+            return <Card card={card} flipped={cardFlipped} />;
+          })}
+          <button className="add__card" onClick={addNewCard}>
+            <img className="add__card__icon" src="./icon/add-card.svg" />
+          </button>
+        </div>
       </div>
-    </div>
     </>
   );
 };
