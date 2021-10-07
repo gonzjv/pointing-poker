@@ -16,7 +16,6 @@ import Settings from './settings/settings';
 import Chat from '../chat/chat';
 import CardsBlock from './cards-block/cards-block';
 import ModalVoting from './modal-voting/modal-voting';
-import CardsBlock from './cards-block/cards-block';
 
 const Lobby = () => {
   const socket = useContext(SocketContext);
