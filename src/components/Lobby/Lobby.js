@@ -33,6 +33,10 @@ const Lobby = () => {
   };
   const toastVoting = React.useRef(null);
 
+  const checkUser = () => {
+    socket.id === dealer.lobbyID ? setIsDealer(true) : setIsDealer(false);
+  };
+
   useEffect(() => {
     socket.on('players', (players) => {
       setPlayers(players);
@@ -44,6 +48,7 @@ const Lobby = () => {
       setIsGameRun(true);
       history.push('/game');
     });
+    checkUser();
   });
 
   useEffect(() => {
@@ -68,29 +73,10 @@ const Lobby = () => {
     });
   }, [socket]);
 
-  const checkUser = () => {
-    console.log('dealer', dealer);
-    socket.id === dealer.lobbyID ? setIsDealer(true) : setIsDealer(false);
-  };
-  checkUser();
-
-  const handleExit = () => {
-    setDealer({});
-    socket.emit('exit', () => {
-      history.push('/');
-    });
-  };
-
-  const handleDelete = (id) => {
-    console.log('delete id: ', id);
-    socket.emit('deletePlayer', id, dealer.lobbyID);
-  };
-
   return (
     <main>
       <div className="wrapper">
         <GameInfo />
-
         <Members />
         <IssuesList />
         <Settings />
