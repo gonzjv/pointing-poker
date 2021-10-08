@@ -38,7 +38,7 @@ const ModalCreateIssue = () => {
       >
         <h3 className="form__create__title">Create Issue</h3>
         <div>
-          <label for="form__create__title" className="form__create__label">
+          <label htmlFor="form__create__title" className="form__create__label">
             Title:
           </label>
           <input
@@ -50,7 +50,7 @@ const ModalCreateIssue = () => {
           />
         </div>
         <div>
-          <label for="form__create__link" className="form__create__label">
+          <label htmlFor="form__create__link" className="form__create__label">
             Link:
           </label>
           <input
@@ -62,7 +62,7 @@ const ModalCreateIssue = () => {
           />
         </div>
         <div>
-          <label className="form__create__label" for="form__create__prority">
+          <label className="form__create__label" htmlFor="form__create__prority">
             Priority:
           </label>
           <select

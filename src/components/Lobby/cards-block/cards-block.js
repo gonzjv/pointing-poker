@@ -51,8 +51,8 @@ const CardsBlock = ({ statistics }) => {
       <div className="cards">
         {statistics ? '' : <h2 className="lobby__subtitle">Game cards: </h2>}
         <div className="cards__block">
-          {cards.map((card) => {
-            return <Card card={card} flipped={cardFlipped} />;
+          {cards.map((card, i) => {
+            return <Card key={i} card={card} flipped={cardFlipped} />;
           })}
           <button className="add__card" onClick={addNewCard}>
             <img className="add__card__icon" src="./icon/add-card.svg" />

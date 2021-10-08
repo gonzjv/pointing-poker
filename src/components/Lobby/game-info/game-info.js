@@ -89,7 +89,7 @@ const GameInfo = ({ mode }) => {
                 className="link__text"
                 id="id__text"
                 value={dealer.lobbyID}
-                readonly
+                readOnly
               />
               <Button value="Copy" onCustomClick={copyID} />
             </div>
