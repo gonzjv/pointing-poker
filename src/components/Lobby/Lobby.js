@@ -21,10 +21,11 @@ const Lobby = () => {
   const socket = useContext(SocketContext);
   const { firstName, lastName, setIsGameRun } = useContext(MainContext);
   const history = useHistory();
-  const { players, dealer, isDealer, setPlayers, setDealer, setIsDealer } =
+  const { players, dealer, isDealer, asPlayer, setAsPlayer, setPlayers, setDealer, setIsDealer } =
     useContext(UsersContext);
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
+
 
   const notify = (message) => {
     toast(message, {
@@ -73,13 +74,16 @@ const Lobby = () => {
     });
   }, [socket]);
 
+  console.log(asPlayer)
+
   return (
+  
     <main>
       <div className="wrapper">
         <GameInfo />
         <Members />
         <IssuesList />
-        <Settings changeGameAsDealer={isDealer => setIsDealer(isDealer)}/>
+        <Settings />
         <CardsBlock />
         <ModalKickPlayer />
         <ModalCreateIssue />

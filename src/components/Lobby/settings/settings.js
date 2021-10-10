@@ -1,16 +1,21 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import {Timer} from '../../timer/timer';
 import './settings.css';
 import Switch from './switch/switch';
+import { UsersContext } from '../../../usersContext';
 
-export default function Settings(props) {
+
+export default function Settings() {
   const [scoreType, setScoreType] = useState('');
   const [isTimer, setIsTimer] = useState(false);
+  const {asPlayer, setAsPlayer } = useContext(UsersContext)
+
+
   return (
     <div>
       <h2 className="lobby__subtitle settings__title">Game settings:</h2>
       <form className="settings__form">
-        <Switch value="Scram master as player:" onCustomChange={() => props.changeGameAsDealer(false)}/>
+        <Switch value="Scram master as player:" onCustomChange={() => setAsPlayer(!asPlayer)}/>
         <Switch value="Changing card in round end:" onCustomChange={()=> {}}/>
         <Switch value="Is timer needed:" onCustomChange={() => setIsTimer(!isTimer)} />
         <div className="setting">

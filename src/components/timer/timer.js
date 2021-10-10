@@ -1,7 +1,9 @@
 import React from "react";
 import "./timer.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect,useContext } from "react";
 import Button from "../Button/Button";
+import { UsersContext } from '../../usersContext';
+
 
 const padTime = time => {
   return String(time).length === 1 ? `0${time}` : `${time}`;
@@ -29,6 +31,7 @@ const format = time => {
 export const Timer = ({ isTimer }) => {
   const [counter, setCounter] = useState(120);
   const [timerActive, setTimerActive] = useState(false);
+  const {isDealer, asPlayer } = useContext(UsersContext)
 
   const startRound = () => {
     setCounter(120)
@@ -57,11 +60,15 @@ export const Timer = ({ isTimer }) => {
       {counter === 0 ?
         <div >
           {format(counter)}
-          <Button value="Reset Round" onCustomClick={startRound} isWhite={false} />
+          {isDealer && !asPlayer ?  
+          <Button value="Reset Round" onCustomClick={startRound} isWhite={false} /> : ""}
+        
         </div> :
         <div>
           {format(counter)}
+          {isDealer && !asPlayer ? 
           <Button value={timerActive ? "Reset Round" : "Run Round"} onCustomClick={startRound} isWhite={false} />
+          :  ""} 
         </div>
       }
     </div>
