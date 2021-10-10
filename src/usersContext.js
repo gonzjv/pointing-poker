@@ -7,6 +7,7 @@ const UsersProvider = ({ children }) => {
   const [dealer, setDealer] = useState({});
   const [playerToKick, setPlayerToKick] = useState({});
   const [isDealer, setIsDealer] = useState(false);
+  const [asPlayer, setAsPlayer] = useState(false);
 
   return (
     <UsersContext.Provider
@@ -18,10 +19,12 @@ const UsersProvider = ({ children }) => {
         setDealer,
         setPlayerToKick,
         isDealer,
+        asPlayer,
         setPlayers,
         setDealer,
         setPlayerToKick,
         setIsDealer,
+        setAsPlayer
       }}
     >
       {children}

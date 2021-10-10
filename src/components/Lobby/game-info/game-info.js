@@ -13,7 +13,7 @@ import fileDownload from 'js-file-download';
 
 const GameInfo = ({ mode }) => {
   const history = useHistory();
-  const { dealer, setDealer, players } = useContext(UsersContext);
+  const { dealer, setDealer, players, isDealer, asPlayer } = useContext(UsersContext);
   const socket = useContext(SocketContext);
   const { isGameRun, issues } = useContext(MainContext);
 
@@ -110,7 +110,7 @@ const GameInfo = ({ mode }) => {
         </>
       ) : (
         <div>
-          <Button value="Stop Game" isWhite={true} onCustomClick={undefined} />
+          <Button value={isDealer && !asPlayer ? "Stop Game" : "Exit Game"} isWhite={true} onCustomClick={undefined} />
           <div>
             <Button
               value="Download result"

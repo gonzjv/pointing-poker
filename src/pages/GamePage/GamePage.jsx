@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 
 import './gamepage.css';
 import { ToastContainer, toast } from 'react-toastify';
@@ -11,11 +11,15 @@ import { Score } from '../../components/Score/Score';
 import { Timer } from '../../components/timer/timer';
 import { Statistics } from '../../components/Statistics/Statistics';
 import CardsBlock from '../../components/Lobby/cards-block/cards-block';
+import { UsersContext } from '../../usersContext';
 
-export const GamePage = ({isDealer}) => {
+
+export const GamePage = () => {
   const [modalKick, setModalKick] = useState(false);
   const [modalCreateIssue, setModalCreateIssue] = useState(false);
+  const {isDealer, asPlayer } = useContext(UsersContext)
 
+  console.log(asPlayer)
 
   return (
     <div className="game-page-test">
@@ -29,9 +33,10 @@ export const GamePage = ({isDealer}) => {
               <Timer />
             </div>
           </div>
-          { isDealer ? <CardsBlock statistics={false}/> 
-           : <Statistics />}
+          { isDealer && !asPlayer ? <Statistics /> 
+           : 
            <CardsBlock statistics={false}/> 
+          }
         </div>
         <aside className="game-page-aside">
           <Score />
