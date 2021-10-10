@@ -79,7 +79,7 @@ const Lobby = () => {
         <GameInfo />
         <Members />
         <IssuesList />
-        <Settings />
+        <Settings changeGameAsDealer={isDealer => setIsDealer(isDealer)}/>
         <CardsBlock />
         <ModalKickPlayer />
         <ModalCreateIssue />

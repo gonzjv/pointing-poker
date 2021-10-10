@@ -3,15 +3,16 @@ import {Timer} from '../../timer/timer';
 import './settings.css';
 import Switch from './switch/switch';
 
-export default function Settings() {
+export default function Settings(props) {
   const [scoreType, setScoreType] = useState('');
+  const [isTimer, setIsTimer] = useState(false);
   return (
     <div>
       <h2 className="lobby__subtitle settings__title">Game settings:</h2>
       <form className="settings__form">
-        <Switch value="Scram master as player:" />
-        <Switch value="Changing card in round end:" />
-        <Switch value="Is timer needed:" />
+        <Switch value="Scram master as player:" onCustomChange={() => props.changeGameAsDealer(false)}/>
+        <Switch value="Changing card in round end:" onCustomChange={()=> {}}/>
+        <Switch value="Is timer needed:" onCustomChange={() => setIsTimer(!isTimer)} />
         <div className="setting">
           <label className="setting__name">Score type</label>
           <input
@@ -29,7 +30,7 @@ export default function Settings() {
         </div>
         <div className="setting">
           <label className="setting__name">Round time</label>
-          <Timer />
+          <Timer isTimer={isTimer}/>
         </div>
       </form>
     </div>
