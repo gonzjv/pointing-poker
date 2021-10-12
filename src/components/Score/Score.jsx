@@ -1,6 +1,6 @@
 import React from 'react';
 import './score.css';
-import { ScoreCard } from './ScoreCard/ScoreCard';
+import ScoreCard from './ScoreCard/ScoreCard';
 
 export const Score = () => {
   return (
@@ -16,4 +16,4 @@ export const Score = () => {
       </div>
     </div>
   );
-}
+};

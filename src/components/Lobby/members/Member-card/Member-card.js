@@ -5,6 +5,7 @@ import './Member-card.css';
 import React, { useContext } from 'react';
 import { UsersContext } from '../../../../usersContext';
 import { SocketContext } from '../../../../socketContext';
+import ScoreCard from '../../../Score/ScoreCard/ScoreCard';
 
 const MemberCard = ({ member }) => {
   const { dealer } = useContext(UsersContext);
@@ -12,9 +13,10 @@ const MemberCard = ({ member }) => {
 
   return (
     <div className="member__card">
+      {member.id == dealer.id ? <></> : <ScoreCard player={member} />}
       <MemberAvatar player={member} />
 
-      <div >
+      <div>
         <p className="member__name">
           {member.firstName} {member.lastName}
           <span className="member__position">{member.jobPosition}</span>

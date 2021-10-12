@@ -14,8 +14,8 @@ const Members = () => {
       <h2 className="lobby__subtitle members__title">members:</h2>
 
       <div className={isGameRun === true ? 'column__list' : 'members__list'}>
-        {players.map((player) => {
-          return <MemberCard member={player} />;
+        {players.map((player, i) => {
+          return <MemberCard member={player} key={i} />;
         })}
       </div>
     </div>

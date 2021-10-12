@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './card.css';
 import { useEffect, useState } from 'react';
+import { UsersContext } from '../../usersContext';
+import { SocketContext } from '../../socketContext';
+import { MainContext } from '../../mainContext';
 
-export default function Card({ card, flipped }) {
+const Card = ({ card, flipped }) => {
   const [value, setValue] = useState(card.value);
   const [isEditCard, setIsEditCard] = useState(false);
+  const { dealer } = useContext(UsersContext);
+  const socket = useContext(SocketContext);
+  const { currentIssue } = useContext(MainContext);
 
   useEffect(() => {
     document.querySelectorAll('.card__input').forEach((input) => {
@@ -28,12 +34,23 @@ export default function Card({ card, flipped }) {
     }
   };
 
+  const addVote = () => {
+    console.log('currentIssue: ', currentIssue);
+    socket.emit('addGameVote', dealer.lobbyID, currentIssue.id, card.value);
+  };
   return (
-    <div className="scene" >
-      <div className={`card${flipped ? " is-flipped" : ""}`} data-value={value}>
-        <div className="card__face card__face--front">
+    <div className="scene">
+      <div className={`card${flipped ? ' is-flipped' : ''}`} data-value={value}>
+        <div
+          className="card__face card__face--front"
+          onClick={() => {
+            addVote();
+          }}
+        >
           <p className="card__type">{card.type}</p>
-          <p className={isEditCard ? 'card__value card__value-hidden' : 'card__value'}>
+          <p
+            className={isEditCard ? 'card__value card__value-hidden' : 'card__value'}
+          >
             {value}
           </p>
           <input
@@ -59,7 +76,8 @@ export default function Card({ card, flipped }) {
           </button>
         </div>
       </div>
-  
     </div>
   );
-}
+};
+
+export default Card;
