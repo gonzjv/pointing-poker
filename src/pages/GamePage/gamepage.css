@@ -15,7 +15,7 @@
 }
 
 .game-page::after {
-  content: "";
+  content: '';
   position: absolute;
   width: 2px;
   height: 100%;
@@ -30,4 +30,16 @@
 
 .game-page-context {
   display: flex;
+}
+
+.average {
+  font-weight: bold;
+  font-size: 56px;
+  line-height: 70px;
+  text-align: center;
+  color: goldenrod;
+  border: aqua 1px solid;
+}
+.average-title {
+  text-align: center;
 }

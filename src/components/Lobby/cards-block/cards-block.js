@@ -12,19 +12,19 @@ const CardsBlock = ({ statistics }) => {
       type: 'SP',
     },
     {
-      value: '2',
-      type: 'SP',
-    },
-    {
       value: '3',
       type: 'SP',
     },
     {
-      value: '4',
+      value: '7',
       type: 'SP',
     },
     {
-      value: '5',
+      value: '14',
+      type: 'SP',
+    },
+    {
+      value: '28',
       type: 'SP',
     },
   ];

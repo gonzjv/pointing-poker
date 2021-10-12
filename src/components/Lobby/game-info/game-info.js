@@ -11,7 +11,7 @@ import { SocketContext } from '../../../socketContext';
 import { MainContext } from '../../../mainContext';
 import fileDownload from 'js-file-download';
 
-const GameInfo = ({ mode }) => {
+const GameInfo = () => {
   const history = useHistory();
   const { dealer, setDealer, players } = useContext(UsersContext);
   const socket = useContext(SocketContext);

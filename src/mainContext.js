@@ -11,6 +11,9 @@ const MainProvider = ({ children }) => {
   const [isGameRun, setIsGameRun] = useState(false);
   const [modalIssue, setModalIssue] = useState(false);
   const [issues, setIssues] = useState([]);
+  const [currentIssue, setCurrentIssue] = useState({});
+  const [isTimerActive, setIsTimerActive] = useState(false);
+  const [votes, setVotes] = useState([]);
 
   return (
     <MainContext.Provider
@@ -23,6 +26,9 @@ const MainProvider = ({ children }) => {
         isGameRun,
         modalIssue,
         issues,
+        currentIssue,
+        isTimerActive,
+        votes,
         setFirstName,
         setLastName,
         setJobPosition,
@@ -31,6 +37,9 @@ const MainProvider = ({ children }) => {
         setIsGameRun,
         setModalIssue,
         setIssues,
+        setCurrentIssue,
+        setIsTimerActive,
+        setVotes,
       }}
     >
       {children}

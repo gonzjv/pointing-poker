@@ -5,12 +5,22 @@ import { MainContext } from '../../../mainContext';
 import { SocketContext } from '../../../socketContext';
 
 const IssuesList = () => {
-  const { isGameRun, issues, setModalIssue, setIssues } = useContext(MainContext);
+  const {
+    isGameRun,
+    issues,
+    setModalIssue,
+    setIssues,
+    setCurrentIssue,
+    currentIssue,
+  } = useContext(MainContext);
   const socket = useContext(SocketContext);
+
   useEffect(() => {
     socket.on('refreshIssues', (issues) => {
       setIssues(issues);
       console.log('issues: ', issues);
+      setCurrentIssue(issues[0]);
+      console.log('curr: ', currentIssue);
     });
   });
 

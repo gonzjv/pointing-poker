@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { MainContext } from '../../mainContext';
 import { SocketContext } from '../../socketContext';
 import { UsersContext } from '../../usersContext';
@@ -19,11 +19,9 @@ import ModalVoting from './modal-voting/modal-voting';
 
 const Lobby = () => {
   const socket = useContext(SocketContext);
-  const { firstName, lastName, setIsGameRun } = useContext(MainContext);
+  const { setIsGameRun } = useContext(MainContext);
   const history = useHistory();
-  const { players, dealer, isDealer, setPlayers, setDealer, setIsDealer } =
-    useContext(UsersContext);
-  const [message, setMessage] = useState('');
+  const { dealer, setPlayers, setIsDealer } = useContext(UsersContext);
   const [messages, setMessages] = useState([]);
 
   const notify = (message) => {
