@@ -14,6 +14,7 @@ const MainProvider = ({ children }) => {
   const [currentIssue, setCurrentIssue] = useState({});
   const [isTimerActive, setIsTimerActive] = useState(false);
   const [votes, setVotes] = useState([]);
+  const [vote, setVote] = useState({});
 
   return (
     <MainContext.Provider
@@ -29,6 +30,7 @@ const MainProvider = ({ children }) => {
         currentIssue,
         isTimerActive,
         votes,
+        vote,
         setFirstName,
         setLastName,
         setJobPosition,
@@ -40,6 +42,7 @@ const MainProvider = ({ children }) => {
         setCurrentIssue,
         setIsTimerActive,
         setVotes,
+        setVote,
       }}
     >
       {children}

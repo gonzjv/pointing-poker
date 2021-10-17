@@ -13,7 +13,7 @@ import fileDownload from 'js-file-download';
 
 const GameInfo = () => {
   const history = useHistory();
-  const { dealer, setDealer, players } = useContext(UsersContext);
+  const { dealer, setDealer, players, isDealer } = useContext(UsersContext);
   const socket = useContext(SocketContext);
   const { isGameRun, issues } = useContext(MainContext);
 
@@ -82,35 +82,49 @@ const GameInfo = () => {
       </div>
       {!isGameRun ? (
         <>
-          <div className="link">
-            <p>Lobby ID:</p>
-            <div className="game__id">
-              <input
-                className="link__text"
-                id="id__text"
-                value={dealer.lobbyID}
-                readOnly
-              />
-              <Button value="Copy" onCustomClick={copyID} />
+          {isDealer ? (
+            <div className="link">
+              <p>Lobby ID:</p>
+              <div className="game__id">
+                <input
+                  className="link__text"
+                  id="id__text"
+                  value={dealer.lobbyID}
+                  readOnly
+                />
+                <Button value="Copy" onCustomClick={copyID} />
+              </div>
             </div>
-          </div>
-          <Button
-            value="Start game"
-            onCustomClick={() => {
-              startGame();
-            }}
-          />
-          <Button
-            value="Cancel game"
-            onCustomClick={() => {
-              closeGame();
-            }}
-            isWhite={true}
-          />
+          ) : (
+            <></>
+          )}
+          {isDealer ? (
+            <>
+              <Button
+                value="Start game"
+                onCustomClick={() => {
+                  startGame();
+                }}
+              />
+              <Button
+                value="Cancel game"
+                onCustomClick={() => {
+                  closeGame();
+                }}
+                isWhite={true}
+              />
+            </>
+          ) : (
+            <></>
+          )}
         </>
       ) : (
         <div>
-          <Button value="Stop Game" isWhite={true} onCustomClick={undefined} />
+          {isDealer ? (
+            <Button value="Stop Game" isWhite={true} onCustomClick={undefined} />
+          ) : (
+            <></>
+          )}
           <div>
             <Button
               value="Download result"

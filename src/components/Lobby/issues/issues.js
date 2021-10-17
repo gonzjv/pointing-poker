@@ -3,24 +3,18 @@ import { IssueItem } from './issue-item/issue-item';
 import './issues.css';
 import { MainContext } from '../../../mainContext';
 import { SocketContext } from '../../../socketContext';
+import { UsersContext } from '../../../usersContext';
 
 const IssuesList = () => {
-  const {
-    isGameRun,
-    issues,
-    setModalIssue,
-    setIssues,
-    setCurrentIssue,
-    currentIssue,
-  } = useContext(MainContext);
+  const { isGameRun, issues, setModalIssue, setIssues, setCurrentIssue } =
+    useContext(MainContext);
   const socket = useContext(SocketContext);
+  const { isDealer } = useContext(UsersContext);
 
   useEffect(() => {
     socket.on('refreshIssues', (issues) => {
       setIssues(issues);
-      console.log('issues: ', issues);
       setCurrentIssue(issues[0]);
-      console.log('curr: ', currentIssue);
     });
   });
 
@@ -35,10 +29,14 @@ const IssuesList = () => {
             </div>
           );
         })}
-        <button className="issue__create" onClick={() => setModalIssue(true)}>
-          <p className="issue__create__text">Create new Issue</p>
-          <img className="issue__icon" src="./icon/add.svg" />
-        </button>
+        {isDealer ? (
+          <button className="issue__create" onClick={() => setModalIssue(true)}>
+            <p className="issue__create__text">Create new Issue</p>
+            <img className="issue__icon" src="./icon/add.svg" />
+          </button>
+        ) : (
+          <></>
+        )}
       </div>
     </div>
   );

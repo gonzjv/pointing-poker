@@ -80,7 +80,6 @@
   display: none;
 }
 
-
 .scene {
   width: 150px;
   height: 220px;
@@ -102,7 +101,11 @@
 
 .card__face--front {
   background: #cccccc;
-  transform: rotateY( 180deg );
+  transform: rotateY(180deg);
+}
+
+.card__face--picked {
+  background: #cbf4ea;
 }
 
 .card.is-flipped {
