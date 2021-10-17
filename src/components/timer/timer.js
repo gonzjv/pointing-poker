@@ -26,9 +26,9 @@ const format = (time) => {
 };
 
 export const Timer = () => {
-  const [counter, setCounter] = useState(30);
+  const [counter, setCounter] = useState(10);
   const { isTimerActive, currentIssue, setIsTimerActive } = useContext(MainContext);
-  const { dealer } = useContext(UsersContext);
+  const { dealer, isDealer } = useContext(UsersContext);
   const socket = useContext(SocketContext);
 
   const getVotes = () => {
@@ -36,8 +36,7 @@ export const Timer = () => {
   };
 
   const startRound = () => {
-    setCounter(30);
-    setIsTimerActive(true);
+    socket.emit('startRound', dealer.lobbyID);
   };
 
   useEffect(() => {
@@ -54,6 +53,13 @@ export const Timer = () => {
     };
   }, [counter, isTimerActive]);
 
+  useEffect(() => {
+    socket.on('dealerStartRound', () => {
+      setCounter(10);
+      setIsTimerActive(true);
+    });
+  });
+
   if (counter == 1) {
     getVotes();
   }
@@ -63,16 +69,24 @@ export const Timer = () => {
       {counter === 0 ? (
         <div>
           {format(counter)}
-          <Button value="Reset Round" onCustomClick={startRound} isWhite={false} />
+          {isDealer ? (
+            <Button value="Reset Round" onCustomClick={startRound} isWhite={false} />
+          ) : (
+            <></>
+          )}
         </div>
       ) : (
         <div>
           {format(counter)}
-          <Button
-            value={isTimerActive ? 'Reset Round' : 'Run Round'}
-            onCustomClick={startRound}
-            isWhite={false}
-          />
+          {isDealer ? (
+            <Button
+              value={isTimerActive ? 'Reset Round' : 'Run Round'}
+              onCustomClick={startRound}
+              isWhite={false}
+            />
+          ) : (
+            <></>
+          )}
         </div>
       )}
     </div>

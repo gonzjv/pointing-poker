@@ -10,7 +10,7 @@ const Card = ({ card, flipped }) => {
   const [isEditCard, setIsEditCard] = useState(false);
   const { dealer } = useContext(UsersContext);
   const socket = useContext(SocketContext);
-  const { currentIssue } = useContext(MainContext);
+  const { currentIssue, vote, isTimerActive } = useContext(MainContext);
 
   useEffect(() => {
     document.querySelectorAll('.card__input').forEach((input) => {
@@ -35,17 +35,18 @@ const Card = ({ card, flipped }) => {
   };
 
   const addVote = () => {
-    console.log('currentIssue: ', currentIssue);
     socket.emit('addGameVote', dealer.lobbyID, currentIssue.id, card.value);
   };
   return (
     <div className="scene">
       <div className={`card${flipped ? ' is-flipped' : ''}`} data-value={value}>
         <div
-          className="card__face card__face--front"
-          onClick={() => {
-            addVote();
-          }}
+          className={`card__face card__face--front ${
+            vote && vote.cardValue && vote.cardValue === card.value
+              ? 'card__face--picked'
+              : ''
+          }`}
+          onClick={() => (isTimerActive ? addVote() : () => false)}
         >
           <p className="card__type">{card.type}</p>
           <p

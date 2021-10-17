@@ -11,7 +11,7 @@ import { Timer } from '../../components/timer/timer';
 import CardsBlock from '../../components/Lobby/cards-block/cards-block';
 import { MainContext } from '../../mainContext';
 
-export const GamePage = ({ isDealer }) => {
+export const GamePage = () => {
   const [modalCreateIssue, setModalCreateIssue] = useState(false);
   const { isTimerActive, votes } = useContext(MainContext);
 

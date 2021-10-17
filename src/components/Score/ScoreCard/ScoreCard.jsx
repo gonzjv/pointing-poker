@@ -4,7 +4,7 @@ import { SocketContext } from '../../../socketContext';
 import './scorecard.css';
 
 const ScoreCard = ({ player }) => {
-  const { votes, setVotes, isTimerActive } = useContext(MainContext);
+  const { votes, setVotes, isTimerActive, setVote } = useContext(MainContext);
   const socket = useContext(SocketContext);
   const score = votes.find((vote) => vote.playerID === player.id);
   console.log('score: ', score);
@@ -12,7 +12,7 @@ const ScoreCard = ({ player }) => {
   useEffect(() => {
     socket.on('sendVotes', (votesArr) => {
       setVotes(votesArr);
-      console.log('votes: ', votes);
+      setVote(votesArr?.find((vote) => vote.playerID === socket.id));
     });
   });
   return (
