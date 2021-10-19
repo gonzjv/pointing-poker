@@ -32,6 +32,9 @@ const GameInfo = () => {
     socket.emit('startGame', dealer.lobbyID);
   };
 
+  const stopGame = () => {
+    socket.emit('stopGame', dealer.lobbyID);
+  };
   const copyID = (event) => {
     const idArea = document.getElementById('id__text');
     const id = idArea.value;
@@ -121,7 +124,13 @@ const GameInfo = () => {
       ) : (
         <div>
           {isDealer ? (
-            <Button value="Stop Game" isWhite={true} onCustomClick={undefined} />
+            <Button
+              value="Stop Game"
+              isWhite={true}
+              onCustomClick={() => {
+                stopGame();
+              }}
+            />
           ) : (
             <></>
           )}

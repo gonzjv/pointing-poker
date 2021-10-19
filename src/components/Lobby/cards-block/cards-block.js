@@ -2,33 +2,12 @@ import React from 'react';
 import { useState } from 'react';
 import Button from '../../Button/Button';
 import Card from '../../Card/cards';
+import getFiboRow from './card-rows/card-rows';
 
 import './cards-block.css';
 
 const CardsBlock = ({ statistics }) => {
-  const cardInfo = [
-    {
-      value: '1',
-      type: 'SP',
-    },
-    {
-      value: '3',
-      type: 'SP',
-    },
-    {
-      value: '7',
-      type: 'SP',
-    },
-    {
-      value: '14',
-      type: 'SP',
-    },
-    {
-      value: '28',
-      type: 'SP',
-    },
-  ];
-  const [cards, setCards] = useState(cardInfo);
+  const [cards, setCards] = useState(getFiboRow(8, 'SP'));
   const [cardFlipped, setCardFlipped] = useState(true);
 
   const addNewCard = () => {

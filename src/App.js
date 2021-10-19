@@ -10,6 +10,7 @@ import Welcome from './pages/Welcome/Welcome';
 import React from 'react';
 import { Footer } from './components/Footer/Footer';
 import { GamePage } from './pages/GamePage/GamePage';
+import ResultsPage from './pages/results-page/results-page';
 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
                   <Route exact path="/" component={Welcome} />
                   <Route exact path="/lobby" component={Lobby} />
                   <Route exact path="/game" component={GamePage} />
+                  <Route exact path="/results" component={ResultsPage} />
                 </Switch>
               </Router>
             </SocketProvider>
