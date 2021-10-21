@@ -10,20 +10,10 @@ import IssuesList from '../../components/Lobby/issues/issues';
 import { Timer } from '../../components/timer/timer';
 import CardsBlock from '../../components/Lobby/cards-block/cards-block';
 import { MainContext } from '../../mainContext';
-import { SocketContext } from '../../socketContext';
-import { useHistory } from 'react-router';
 
 export const GamePage = () => {
   const [modalCreateIssue, setModalCreateIssue] = useState(false);
   const { isTimerActive, votes } = useContext(MainContext);
-  const socket = useContext(SocketContext);
-  const history = useHistory();
-
-  useEffect(() => {
-    socket.on('dealerStopGame', () => {
-      history.push('/results');
-    });
-  });
 
   const average =
     votes.reduce((a, b) => {
@@ -46,7 +36,6 @@ export const GamePage = () => {
           <p className="average">
             {isTimerActive ? 'Sorry, nosey, round is not end!' : Math.round(average)}
           </p>
-          {/* {isDealer ? <CardsBlock statistics={false} /> : <Statistics />} */}
           <CardsBlock statistics={false} />
         </div>
         <aside className="game-page-aside">
