@@ -14,7 +14,12 @@ const IssuesList = () => {
   useEffect(() => {
     socket.on('refreshIssues', (issues) => {
       setIssues(issues);
-      setCurrentIssue(issues[0]);
+      if (issues.length == 1) {
+        setCurrentIssue(issues[0]);
+      }
+    });
+    socket.on('dealerSetIssue', (issue) => {
+      setCurrentIssue(issue);
     });
   });
 

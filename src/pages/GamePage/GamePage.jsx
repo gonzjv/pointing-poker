@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 import './gamepage.css';
 import { ToastContainer, toast } from 'react-toastify';
@@ -36,7 +36,6 @@ export const GamePage = () => {
           <p className="average">
             {isTimerActive ? 'Sorry, nosey, round is not end!' : Math.round(average)}
           </p>
-          {/* {isDealer ? <CardsBlock statistics={false} /> : <Statistics />} */}
           <CardsBlock statistics={false} />
         </div>
         <aside className="game-page-aside">

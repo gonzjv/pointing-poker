@@ -4,8 +4,8 @@ import './game-info.css';
 
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useContext } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import React, { useContext, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import { UsersContext } from '../../../usersContext';
 import { SocketContext } from '../../../socketContext';
 import { MainContext } from '../../../mainContext';
@@ -15,7 +15,14 @@ const GameInfo = () => {
   const history = useHistory();
   const { dealer, setDealer, players, isDealer } = useContext(UsersContext);
   const socket = useContext(SocketContext);
-  const { isGameRun, issues } = useContext(MainContext);
+  const { isGameRun, issues, setResults } = useContext(MainContext);
+
+  useEffect(() => {
+    socket.on('dealerStopGame', (results) => {
+      setResults(results);
+      history.push('/results');
+    });
+  });
 
   const notify = (message) => {
     toast(message, {
@@ -30,6 +37,10 @@ const GameInfo = () => {
 
   const startGame = () => {
     socket.emit('startGame', dealer.lobbyID);
+  };
+
+  const stopGame = () => {
+    socket.emit('stopGame', dealer.lobbyID);
   };
 
   const copyID = (event) => {
@@ -121,7 +132,13 @@ const GameInfo = () => {
       ) : (
         <div>
           {isDealer ? (
-            <Button value="Stop Game" isWhite={true} onCustomClick={undefined} />
+            <Button
+              value="Stop Game"
+              isWhite={true}
+              onCustomClick={() => {
+                stopGame();
+              }}
+            />
           ) : (
             <></>
           )}
