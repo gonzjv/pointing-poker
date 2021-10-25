@@ -16,11 +16,12 @@ const ResultsPage = () => {
         (elem) => elem.cardValue === result.cardValue,
       );
       const votePercents = (voteCount.length / issueResults.length) * 100;
+      const votePercentRounded = Math.round(votePercents);
 
       return (
         <figure className="card-wrap">
           <Card card={{ value: result.cardValue, type: 'SP' }} flipped={true} />
-          <figcaption>{votePercents}%</figcaption>
+          <figcaption>{votePercentRounded}%</figcaption>
         </figure>
       );
     });

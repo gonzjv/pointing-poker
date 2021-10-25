@@ -66,28 +66,15 @@ export const Timer = () => {
 
   return (
     <div>
-      {counter === 0 ? (
-        <div>
-          {format(counter)}
-          {isDealer ? (
-            <Button value="Reset Round" onCustomClick={startRound} isWhite={false} />
-          ) : (
-            <></>
-          )}
-        </div>
+      {format(counter)}
+      {isDealer ? (
+        <Button
+          value={isTimerActive ? 'Reset Round' : 'Run Round'}
+          onCustomClick={startRound}
+          isWhite={false}
+        />
       ) : (
-        <div>
-          {format(counter)}
-          {isDealer ? (
-            <Button
-              value={isTimerActive ? 'Reset Round' : 'Run Round'}
-              onCustomClick={startRound}
-              isWhite={false}
-            />
-          ) : (
-            <></>
-          )}
-        </div>
+        <></>
       )}
     </div>
   );
