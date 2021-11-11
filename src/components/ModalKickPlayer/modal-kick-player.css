@@ -1,0 +1,42 @@
+.modal__kick {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal__kick-active {
+  display: flex;
+}
+
+.form__kick__player {
+  position: relative;
+  background-color: #ffffff;
+  padding: 20px;
+}
+
+.form__kick__title {
+  text-align: center;
+  font-weight: bold;
+  font-size: 64px;
+  line-height: 75px;
+  margin-bottom: 45px;
+}
+
+.form__kick__text {
+  text-align: center;
+  font-family: Ruda;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 30px;
+  margin-bottom: 75px;
+}
+
+.form__kick__name {
+  color: #496a81;
+}

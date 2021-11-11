@@ -1,0 +1,39 @@
+.game-info {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 20px 0;
+}
+
+.link__text {
+  border: 1px solid #eeeeee;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 0px 0px 0px 10px;
+  max-width: 300px;
+  font-family: Roboto;
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 28px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.game__id {
+  display: flex;
+  align-items: center;
+}
+
+.subtitle__edit {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  margin-left: 15px;
+}
+.subtitle__edit__icon {
+  width: 22px;
+  height: 22px;
+}

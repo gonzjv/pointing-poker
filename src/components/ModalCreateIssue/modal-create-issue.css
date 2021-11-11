@@ -1,0 +1,30 @@
+.form__create {
+  position: relative;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: flex-start;
+  padding: 20px;
+}
+
+#form__create__title,
+#form__create__link,
+select {
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 28px;
+}
+
+.form__create__title {
+  font-weight: bold;
+  font-size: 64px;
+  line-height: 75px;
+}
+
+.form__create__label {
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 28px;
+  margin-right: 30px;
+}

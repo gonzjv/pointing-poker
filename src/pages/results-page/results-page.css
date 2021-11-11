@@ -1,0 +1,15 @@
+.results {
+  display: flex;
+  flex-direction: column;
+  margin-top: 3vh;
+  gap: 30px;
+}
+.results-cards {
+  display: flex;
+}
+.card-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}

@@ -1,0 +1,41 @@
+.timer {
+  display: flex;
+  margin: 20px;
+  padding: 0;
+  border-radius: 6px;
+  width: 200px;
+  align-items: center;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.timer__text {
+  font-family: Ruda;
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 15px;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.timer__input {
+  font-family: Ruda;
+  font-weight: bold;
+  font-size: 54px;
+  line-height: 67px;
+  text-align: center;
+  color: #000000;
+  width: 80px;
+  border: none;
+  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.18);
+  border-radius: 6px;
+}
+
+.timer__doubledots {
+  font-family: Ruda;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 30px;
+  text-align: center;
+  color: #000000;
+  margin: 0;
+  margin-right: 5px;
+}
